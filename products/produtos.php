@@ -58,7 +58,7 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
     <link rel="stylesheet" href="../css/style.css">
 
     <!-- CSS DO PRODUTOS                                                                 CSS DO PRODUTOS -->
-    <link rel="stylesheet" href="user.css">
+    <link rel="stylesheet" href="produtos.css">
     <!-- CSS DO PRODUTOS                                                                 CSS DO PRODUTOS -->
 	<link
       href="https://fonts.googleapis.com/css?family=Inter&display=swap"
@@ -225,6 +225,15 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
                             </script>
                        <?php
 
+                        echo '<div class="div_produto">
+                        <img class= Imagem_produtos_exibidos src="'. $rows_produtos['img_produtos'].'" alt="whey__wolffit">';
+
+
+                        echo '
+                        <input type="hidden" name="id_'.$rows_produtos['id_produtos'].'" placeholder="'.$rows_produtos['id_produtos'].'" id="'.$rows_produtos['id_produtos'].'" value="'.$rows_produtos['id_produtos'].'" readonly>
+                        <input type="hidden" name="id_'.$rows_produtos['nome_produtos'].'" placeholder="'.$rows_produtos['nome_produtos'].'" id="'.$rows_produtos['nome_produtos'].'" value="'.$rows_produtos['nome_produtos'].'" readonly>
+                        <input type="hidden" name="id_'.$rows_produtos['preco_produtos'].'" placeholder="'.$rows_produtos['preco_produtos'].'" id="'.$rows_produtos['preco_produtos'].'" value="'.$rows_produtos['preco_produtos'].'" readonly>
+                        ';
                                 
    
 
@@ -233,19 +242,20 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
                                 $nome_product = $rows_produtos['nome_produtos'];
                                 $preco_product = $rows_produtos['preco_produtos'];
 
-                            echo '<img class= Imagem_produtos_exibidos src="'. $rows_produtos['img_produtos'].'" alt="whey__wolffit">';
-                             //   echo "ID: " . $rows_produtos['id_produtos']. "<br>";
-                              //  echo "Nome: " . $rows_produtos['nome_produtos']. "<br>";
-                               // echo "Preco: " . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). "<br>";
-                                //echo "Descrição: " . $rows_produtos['descricao_produtos']. "<br>";
+                         
+                              echo "//ID: " . $rows_produtos['id_produtos']. "<br>";
+                              echo "Nome: " . $rows_produtos['nome_produtos']. "<br>";
+                              echo "Preco: " . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). "<br>";
+                              echo "Descrição: " . $rows_produtos['descricao_produtos']. "<br>";
+                              echo ' <button onclick="adicionarProduto('.$id_product.')">Me clique</button>';
 
                                     
-                                echo "<pre>";
-                                var_dump($rows_produtos);
-                                echo "</pre>";
+                               //echo "<pre>";
+                               //var_dump($rows_produtos);
+                               //echo "</pre>";
 
                             
-                                
+                         echo '</div>';       
                         ?>
                               
                             
@@ -301,5 +311,5 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
 </body>
 
 
-
+<script type="text/javascript" src="../script/carrinho.js"> </script>
 </html>

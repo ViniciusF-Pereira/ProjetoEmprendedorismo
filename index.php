@@ -12,8 +12,8 @@ include_once 'carrinho/carinhoScript.php';
 
 
 
-if ($_SESSION['id'] != true) {
-  $_SESSION['id'] = "0";
+if (!$_SESSION['id__carinho']) {
+  $_SESSION['id__carinho'] = "ID ALEATORIO";
   $__usuario_conectado =  $_SESSION['id'];
 } else {
   $__usuario_conectado =  $_SESSION['id'];
@@ -23,13 +23,13 @@ if ($_SESSION['id'] != true) {
 
 echo '
 
-<input class="Section_ID" type="" name="Section_ID" placeholder="Section_ID"id="" value="" readonly>
+<input class="Section_ID" type="hidden" name="Section_ID" placeholder="'.$_SESSION['id__carinho'].'"id="" value="'.$_SESSION['id__carinho'].'" readonly>
 
 ';
 
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-var_dump($dados)
+
 ?>
 
 

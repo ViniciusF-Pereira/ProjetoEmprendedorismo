@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Ajax com PHP</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $.ajax({
+            url: "script.php",
+            type: "POST",
+            data: "campo1=dado1&campo2=dado2&campo3=dado3",
+            dataType: "html"
+
+        }).done(function(resposta) {
+            console.log(resposta);
+
+        }).fail(function(jqXHR, textStatus) {
+            console.log("Request failed: " + textStatus);
+
+        }).always(function() {
+            console.log("completou");
+        });
+    </script>
+
+    <button onclick="adicionarProduto()">Me clique</button>
+
+</body>
+<!-- Script que irei construir pro carrinho.-->
+<script type="text/javascript">
+    function adicionarProduto(id) {
+
+
+        console.log(`ID do produto : ${id}`);
+    }
+</script>
+
+
+</html>
