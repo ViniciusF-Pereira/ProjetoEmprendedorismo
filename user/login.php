@@ -23,6 +23,7 @@ include_once '../php/conexao.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="user.css">
 	<link
       href="https://fonts.googleapis.com/css?family=Inter&display=swap"
       rel="stylesheet"
@@ -159,55 +160,55 @@ include_once '../php/conexao.php';
     </nav>
 
 
+    <div class="loginArea">
 
     <section>
 
-            <h1>Login</h1>
+<h1>Login</h1>
 
-  
-            <form method="POST" action="">
-                <label>Usuário:</label>
-                <input type="email" name="usuario" placeholder="digite o e-mail"id="" value="<?php if(isset($dados['usuario']))
-                {echo $dados['usuario']; } ?>">
 
-                <br>
-                <br>
+<form method="POST" action="">
+    <label>Usuário:</label>
+    <input type="email" name="usuario" placeholder="digite o e-mail"id="" value="<?php if(isset($dados['usuario']))
+    {echo $dados['usuario']; } ?>">
 
-                <label >Senha:</label>
-                <input type="password" name="senha_usuario" placeholder="digite a senha"id="" value="<?php if(isset($dados['senha_usuario']))
-                {echo $dados['senha_usuario'];} ?>">
+    
 
-                <br>
-                <br>
-                <?php
-        // exemplo criptografar a senha
+    <label >Senha:</label>
+    <input type="password" name="senha_usuario" placeholder="digite a senha"id="" value="<?php if(isset($dados['senha_usuario']))
+    {echo $dados['senha_usuario'];} ?>">
 
-        // echo password_hash(123456, PASSWORD_DEFAULT)
-        
-        ?>
+    <br>
+    <br>
+    <?php
+// exemplo criptografar a senha
 
-        <?php
+// echo password_hash(123456, PASSWORD_DEFAULT)
 
-        $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+?>
 
-        if(!empty($dados["SendCadastro"])){
+<?php
 
-              // echo "<pre>";
-              // var_dump($dados);
-              // echo "</pre>";
-               
-               header("Location: cadastro.php");
-        }
+$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-        if(!empty($dados["SendLogin"])){
+if(!empty($dados["SendCadastro"])){
 
-              //  echo "<pre>";
-              //  var_dump($dados);
-              //  echo "</pre>";
-        
+  // echo "<pre>";
+  // var_dump($dados);
+  // echo "</pre>";
+   
+   header("Location: cadastro.php");
+}
 
-        
-        
+if(!empty($dados["SendLogin"])){
+
+  //  echo "<pre>";
+  //  var_dump($dados);
+  //  echo "</pre>";
+
+
+
+
 $query_usuario ="SELECT id, nome, cpf, usuario, senha_usuario, id_number
 FROM usuarios 
 WHERE usuario =:usuario
@@ -216,57 +217,62 @@ LIMIT 1";
 $result_usuario = $conn->prepare($query_usuario);
 $result_usuario -> bindParam(':usuario', $dados['usuario'], PDO::PARAM_STR);         
 
-        $result_usuario -> execute();
+$result_usuario -> execute();
 
-        if(($result_usuario) AND ($result_usuario->rowCount() != 0)){
-        $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
-              
-        //  echo "<pre>";
-        //  var_dump($row_usuario);
-        //  echo "</pre>";
-
-
-            if(password_verify($dados["senha_usuario"], $row_usuario["senha_usuario"])){
-
-                // echo "acessado";
+if(($result_usuario) AND ($result_usuario->rowCount() != 0)){
+$row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
+  
+//  echo "<pre>";
+//  var_dump($row_usuario);
+//  echo "</pre>";
 
 
-                
-                $_SESSION['id_number'] = $row_usuario['id_number'];
-                $_SESSION['id'] = $row_usuario['id'];
-                $_SESSION['nome'] = $row_usuario['nome'];
-              
-                
-           
-                header("Location: ../index.php");
+if(password_verify($dados["senha_usuario"], $row_usuario["senha_usuario"])){
 
-            }
-            else {
-                   $_SESSION['msg']= "<p style='color: #ff0000'> Erro; Senha inválida! </p>";
-            }
-            
-       
-        }
-        else {
-            $_SESSION['msg']= "<p style='color: #ff0000'> Erro; Usuário ou Senha inválida! </p>";
-        }
-
-        if(isset($_SESSION['msg'])){
-            echo $_SESSION['msg'];
-            unset ($_SESSION['msg']);
-        }
-        
-    }
-        
-
-        ?>
-
-                <input type="submit" value="Acessar" name="SendLogin"> 
-                <input type="submit" value="Cadastrar" name="SendCadastro"  > 
-            </form>
+    // echo "acessado";
 
 
-    </section>
+    
+    $_SESSION['id_number'] = $row_usuario['id_number'];
+    $_SESSION['id'] = $row_usuario['id'];
+    $_SESSION['nome'] = $row_usuario['nome'];
+  
+    
+
+    header("Location: ../index.php");
+
+}
+else {
+       $_SESSION['msg']= "<p style='color: #ff0000'> Erro; Senha inválida! </p>";
+}
+
+
+}
+else {
+$_SESSION['msg']= "<p style='color: #ff0000'> Erro; Usuário ou Senha inválida! </p>";
+}
+
+if(isset($_SESSION['msg'])){
+echo $_SESSION['msg'];
+unset ($_SESSION['msg']);
+}
+
+}
+
+
+?>
+
+    <div class="btnContainer">
+      <input type="submit" value="Acessar" name="SendLogin">
+      <input type="submit" value="Ainda não tenho uma conta" name="SendCadastro"  >
+    </div>
+</form>
+
+
+</section>
+    </div>
+
+    
 
 
     <!-- Footer -->
