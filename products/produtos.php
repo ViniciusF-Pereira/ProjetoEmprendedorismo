@@ -190,7 +190,7 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
                       }
             ?>
             </button>
-            <button id="abrirCarrinhoBtn" class="navBtn">
+            <button id="abrirCarrinhoBtn" class="navBtn" onclick="">
               <i class="fa fa-cart-shopping"></i>
               <span class="nav2ItemNome">Carrinho</span>
             </button>
@@ -219,7 +219,8 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
 
       <div id="botao__carinho___tabela">
       <div id="itens"> </div>
-      <div>Total: <span id="total"></span> </div>
+      <div>Total: <span id="total"></span> 
+      <input type="hidden" value="" id="total_full"></input></div>
         
       </div>
 
