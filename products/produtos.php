@@ -216,10 +216,10 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
       >
         Atualizar
       </button>
-
+      <div>Total R$: <span id="total"></span> </div>            
       <div id="botao__carinho___tabela">
       <div id="itens"> </div>
-      <div>Total: <span id="total"></span> 
+      <div class="total2">Total R$: <span id="total2"></span> 
       <input type="hidden" value="" id="total_full"></input></div>
         
       </div>

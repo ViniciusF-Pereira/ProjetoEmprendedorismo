@@ -23,7 +23,7 @@
 
 .sumiu {
     opacity: .8;
-    animation: 6s AdicionouSumiu;
+    animation: 1.8s AdicionouSumiu;
 }
 
 @keyframes AdicionouSumiu {
