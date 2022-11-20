@@ -142,19 +142,18 @@ include_once '../php/conexao.php';
           <div class="navItems2">
             <button class="navBtn">
             <?php
-                    if( $_SESSION['id'] != 0 ||  $_SESSION['id']!= ""){
-                
-                  
-    
-                      echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
-                    }
-                     else {
-        
-                      echo  '<span class="menuItem"><a href="user/dashboard.php">Configurações</a></span>';
-        
-                      echo    '<a href="sair.php">SAIR</a>';
-                    
-                  }
+                       if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){
+                         
+                     
+                        echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
+                      
+                      } else {
+                        echo  '<span class="menuItem"><a href="dashboard.php">Configurações</a></span>';
+          
+                        echo    '<a href="sair.php">SAIR</a>';
+                      
+                                   
+                      }
             ?>
             </button>
             <button id="abrirCarrinhoBtn" class="navBtn">

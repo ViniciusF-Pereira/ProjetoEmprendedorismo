@@ -119,11 +119,10 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
         <p class="segundoTitulo">
             Frete Grátis, vide as regras | 1ª Troca sem custo* | Entrega realizada em até 7 dias úteis</p>
             <?php 
-            if($__usuario_conectado != ""){
+            if ($_SESSION['id'] != "" && $_SESSION['id']) {
 
-               
-                echo    '<p class="primeiroTitulo ">Bem Vindo '.$__usuario_conectado.'</p>';
 
+              echo    '<p class="primeiroTitulo ">Bem Vindo ' . $_SESSION['nome'] . '</p>';
             }
             ?>
     </header>
@@ -176,7 +175,7 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
           <div class="navItems2">
             <button class="navBtn">
             <?php
-                        if( $_SESSION['id'] != 0 ||  $_SESSION['id']!= ""){
+                        if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){
                 
                   
     

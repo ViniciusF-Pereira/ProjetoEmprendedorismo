@@ -9,28 +9,24 @@ include_once '../php/conexao.php';
 include_once '../php/adminconexao.php';
 
 
-if( $_SESSION['id'] != 0 &&  $_SESSION['id']!= ""){
+
+
+
+
+if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){
+
+  $_SESSION['msg']= "<p style='color: #ff0000'> Erro, pagina restrida; Usuário não conectado]! </p>";
 
   header("Location: ../index.php");
 
 
-}
+  
+  if(isset($_SESSION['msg'])){
+      echo $_SESSION['msg'];
+      unset ($_SESSION['msg']);
+  }
 
-
-if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
-
-    $_SESSION['msg']= "<p style='color: #ff0000'> Erro, pagina restrida; Usuário não conectado]! </p>";
-
-    header("Location: ../index.php");
-
-
-    
-    if(isset($_SESSION['msg'])){
-        echo $_SESSION['msg'];
-        unset ($_SESSION['msg']);
-    }
-
-    
+  
 
 }
 
@@ -173,19 +169,17 @@ if(!empty($dados["Voltar"])){
           <div class="navItems2">
             <button class="navBtn">
             <?php
-                     if( $_SESSION['id'] != 0 ||  $_SESSION['id']!= ""){
-                
-                  
-    
-                      echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
-                    }
-                     else {
-        
-                      echo  '<span class="menuItem"><a href="user/dashboard.php">Configurações</a></span>';
-        
-                      echo    '<a href="sair.php">SAIR</a>';
-                    
-                  }
+                     if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){                         
+                     
+                        echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
+                      
+                      } else {
+                        echo  '<span class="menuItem"><a href="dashboard.php">Configurações</a></span>';
+          
+                        echo    '<a href="sair.php">SAIR</a>';
+                      
+                                   
+                      }
             ?>
             </button>
             <button id="abrirCarrinhoBtn" class="navBtn">

@@ -12,14 +12,8 @@ include_once 'carrinho/carinhoScript.php';
 
 
 
-if (!$_SESSION['id__carinho']) {
-  $_SESSION['id__carinho'] = "ID ALEATORIO";
-  $__usuario_conectado =  $_SESSION['id'];
-} else {
-  $__usuario_conectado =  $_SESSION['id'];
-}
-
-
+echo '_____________'.$_SESSION['id'].'';
+echo '_____________'.$_SESSION['nome'].'';
 
 echo '
 
@@ -72,11 +66,11 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
     <p class="segundoTitulo">
       Frete Grátis, vide as regras | 1ª Troca sem custo* | Entrega realizada em até 7 dias úteis</p>
     <?php
-    if ($__usuario_conectado != "0") {
+  if ($_SESSION['id'] != "" && $_SESSION['id']) {
 
 
-      echo    '<p class="primeiroTitulo ">Bem Vindo ' . $_SESSION['nome'] . '</p>';
-    }
+    echo    '<p class="primeiroTitulo ">Bem Vindo ' . $_SESSION['nome'] . '</p>';
+  }
     ?>
   </header>
 
@@ -123,15 +117,18 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
           <div class="navItems2">
             <button class="navBtn">
             <?php
-            if ($__usuario_conectado == "0") {
-
-              echo  '<a href="user/login.php"> <i class="fa fa-user"></i></a></span>';
-            } else {
-
-              echo  '<span class="menuItem"><a href="user/dashboard.php">Configurações</a></span>';
-
-              echo    '<a href="user/sair.php">SAIR</a>';
-            }
+             if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){
+                         
+                     
+                echo  '<a href="user/login.php"> <i class="fa fa-user"></i></a></span>';
+              
+              } else {
+                echo  '<span class="menuItem"><a href="user/dashboard.php">Configurações</a></span>';
+  
+                echo    '<a href="user/sair.php">SAIR</a>';
+              
+                           
+              }
             ?>
             </button>
             <button id="abrirCarrinhoBtn" class="navBtn">

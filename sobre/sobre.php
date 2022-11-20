@@ -147,7 +147,7 @@ include_once '../php/conexao.php';
           <div class="navItems2">
             <button class="navBtn">
             <?php
-                      if( $_SESSION['id'] != 0 ||  $_SESSION['id']!= ""){
+                      if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){
                 
                   
     

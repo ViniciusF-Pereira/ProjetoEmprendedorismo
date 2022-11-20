@@ -8,8 +8,8 @@ ob_start();
 
 include_once '../php/conexao.php';
 
-if( $_SESSION['id'] != 0 &&  $_SESSION['id']!= ""){
-
+if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){
+    
     header("Location: ../index.php");
   
   
