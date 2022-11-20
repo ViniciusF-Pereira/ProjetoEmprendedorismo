@@ -10,6 +10,8 @@ ob_start();
 
     include_once '../php/conexao.php';
 
+    $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
 
 $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
@@ -37,10 +39,30 @@ $num_pagina = ceil($total_produtos/$quantidade_pg);
 $incio = ($quantidade_pg*$pagina)-$quantidade_pg;
 
 //Selecionar os produtos a serem apresentado na página
-$result_produtos_querys = "SELECT * FROM produtos ORDER BY id_produtos DESC limit $incio, $quantidade_pg ";
+$result_produtos_querys = "SELECT * FROM produtos ORDER BY id_produtos  DESC limit $incio, $quantidade_pg ";
 $result_produto_sTotals = mysqli_query($connect, $result_produtos_querys);
 $total_produtos = mysqli_num_rows($result_produto_sTotal);
 
+if(!empty($dados["Preco_baixo"])){
+  $result_produtos_querys = "SELECT * FROM produtos ORDER BY preco_produtos ASC limit $incio, $quantidade_pg ";
+  $result_produto_sTotals = mysqli_query($connect, $result_produtos_querys);
+  $total_produtos = mysqli_num_rows($result_produto_sTotal);
+}
+if(!empty($dados["Preco_alto"])){
+  $result_produtos_querys = "SELECT * FROM produtos ORDER BY preco_produtos DESC limit $incio, $quantidade_pg ";
+  $result_produto_sTotals = mysqli_query($connect, $result_produtos_querys);
+  $total_produtos = mysqli_num_rows($result_produto_sTotal);
+}
+if(!empty($dados["ordemAfabetica_asc"])){
+  $result_produtos_querys = "SELECT * FROM produtos ORDER BY nome_produtos ASC limit $incio, $quantidade_pg ";
+  $result_produto_sTotals = mysqli_query($connect, $result_produtos_querys);
+  $total_produtos = mysqli_num_rows($result_produto_sTotal);
+}
+if(!empty($dados["ordemAfabetica_desc"])){
+  $result_produtos_querys = "SELECT * FROM produtos ORDER BY nome_produtos DESC limit $incio, $quantidade_pg ";
+  $result_produto_sTotals = mysqli_query($connect, $result_produtos_querys);
+  $total_produtos = mysqli_num_rows($result_produto_sTotal);
+}
 
 
 
@@ -241,8 +263,14 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
 				<h1>Produtos</h1>
 			</div>
             <div class= "Vitrine">
-          
+          <form method="POST" action=""> 
+            <input name="Preco_baixo" value="Preco_baixo" type="submit">
+            <input name="Preco_alto" value="Preco_alto" type="submit">
+            <input name="ordemAfabetica_desc" value="ordemAfabetica_desc" type="submit">
+            <input name="ordemAfabetica_asc" value="ordemAfabetica_asc" type="submit">
+          </form>
         	<div class="row">
+         
 				<?php while($rows_produtos = mysqli_fetch_assoc($result_produto_sTotals)){ ?>
 					<div class="col-sm-6 col-md-4">
 						<div class="thumbnail">
