@@ -230,6 +230,7 @@ let fecharCarrinhoBtn = document
 function mostrarEsconderCarrinho() {
     let carrinho = document.getElementById("botao__carinho");
     carrinho.classList.toggle("carrinhoAberto");
+    carrinho();
 
 }
 
