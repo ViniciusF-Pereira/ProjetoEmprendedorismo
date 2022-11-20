@@ -102,13 +102,24 @@ function adicionarProduto(id_p, nome_p, preco_p, img_p) {
                 </liv>
             </ul>`;
 
-            // calcula o total dos recheios
-            valortotalcarrinho = parseFloat(document.getElementById("total_full")); // valor convertido com o parseFloat()
-            valortotalcarrinho = (preco_p + valortotalcarrinho); // arredonda para 2 casas decimais com o .toFixed(2)
 
+            var total = 0; // variável que retorna o total dos produtos que estão na LocalStorage.
+            var i = 0; // variável que irá percorrer as posições
+            var valortotalcarrinho = 0; // variável que irá receber o preço do produto convertido em Float.
 
-            document.getElementById("total_full").innerHTML = valortotalcarrinho;
-            document.getElementById("total").innerHTML = valortotalcarrinho;
+            for (i = 1; i <= 99; i++) // verifica até 99 produtos registrados na localStorage
+            {
+                var prod = localStorage.getItem("produto" + i + ""); // verifica se há recheio nesta posição. 
+                if (prod != null) {
+                    // exibe o total dos recheios
+                    valortotalcarrinho = parseFloat(localStorage.getItem("valorTotal" + i)); // valor convertido com o parseFloat()
+                    total = (total + valortotalcarrinho); // arredonda para 2 casas decimais com o .toFixed(2)
+                }
+            }
+            // exibe o total dos recheios
+            document.getElementById("total").innerHTML = total.toFixed(2);
+            document.getElementById("total_full").innerHTML = total.toFixed(2);
+
 
 
 
