@@ -31,6 +31,7 @@ function adicionarProduto(id_p, nome_p, preco_p, img_p) {
 
 
 
+
     id__produto = id_p;
     //localStorage.clear();
     //console.log(id_p);
@@ -112,7 +113,7 @@ function adicionarProduto(id_p, nome_p, preco_p, img_p) {
 
 
 
-                location.reload();
+
 
 
             } else {
@@ -178,7 +179,7 @@ function adicionarProduto(id_p, nome_p, preco_p, img_p) {
 
                 }, 200)
 
-                location.reload();
+
 
 
 
@@ -214,7 +215,7 @@ function adicionarProduto(id_p, nome_p, preco_p, img_p) {
 
 
     }
-
+    carrinho();
 
 }
 
@@ -229,8 +230,9 @@ let fecharCarrinhoBtn = document
 // Abre o carrinho caso esteja fechado, e fecha caso esteja aberto.
 function mostrarEsconderCarrinho() {
     let carrinho = document.getElementById("botao__carinho");
+
     carrinho.classList.toggle("carrinhoAberto");
-    carrinho();
+
 
 }
 
@@ -496,5 +498,5 @@ function alterar(oid, valor) {
 
 if (location.reload) {
 
-    mostrarEsconderCarrinho();
+
 }

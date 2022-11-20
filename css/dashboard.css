@@ -34,3 +34,10 @@
     .input_AdicionarEndereco {
         margin-top: 15%;
     }
+    
+    .estrela {
+        position: absolute;
+        margin-top: -17%;
+        margin-left: 16%;
+        border: black;
+    }
