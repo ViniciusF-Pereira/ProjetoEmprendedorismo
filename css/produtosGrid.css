@@ -1,0 +1,210 @@
+
+/*  Lista dos produtos exibidos em "Mais vendidos"  */
+.maisVendidosSection {
+    width: 100vw;
+  }
+  
+.maisVendidos {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    width: fit-content;
+}
+  
+.maisVendidos .baner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+    border-radius: 10px;
+    width: 300px;
+    padding: 10px;
+    height: 240px;
+    margin: 0px 15px 15px 15px;
+  
+    font-size: 1.6rem;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    overflow: hidden;
+  
+    display: flex;
+    flex-direction: column;
+  
+    transition: 0.3s;
+}
+  
+.maisVendidos .baner.suplementoBaner{
+    background-image: url(../images/background/suplementosBg.jpg);
+}
+.maisVendidos .baner.equipamentoBaner {
+    background-image: url(../images/background/equipamentosBg.jpg);
+}
+.baner .verMaisBtn {
+    background-color: #03c203;
+    padding: 6px 40px;
+    width: fit-content;
+    border-radius: 20px;
+    border: 3px solid #03c203;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: 0.4s;
+    cursor: pointer;
+}
+.baner .verMaisBtn:hover {
+    background-color: white;
+    color: #03c203;
+}
+.baner * {
+    z-index: 10;
+}
+  
+.maisVendidosTitulo {
+    text-align: center;
+    text-decoration: underline;
+    font-weight: 700;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+  
+.listaDeProdutos {
+    display: grid;
+    grid-template-areas: "produto1 produto2 produto3 produto4";
+    margin-bottom: 30px;
+}
+.produto1 {
+    grid-area: produto1;
+}
+  .produto2 {
+    grid-area: produto2;
+  }
+  .produto3 {
+    grid-area: produto3;
+  }
+  .produto4 {
+    grid-area: produto4;
+  }
+  
+  .cardProduto {
+    width: 180px;
+    height: 240px;
+    padding: 5px 3px;
+    margin: 0px 15px 0px 15px;
+  
+    display: flex;
+    flex-direction: column;
+  
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 1px #00000058;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  
+  .cardProduto:hover {
+    border: 3px solid rgb(171, 171, 171);
+  }
+  
+  .cardProduto img {
+    width: 150px;
+    max-height: 180px;
+    display: block;
+    margin: auto;
+  }
+  
+  .tituloProduto,
+  .preçoProduto {
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .tituloProduto {
+    color: black;
+    margin-bottom: 1px;
+  }
+  
+  .preçoProduto {
+    color: #03c203;
+    font-size: 1.5rem;
+  }
+
+
+
+
+
+
+@media screen and (width < 1180px) {
+    
+    .maisVendidos .baner {
+      height: auto;
+    }
+    .listaDeProdutos {
+      grid-template-areas:
+        "produto1 produto2"
+        "produto3 produto4";
+      gap: 30px 0;
+    }
+  
+
+}
+  
+@media screen and (width < 760px) {
+   
+    /* Section com os produtos mais vendidos */
+    .maisVendidos {
+      flex-direction: column;
+    }
+    .maisVendidos:nth-of-type(even) {
+      flex-direction: column-reverse;
+    }
+    .maisVendidos .baner {
+      width: auto;
+      height: 300px;
+    }
+  
+    .cardProduto img {
+      width: 120px;
+      max-height: 150px;
+    }
+}
+  
+
+  
+@media screen and (width < 460px) {
+  
+    .listaDeProdutos {
+      gap: 0;
+    }
+    .cardProduto {
+      width: auto;
+      height: auto;
+      padding: 5px 2px;
+      margin: 0px;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .produto1,
+    .produto2 {
+      border-bottom: 2px solid #80808069;
+    }
+    .produto1,
+    .produto3 {
+      border-right: 1px solid #80808069;
+    }
+    .produto2,
+    .produto4 {
+      border-left: 1px solid #80808069;
+    }
+  
+    
+}
