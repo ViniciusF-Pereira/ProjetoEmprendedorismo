@@ -209,6 +209,13 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
       >
         Limpar
       </button>
+      <button
+        type="button"
+        class="limparCarrinhoBtn"
+        onclick=" location.reload();"
+      >
+        Atualizar
+      </button>
 
       <div id="botao__carinho___tabela">
       <div id="itens"> </div>
@@ -218,19 +225,7 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
 
       
 
-      <ul id="carrinhoLista">
-        <li class="carrinhoItem">
-          <img src="" alt="">
-          <div class="produtoInfo">
-            <div class="topInfo">
-              <h5 class="titulo">whey prontein</h5>
-              <p class="preco">R$299,99</p>
-            </div>
-
-            <p class="bottomInfo">Suplemento</p>
-          </div>
-        
-      </ul>
+      
 
       <button id="fecharCarrinhoBtn"><i class="fa fa-close"></i></button>
     </div>
@@ -266,11 +261,11 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
                         <img class= Imagem_produtos_exibidos src="'. $rows_produtos['img_produtos'].'" alt="whey__wolffit">';
 
 
-                       // echo '
+                        echo '
                         
-//                        <input type="hidden" name="id_'.$rows_produtos['id_produtos'].'" placeholder="'.$rows_produtos['id_produtos'].'" id="'.$rows_produtos['id_produtos'].'" value="'.$rows_produtos['id_produtos'].'" readonly>
-
-  //                      ';
+                        <input type="hidden" name="id_'.$rows_produtos['id_produtos'].'" placeholder="'.$rows_produtos['id_produtos'].'" id="'.$rows_produtos['id_produtos'].'" value="'.$rows_produtos['id_produtos'].'" readonly>
+>
+                        ';
                                 
    
 
@@ -279,18 +274,19 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
                                 $nome_p = $rows_produtos['nome_produtos'];
                                 $preco_p = $rows_produtos['preco_produtos'];
                                 $img_p = $rows_produtos['img_produtos'];
+
+                                $array_produto = [ $id_p, $nome_p,  $preco_p ];
                          
                               echo "//ID: " . $rows_produtos['id_produtos']. "<br>";
                               echo "Nome: " . $rows_produtos['nome_produtos']. "<br>";
                               echo "Preco: " . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). "<br>";
                               echo "Descrição: " . $rows_produtos['descricao_produtos']. "<br>";
-                              echo ' <button  id="adicionar'.$id_p.'" onclick="AddCarrinho('.$nome_p.', 1,'.$preco_p.', '. $id_p.')"> Comprar </button> ';              
-                             
-                            
+                             // echo ' <button onclick="back(`'.$id_p.'`)">COMPRAR</button>';
+                              echo ' <button onclick="adicionarProduto(`'.$id_p.'`,`'. $nome_p.'`,`'.$preco_p.'`,`'.$img_p.'`)">COMPRAR</button>';
 
                                     
                                //echo "<pre>";
-                               //var_dump($rows_produtos);
+                              // echo json_encode( $array_produto );
                                //echo "</pre>";
 
                             
