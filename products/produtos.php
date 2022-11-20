@@ -179,13 +179,13 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
                 
                   
     
-                          echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
+                          echo  '<a href="../user/login.php"> <i class="fa fa-user"></i></a></span>';
                         }
                          else {
             
-                          echo  '<span class="menuItem"><a href="user/dashboard.php">Configurações</a></span>';
+                          echo  '<span class="menuItem"><a href="../user/dashboard.php">Configurações</a></span>';
             
-                          echo    '<a href="sair.php">SAIR</a>';
+                          echo    '<a href="../user/sair.php">SAIR</a>';
                         
                       }
             ?>
@@ -202,12 +202,13 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
    
 
     <!-- Produtos -->
-  
+
     <div class="container theme-showcase" role="main">
 			<div class="page-header">
 				<h1>Produtos</h1>
 			</div>
             <div class= "Vitrine">
+          
         	<div class="row">
 				<?php while($rows_produtos = mysqli_fetch_assoc($result_produto_sTotals)){ ?>
 					<div class="col-sm-6 col-md-4">
@@ -262,6 +263,7 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
 						</div>
 					</div>
 				<?php } ?>
+        <div class="adicionou">Produto Adicionado</div>
 			    </div>
             </div>
 			<?php

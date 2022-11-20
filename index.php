@@ -12,8 +12,7 @@ include_once 'carrinho/carinhoScript.php';
 
 
 
-echo '_____________'.$_SESSION['id'].'';
-echo '_____________'.$_SESSION['nome'].'';
+
 
 echo '
 

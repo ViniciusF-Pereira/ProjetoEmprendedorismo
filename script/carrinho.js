@@ -7,13 +7,13 @@ if (isNaN(localStorage.getItem(`Section_ID`)) || localStorage.getItem(`Section_I
     // console.log(Section_ID);
 
     localStorage.setItem(`Section_ID`, Section_ID);
-    console.log(" e null");
+    // console.log(" e null");
     // console.log(localStorage.getItem(`Section_ID`));
 } else {
 
 
-    console.log(" nao e null");
-    console.log(localStorage.getItem(`Section_ID`));
+    // console.log(" nao e null");
+    // console.log(localStorage.getItem(`Section_ID`));
 }
 
 
@@ -49,11 +49,32 @@ function adicionarProduto(id) {
             console.log("Quantidade " + localStorage.getItem(`produto_${id}`));
 
         }
+
+        var clickX = event.clientX + document.body.scrollLeft;
+        var clickY = event.clientY + document.body.scrollTop;
+
+
+
+        adicionou = document.querySelector('.adicionou');
+
+        adicionou.style.top = clickY + (-200) + 'px';
+        adicionou.style.left = clickX + (-50) + 'px';
+
+        //console.log(clickX);
+        //console.log(clickY);
+
+
+
+        adicionou.classList.add('sumiu');
+
+
+        setTimeout(() => {
+
+            adicionou.classList.remove('sumiu');
+
+        }, 1800)
+
+
+
     }
-
-
-
-
-
-
 }
