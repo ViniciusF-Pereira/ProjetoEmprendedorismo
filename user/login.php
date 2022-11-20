@@ -5,13 +5,6 @@
 session_start();
 ob_start();
 
-if ($_SESSION['id'] != true or $_SESSION['id'] == null){
-$__usuario_conectado = $_SESSION['id'];
-}
-else {
-    $_SESSION['id'] = "0";
-    $__usuario_conectado = $_SESSION['id'];
-}
 
 include_once '../php/conexao.php';
 
