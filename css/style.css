@@ -1121,3 +1121,74 @@ footer .creditos {
     margin-bottom: 4%;
     padding: 2%;
 }
+
+.produtoefeito {
+    animation: 1s produtouau infinite;
+    opacity: 1;
+}
+
+@keyframes produtouau {
+    00% {
+        opacity: 0;
+        zoom: 10%;
+    }
+    10% {
+        opacity: 0.1;
+        zoom: 20%;
+    }
+    20% {
+        opacity: 0.2;
+        zoom: 30%;
+    }
+    30% {
+        opacity: 0.3;
+        zoom: 40%;
+    }
+    40% {
+        opacity: 0.4;
+        zoom: 50%;
+    }
+    50% {
+        opacity: 0.5;
+        zoom: 60%;
+    }
+    60% {
+        opacity: 0.6;
+        zoom: 70%;
+    }
+    70% {
+        opacity: 0.7;
+        zoom: 80%;
+    }
+    80% {
+        opacity: 0.8;
+        zoom: 90%;
+    }
+    90% {
+        opacity: 0.9;
+        zoom: 100%;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.total2 {
+    margin-top: 30%;
+}
+
+.button_id {
+    margin-top: -40%;
+    left: 72%;
+    position: absolute;
+}
+
+.alterarMais,
+.alterarMenos {
+    margin-top: 50%;
+    position: absolute;
+}
+
+.alterarMenos {
+    left: 20%;
+}

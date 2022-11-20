@@ -297,7 +297,7 @@ if(!empty($dados["CadastrarEndereco"])){
     
                 <?php 
 
-                $query_dashboard ="SELECT id, nome, cpf, usuario, senha_usuario
+                $query_dashboard ="SELECT id, nome, cpf, usuario, senha_usuario, id_endereco
                 FROM usuarios 
                 WHERE id =:id
                 LIMIT 1";        
@@ -306,6 +306,7 @@ if(!empty($dados["CadastrarEndereco"])){
                 $result_dashboard = $conn->prepare($query_dashboard);
                 $result_dashboard -> bindParam(':id', $_SESSION['id'], PDO::PARAM_STR);     
                 $result_dashboard -> execute();
+                
 
 
                 if(($result_dashboard) and ($result_dashboard->rowCount() != 0)){
@@ -352,26 +353,31 @@ if(!empty($dados["CadastrarEndereco"])){
                     while ($row_result_dashboard_enderecos = $result_dashboard_enderecos->fetch(PDO::FETCH_ASSOC)){
                         
                         extract($row_result_dashboard_enderecos);
-
-                      
+                                              
+                             
                         echo '<div class=row_EnderecosMenu>';
                         
                         echo '<form action="" method="post">';
                         echo '<input type="radio" name="botao'.$id_endereco.'" value="'.$usuario_id.'"/>';
-                        echo "<br>"; 
+                        echo ""; 
                                                           
                         echo "<h4>$nome_endereco</h4> <br>"; 
+                        if($row_dashboard['id_endereco'] == $row_result_dashboard_enderecos['id_endereco']){
+
+                          echo "Endereço Principal <br>"; 
+                        }
                         echo "CEP: $cep <br>"; 
                         echo "Logradouro: $logradouro <br>"; 
                         echo "Complemento: $complemento <br>"; 
 
-                        
+                        echo ' <input class="estrela" type="submit" name="favoritar" value="★" />';
 
                         echo ' <input type="submit" name="deletar" value="DELETAR ENDEREÇO" />';
                         echo '</div>';
                         if (isset($_POST['botao'.$id_endereco.''])) {
                         
 
+                          if(!empty($dados['deletar'])){
                             $delete_dashboard_enderecos = "DELETE from enderecos WHERE id_endereco ='$id_endereco'";
                             $qdelete_dashboard_enderecos = $conn->prepare($delete_dashboard_enderecos);
                             $qdelete_dashboard_enderecos->execute();
@@ -379,6 +385,28 @@ if(!empty($dados["CadastrarEndereco"])){
                             echo "Endereço deletado com sucesso";
                             
                             header("Location: dashboard.php");
+                         }
+                         if(!empty($dados['favoritar'])){
+                          
+                         
+                          $query_enderecoPrincipal ="UPDATE usuarios SET id_endereco =:id_endereco WHERE id =:id";       
+                         
+                          
+                          $result_enderecoPrincipal = $conn->prepare($query_enderecoPrincipal);
+
+                          $result_enderecoPrincipal -> bindParam(':id', $_SESSION['id']);  
+                          $result_enderecoPrincipal -> bindParam(':id_endereco', $id_endereco);  
+                                                        
+
+                          
+
+                          
+                          $result_enderecoPrincipal -> execute();
+
+                          
+                         header("Location: dashboard.php");
+
+                         }
 
                         } else {
                         

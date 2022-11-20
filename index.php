@@ -6,7 +6,6 @@ ob_start();
 
 
 include_once 'php/conexao.php';
-include_once 'carrinho/carinhoScript.php';
 
 
 
@@ -14,11 +13,7 @@ include_once 'carrinho/carinhoScript.php';
 
 
 
-echo '
 
-<input class="Section_ID" type="hidden" name="Section_ID" placeholder="'.$_SESSION['id__carinho'].'"id="" value="'.$_SESSION['id__carinho'].'" readonly>
-
-';
 
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 

@@ -159,13 +159,13 @@ include_once '../php/conexao.php';
                 
                   
     
-                            echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
+                            echo  '<a href="../user/login.php"> <i class="fa fa-user"></i></a></span>';
                           }
                            else {
               
-                            echo  '<span class="menuItem"><a href="user/dashboard.php">Configurações</a></span>';
+                            echo  '<span class="menuItem"><a href="../user/dashboard.php">Configurações</a></span>';
               
-                            echo    '<a href="sair.php">SAIR</a>';
+                            echo    '<a href="../user/sair.php">SAIR</a>';
                           
                         }
             ?>
