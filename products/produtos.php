@@ -246,16 +246,7 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
 				<?php while($rows_produtos = mysqli_fetch_assoc($result_produto_sTotals)){ ?>
 					<div class="col-sm-6 col-md-4">
 						<div class="thumbnail">
-                            <script type="text/javascript"> 
-
-                            function clicou(id){
-
-                                console.log("Produto " + id); 
-
-                            }
-                            
-
-                            </script>
+                 
                        <?php
 
                         echo '<div class="div_produto">

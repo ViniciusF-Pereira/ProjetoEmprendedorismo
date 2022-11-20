@@ -130,7 +130,7 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
               }
             ?>
             </button>
-            <button id="abrirCarrinhoBtn" class="navBtn">
+            <button id="abrirCarrinhoBtn" class="navBtn" onclick="">
               <i class="fa fa-cart-shopping"></i>
               <span class="nav2ItemNome">Carrinho</span>
             </button>
@@ -138,6 +138,38 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         </div>
       </div>
     </nav>
+
+   
+  <div id="botao__carinho" class="botao__carinho">
+      <h3>Carrinho <i class="fa fa-cart-shopping"></i></h3>
+      <button
+        type="button"
+        class="limparCarrinhoBtn"
+        onclick=" localStorage.clear(); location.reload();"
+      >
+        Limpar
+      </button>
+      <button
+        type="button"
+        class="limparCarrinhoBtn"
+        onclick=" location.reload();"
+      >
+        Atualizar
+      </button>
+
+      <div id="botao__carinho___tabela">
+      <div id="itens"> </div>
+      <div>Total: <span id="total"></span> 
+      <input type="hidden" value="" id="total_full"></input></div>
+        
+      </div>
+
+      
+
+      
+
+      <button id="fecharCarrinhoBtn"><i class="fa fa-close"></i></button>
+    </div>
 
 
 
@@ -204,11 +236,14 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
               } else {
                 $ap_cont = "none";
               }
+              
               echo "<div class='carousel-caption d-none d-md-block'>";
               echo "<div class='imagem" . $cont_conteudo . " conteudo' style='display: $ap_cont;'>";
               echo "<h3 class=titulo_carrousel>" . $row_slide['titulo_lat'] . "</h3>";
               echo "<p class='texto_carrousel'>" . $row_slide['texto_lat'] . "</p>";
               echo "</div>";
+            //echo ' <button onclick="adicionarProduto(`'.$id_p.'`,`'. $nome_p.'`,`'.$preco_p.'`,`'.$img_p.'`)">COMPRAR</button>';
+
               echo "</div>";
               $cont_conteudo++;
             }

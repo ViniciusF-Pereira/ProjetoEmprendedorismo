@@ -170,29 +170,7 @@ include_once '../php/conexao.php';
                         }
             ?>
             </button>
-            <button id="abrirCarrinhoBtn" class="navBtn">
-              <i class="fa fa-cart-shopping"></i>
-              <span class="nav2ItemNome">Carrinho</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <div id="botao__carinho" class="botao__carinho">
-      <h3>Carrinho <i class="fa fa-cart-shopping"></i></h3>
-      <button type="button" class="limparCarrinhoBtn" onclick=" localStorage.clear(); location.reload();">
-        Limpar
-      </button>
-
-      <div id="botao__carinho___tabela">
-        <div>Total: <span id="total"></span></div>
-
-        <div id="itens"></div>
-      </div>
-
-      <button id="fecharCarrinhoBtn"><i class="fa fa-close"></i></button>
-    </div>
+            
   </header>
 
   <section class="forms">

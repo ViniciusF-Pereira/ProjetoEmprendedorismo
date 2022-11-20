@@ -161,14 +161,7 @@ include_once '../php/conexao.php';
                     }
                 ?>
             </button>
-            <button id="abrirCarrinhoBtn" class="navBtn">
-              <i class="fa fa-cart-shopping"></i>
-              <span class="nav2ItemNome">Carrinho</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
+          
     </header>
 
     <div class="quemSomos">

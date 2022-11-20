@@ -16,7 +16,7 @@ if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){
   }
   
 
-if($__usuario_conectado != 0 && $__usuario_conectado != ""){
+  if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){
 if ($_SESSION['nome'] != true){
     $_SESSION['nome'] = "";
     $__usuario_conectado = $_SESSION['nome'];
