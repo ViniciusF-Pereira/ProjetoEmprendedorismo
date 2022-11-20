@@ -1,0 +1,154 @@
+
+/* Div com os produtos em promoção */
+
+.produtosDestaqueSection {
+    width: 100vw;
+    height: fit-content;
+    background-color: #e3e3e3;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.produtoDestaque {
+    position: relative;
+    width: 47%;
+    height: 27vh;
+    display: flex;
+    align-items: flex-end;
+    background-image: url(images/homemBackground.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center left;
+    background-color: #000000;
+}
+
+.produtoDestaqueOverlay {
+    background-color: #000000d8;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.produtoDestaque .produto {
+    position: relative;
+    height: 100%;
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    color: white;
+    z-index: 100;
+}
+
+.produtoDestaque .descricao {
+    position: relative;
+}
+
+.produtoDestaque .destaqueTitulo {
+    display: inline-block;
+    width: fit-content;
+    color: #eaeaea;
+    margin-bottom: 0;
+    font-size: clamp(1rem, 1rem + 1.1vw, 1.6rem + 0.4vw);
+}
+
+.produtoDestaque .precoAntigo {
+    text-decoration: line-through;
+    margin-bottom: -10px;
+    color: #b0afaf;
+    font-size: clamp(0.6rem, 0.6rem + 1vw, 1.3rem);
+}
+
+.produtoDestaque .precoNovo {
+    font-size: clamp(1.5rem, 1.5rem + 1.5vw, 1.5rem + 1vw);
+    color: #d404d4;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.produtoDestaque .actionBtn {
+    width: 70%;
+    padding: 5px;
+    margin-top: 3px;
+    font-weight: bold;
+    border-radius: 30px;
+    background-color: #f8fffa;
+    color: #d404d4;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.produtoDestaque img {
+    width: 200px;
+    height: 250px;
+}
+
+.descricaoProdutosSection {
+    width: 100vw;
+    padding: 30px 10px;
+    background-color: #f7f7f7;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.produtoDescricao {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 50px;
+    margin-right: 0;
+}
+
+.produtoDescricao:nth-of-type(odd) {
+    flex-direction: row-reverse;
+    margin-left: 0;
+    margin-right: 50px;
+}
+
+.produtoDescricao .descricaoTexto {
+    width: 39%;
+}
+
+.descricaoTitulo {
+    font-weight: bold;
+    color: red;
+}
+
+.produtoDescricao img {
+    width: 23%;
+}
+
+.descricaoProdutosSection h3 {
+    font-weight: bold;
+    margin: 30px auto 30px auto;
+    text-align: center;
+}
+
+
+@media screen and (width < 1180px) {
+    /* Div com os produtos em promoção */
+    .produtosDestaqueSection {
+      gap: 30px;
+    }
+    .produtoDestaque {
+      width: 90%;
+      justify-content: space-around;
+    }
+  
+    .produtoDestaque .produto {
+      width: 100%;
+    }
+  
+    .produtoDestaque:nth-of-type(even) .produto {
+      flex-direction: row-reverse;
+    }
+}

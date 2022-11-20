@@ -29,6 +29,10 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/produtosGrid.css">
+  <link rel="stylesheet" href="css/promocao.css">
+  <link rel="stylesheet" href="css/footer.css">
   <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
 
   <!-- FONT AWESOME BRAND TAGS -->
@@ -275,139 +279,185 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
     });
   </script>
 
-  <!-- Produtos mais vendidos -->
-  <section class="maisVendidosSection">
-    <h3 class="maisVendidosTitulo">Mais vendidos</h3>
 
-    <div class="maisVendidos maisVendido1">
-      <div class="baner">
-        <div class="overlay"></div>
-        <p>Mais vendidos em whey protein</p>
-        <button class="verMaisBtn">Ver +</button>
+
+<!-- Produtos em promoção -->
+<section class="produtosDestaqueSection">
+      <div class="produtoDestaque wheyDestaque">
+        <div class="produtoDestaqueOverlay"></div>
+        <div class="produto">
+          <div class="descricao">
+            <h4 class="destaqueTitulo">Wolf-fit Whey</h4>
+            <p class="precoAntigo">R$399</p>
+            <p class="precoNovo">R$174,99</p>
+
+            <button class="actionBtn">Comprar</button>
+          </div>
+
+          <img src="images/whey.png" alt="" />
+        </div>
       </div>
 
-      <section class="listaDeProdutos">
-        <div class="cardProduto produto1">
-          <img src="images/gold-whey.png" alt="Pote de creatina" />
-          <div class="cardProdutoInfo">
-            <h6 class="tituloProduto">Whey gold Standart</h6>
-            <h5 class="preçoProduto">R$349,90</h5>
+      <div class="produtoDestaque">
+        <div class="produtoDestaqueOverlay"></div>
+        <div class="produto">
+          <div class="descricao">
+            <h4 class="destaqueTitulo">Wolf-fit Creatina</h4>
+            <p class="precoAntigo">R$399</p>
+            <p class="precoNovo">R$174,99</p>
+
+            <button class="actionBtn">Comprar</button>
           </div>
+
+          <img src="images/creatina.png" alt="" />
         </div>
-
-        <div class="cardProduto produto2">
-          <img src="images/gold-whey.png" alt="Pote de creatina" />
-          <div class="cardProdutoInfo">
-            <h6 class="tituloProduto">Whey gold Standart</h6>
-            <h5 class="preçoProduto">R$349,90</h5>
-          </div>
-        </div>
-
-        <div class="cardProduto produto3">
-          <img src="images/gold-whey.png" alt="Pote de creatina" />
-          <div class="cardProdutoInfo">
-            <h6 class="tituloProduto">Whey gold Standart</h6>
-            <h5 class="preçoProduto">R$349,90</h5>
-          </div>
-        </div>
-
-        <div class="cardProduto produto4">
-          <img src="images/barra-proteina.png" alt="Pote de creatina" />
-          <div class="cardProdutoInfo">
-            <h6 class="tituloProduto">Whey Protein bar</h6>
-            <h5 class="preçoProduto">R$19,90</h5>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <div class="maisVendidos maisVendido2">
-      <section class="listaDeProdutos">
-        <div class="cardProduto produto1">
-          <img src="images/creatina2.jpg" alt="Pote de creatina" />
-
-          <div class="cardProdutoInfo">
-            <h6 class="tituloProduto">Creatina hardcore</h6>
-            <h5 class="preçoProduto">R$299,90</h5>
-          </div>
-        </div>
-
-        <div class="cardProduto produto2">
-          <img src="images/creatina2.jpg" alt="Pote de creatina" />
-
-          <div class="cardProdutoInfo">
-            <h6 class="tituloProduto">Creatina hardcore</h6>
-            <h5 class="preçoProduto">R$299,90</h5>
-          </div>
-        </div>
-
-        <div class="cardProduto produto3">
-          <img src="images/creatina2.jpg" alt="Pote de creatina" />
-
-          <div class="cardProdutoInfo">
-            <h6 class="tituloProduto">Creatina hardcore</h6>
-            <h5 class="preçoProduto">R$299,90</h5>
-          </div>
-        </div>
-
-        <div class="cardProduto produto4">
-          <img src="images/barra-proteina.png" alt="Pote de creatina" />
-          <div class="cardProdutoInfo">
-            <h6 class="tituloProduto">Whey Protein bar</h6>
-            <h5 class="preçoProduto">R$19,90</h5>
-          </div>
-        </div>
-      </section>
-
-      <div class="baner">
-        <div class="overlay"></div>
-        <p>Mais vendidos em Creatina</p>
-        <button class="verMaisBtn">Ver +</button>
       </div>
-    </div>
+    </section>
 
-    <div class="maisVendidos maisVendido3">
-      <div class="baner">
-        <div class="overlay"></div>
-        <p>Mais vendidos em equipamentos</p>
-        <button class="verMaisBtn">Ver +</button>
+
+
+    
+    <!-- Produtos mais vendidos -->
+    <section class="maisVendidosSection">
+      <h3 class="maisVendidosTitulo">Mais vendidos</h3>
+
+      <div class="maisVendidos maisVendido1">
+        <div class="baner suplementoBaner">
+          <div class="overlay"></div>
+          <p>Mais vendidos em whey protein</p>
+          <button class="verMaisBtn">Ver +</button>
+        </div>
+
+        <section class="listaDeProdutos">
+          <div class="cardProduto produto1">
+            <img src="images/gold-whey.png" alt="Pote de creatina" />
+            <div class="cardProdutoInfo">
+              <h6 class="tituloProduto">Whey gold Standart</h6>
+              <h5 class="preçoProduto">R$349,90</h5>
+            </div>
+          </div>
+
+          <div class="cardProduto produto2">
+            <img src="images/gold-whey.png" alt="Pote de creatina" />
+            <div class="cardProdutoInfo">
+              <h6 class="tituloProduto">Whey gold Standart</h6>
+              <h5 class="preçoProduto">R$349,90</h5>
+            </div>
+          </div>
+
+          <div class="cardProduto produto3">
+            <img src="images/gold-whey.png" alt="Pote de creatina" />
+            <div class="cardProdutoInfo">
+              <h6 class="tituloProduto">Whey gold Standart</h6>
+              <h5 class="preçoProduto">R$349,90</h5>
+            </div>
+          </div>
+
+          <div class="cardProduto produto4">
+            <img src="images/barra-proteina.png" alt="Pote de creatina" />
+            <div class="cardProdutoInfo">
+              <h6 class="tituloProduto">Whey Protein bar</h6>
+              <h5 class="preçoProduto">R$19,90</h5>
+            </div>
+          </div>
+        </section>
       </div>
 
-      <section class="listaDeProdutos">
-        <div class="cardProduto produto1">
-          <img src="images/peso.png" alt="Halteres 10kg" />
-          <div class="cardProdutoInfo">
-            <h6 class="tituloProduto">Halteres 10Kg</h6>
-            <h5 class="preçoProduto">R$399,90</h5>
+      <div class="maisVendidos maisVendido2">
+        <section class="listaDeProdutos">
+          <div class="cardProduto produto1">
+            <img src="images/creatina2.jpg" alt="Pote de creatina" />
+
+            <div class="cardProdutoInfo">
+              <h6 class="tituloProduto">Creatina hardcore</h6>
+              <h5 class="preçoProduto">R$299,90</h5>
+            </div>
           </div>
+
+          <div class="cardProduto produto2">
+            <img src="images/creatina2.jpg" alt="Pote de creatina" />
+
+            <div class="cardProdutoInfo">
+              <h6 class="tituloProduto">Creatina hardcore</h6>
+              <h5 class="preçoProduto">R$299,90</h5>
+            </div>
+          </div>
+
+          <div class="cardProduto produto3">
+            <img src="images/creatina2.jpg" alt="Pote de creatina" />
+
+            <div class="cardProdutoInfo">
+              <h6 class="tituloProduto">Creatina hardcore</h6>
+              <h5 class="preçoProduto">R$299,90</h5>
+            </div>
+          </div>
+
+          <div class="cardProduto produto4">
+            <img src="images/barra-proteina.png" alt="Pote de creatina" />
+            <div class="cardProdutoInfo">
+              <h6 class="tituloProduto">Whey Protein bar</h6>
+              <h5 class="preçoProduto">R$19,90</h5>
+            </div>
+          </div>
+        </section>
+
+        <div class="baner suplementoBaner">
+          <div class="overlay"></div>
+          <p>Mais vendidos em Creatina</p>
+          <button class="verMaisBtn">Ver +</button>
+        </div>
+      </div>
+
+      <div class="maisVendidos maisVendido3">
+        <div class="baner equipamentoBaner">
+          <div class="overlay"></div>
+          <p>Mais vendidos em equipamentos</p>
+          <button class="verMaisBtn">Ver +</button>
         </div>
 
-        <div class="cardProduto produto2">
-          <img src="images/Pesos-academia-pretos-Png.png" alt="Halteres 30kg" />
-          <div class="cardProdutoInfo">
-            <h6 class="tituloProduto">Halteres 30Kg</h6>
-            <h5 class="preçoProduto">R429,90</h5>
+        <section class="listaDeProdutos">
+          <div class="cardProduto produto1">
+            <img src="images/peso.png" alt="Halteres 10kg" />
+            <div class="cardProdutoInfo">
+              <h6 class="tituloProduto">Halteres 10Kg</h6>
+              <h5 class="preçoProduto">R$399,90</h5>
+            </div>
           </div>
-        </div>
 
-        <div class="cardProduto produto3">
-          <img src="images/peso.png" alt="Halteres 10kg" />
-          <div class="cardProdutoInfo">
-            <h6 class="tituloProduto">Halteres 10Kg</h6>
-            <h5 class="preçoProduto">R$399,90</h5>
+          <div class="cardProduto produto2">
+            <img
+              src="images/Pesos-academia-pretos-Png.png"
+              alt="Halteres 30kg"
+            />
+            <div class="cardProdutoInfo">
+              <h6 class="tituloProduto">Halteres 30Kg</h6>
+              <h5 class="preçoProduto">R429,90</h5>
+            </div>
           </div>
-        </div>
 
-        <div class="cardProduto produto4">
-          <img src="images/Pesos-academia-pretos-Png.png" alt="Halteres 30kg" />
-          <div class="cardProdutoInfo">
-            <h6 class="tituloProduto">Halteres 30Kg</h6>
-            <h5 class="preçoProduto">R$429,90</h5>
+          <div class="cardProduto produto3">
+            <img src="images/peso.png" alt="Halteres 10kg" />
+            <div class="cardProdutoInfo">
+              <h6 class="tituloProduto">Halteres 10Kg</h6>
+              <h5 class="preçoProduto">R$399,90</h5>
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
-  </section>
+
+          <div class="cardProduto produto4">
+            <img
+              src="images/Pesos-academia-pretos-Png.png"
+              alt="Halteres 30kg"
+            />
+            <div class="cardProdutoInfo">
+              <h6 class="tituloProduto">Halteres 30Kg</h6>
+              <h5 class="preçoProduto">R$429,90</h5>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+
 
   <!-- Categoria de produtos -->
   <div class="categoriaDeProdutosContainer">
@@ -456,9 +506,64 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
     </article>
   </section>
 
+  <!-- Footer -->
   <footer>
-    Wolf-Fit suplementos LTDA©2022
-  </footer>
+      <div class="cadastroEmail">
+        <p>
+          <i class="fas fa-envelope"></i> RECEBA OFERTAS E NOVIDADES POR E-MAIL:
+        </p>
+
+        <form>
+          <input type="email" placeholder="E-mail" />
+          <button class="cadastrarBtn">Cadastrar</button>
+        </form>
+      </div>
+
+      <div class="creditos">
+        <div class="criadores">
+          <h5>Criadores</h5>
+          <a href="https://github.com/Alcantara-Diego" target="_blank"
+            >Diego Alcântara</a
+          >
+          <a href="https://github.com/jhoneshark" target="_blank">Jhoneshark</a>
+          <a href="https://github.com/Claitonok" target="_blank"
+            >Claiton Silva</a
+          >
+          <a href="https://github.com/Digao46" target="_blank">Diogo Melo</a>
+        </div>
+
+        <div class="extras">
+          <h5>Extras</h5>
+          <a href="https://www.instagram.com/wolffit848/" target="_blank"
+            >Instagram <i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="/components/sobre/sobre.html"> Sobre Nós</a>
+          <a href="/components/contato/contato.html">Fale Conosco</a>
+        </div>
+
+        <div class="imagens">
+          <h5>Imagens</h5>
+
+          <a
+            href="https://unsplash.com/@sxoxm?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+            >Sven Mieke</a
+          >
+
+          <a
+            href="https://www.freepik.com/free-psd/protein-powder-container-mockup_17197932.htm#query=whey&position=5&from_view=search&track=sph"
+            target="_blank"
+            >xvector</a
+          >
+
+          <a
+            href="https://unsplash.com/@visualsbyroyalz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+            target="_blank"
+            >Anastase Maragos</a
+          >
+        </div>
+      </div>
+      <div>Wolf-Fit suplementos LTDA©2022</div>
+    </footer>
 
 
 <script src="script/carrinho.js"></script>

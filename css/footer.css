@@ -1,0 +1,105 @@
+
+/*  Footer  */
+footer {
+    padding: 10px;
+    background-image: linear-gradient(to bottom, black, #0c0c0c);
+    color: #686868;
+    text-align: center;
+  
+    display: flex;
+    flex-direction: column;
+  }
+  footer .cadastroEmail {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  footer form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .cadastroEmail p {
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: white;
+    font-weight: bold;
+  }
+  .cadastroEmail input[type="email"] {
+    margin: 0 20px;
+    font-size: 1.3rem;
+    height: 40px;
+  }
+  .cadastroEmail button {
+    padding: 5px 10px;
+    color: white;
+    height: 40px;
+    width: 150px;
+    font-size: 1.1rem;
+    border: 2px solid white;
+    font-weight: bold;
+    background: none;
+    cursor: pointer;
+  }
+  
+  footer .creditos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  
+    margin: 30px 0;
+  }
+  
+  .creditos > * {
+    display: flex;
+    flex-direction: column;
+  }
+  .creditos a {
+    color: #f1f1f1;
+    font-weight: bold;
+    transition: 0.2s;
+  }
+  
+  .creditos a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+
+
+
+
+
+
+@media screen and (width < 630px) {
+  
+    footer .cadastroEmail {
+      flex-direction: column;
+    }
+    .cadastroEmail p {
+      margin-bottom: 15px;
+    }
+}
+  
+@media screen and (width < 460px) {
+  
+    footer form {
+      flex-direction: column;
+      width: 100vw;
+    }
+  
+    footer form * {
+      margin-top: 10px;
+      width: 100% !important;
+    }
+  
+    footer .creditos a {
+      margin-bottom: 12px;
+      width: 30vw;
+    }
+  }
+  

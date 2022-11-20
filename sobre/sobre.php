@@ -24,6 +24,10 @@ include_once '../php/conexao.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="sobre.css">
 
 	<link
       href="https://fonts.googleapis.com/css?family=Inter&display=swap"
@@ -70,7 +74,7 @@ include_once '../php/conexao.php';
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="sobre.css" />
+    
 
     <link
       href="https://fonts.googleapis.com/css?family=Inter&display=swap"
