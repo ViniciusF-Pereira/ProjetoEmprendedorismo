@@ -12,6 +12,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 header {
   background-color: #000000;
@@ -32,138 +33,8 @@ header {
   z-index: 1;
 }
 
-/*  Navbar  */
-nav {
-  width: 100vw;
-  height: 12%;
-
-  background-image: linear-gradient(to bottom, black, #151515);
-  color: white;
-
-  position: sticky;
-  top: 0;
-
-  display: flex !important;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-
-  z-index: 1000;
-}
-
-.navBtn {
-  border: none;
-  background: none;
-  color: white;
-  cursor: pointer;
-  transition: 0.5s;
-}
-.navBtn:hover {
-  color: var(--corPrimaria);
-}
-
-#hamburguerBtn {
-  display: none;
-  position: absolute;
-  top: 50%;
-  right: 5%;
-  transform: translateY(-50%);
-
-  border: none;
-  background: none;
-  color: white;
-  font-size: 1.4rem;
-  cursor: pointer;
-  transition: 0.6s;
-}
-
-.navContainer {
-  width: 92%;
-  height: 100%;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logoArea {
-  height: 100%;
-  width: 15%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.logoArea img {
-  height: 90px;
-  width: 90px;
-}
-
-.companyName {
-  font-size: 1.5rem;
-  color: var(--corPrimaria);
-  font-weight: bold;
-
-  position: absolute;
-  margin-top: 60px;
-}
-
-.navMenu {
-  width: 85%;
-  height: 100%;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-
-  white-space: nowrap;
-}
-
-.navItems {
-  margin: 0;
-  padding: 0;
-
-  width: 50%;
-
-  display: flex;
-  justify-content: center;
-}
-
-.navItems > li {
-  margin-right: 18px;
-}
-
-.navItems i {
-  font-size: 0.8rem;
-  margin-left: 2px;
-}
-
-.navItems li,
-.navItems a {
-  text-decoration: none;
-  list-style-type: none;
-  color: white;
-  transition: 0.4s;
-}
-
-.navItems a:hover {
-  text-decoration: none;
-  color: var(--corPrimaria);
-}
-
-.navItems2 {
-  width: 10%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.nav2ItemNome {
-  display: none;
+#mc_embed_signup_scroll{
+  margin: auto;
 }
 
 /* Carrinho */
@@ -222,60 +93,7 @@ section {
 }
 
 @media screen and (width < 600px) {
-  #hamburguerBtn,
-  .nav2ItemNome {
-    display: inline-block;
-  }
-
-  #hamburguerBtn.ativo {
-    transform: rotate(90deg);
-    top: 35%;
-    color: var(--corPrimaria);
-  }
-
-  .navMenu {
-    position: absolute;
-    top: 87%;
-    right: 0;
-    width: 100%;
-    padding: 10px 20px 20px 10px;
-    opacity: 0;
-    pointer-events: none;
-    background-color: #000000;
-    background-color: rgba(0, 0, 0, 0.792);
-    transition: 0.6s;
-  }
-
-  .navMenu.mostrar {
-    top: 100%;
-    opacity: 1;
-    pointer-events: all;
-    border-top: 2px solid var(--corPrimaria);
-    border-bottom: 2px solid var(--corPrimaria);
-  }
-
-  .navItems2 {
-    margin-top: 10px;
-  }
-
-  .navItems,
-  .navItems2 {
-    width: fit-content;
-  }
-
-  .navItems a,
-  .navItems button {
-    padding: 5px;
-  }
-
-  .navMenu,
-  .navItems,
-  .navItems2 {
-    height: fit-content;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+  
 
   .botao__carinho {
     width: 240px;
@@ -283,12 +101,4 @@ section {
   }
 }
 
-@media screen and (width < 420px) {
-  .navItems,
-  .navItems2 {
-    align-items: flex-start;
-  }
-  .navItems2 button {
-    padding-left: 0;
-  }
-}
+

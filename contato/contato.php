@@ -23,13 +23,13 @@ include_once '../php/conexao.php';
   <meta http-equiv="X-UA-Compatible" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="contato.css" />
 
   <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../css/style.css">
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
+    <link rel="stylesheet" href="contato.css">
 
 	<link
       href="https://fonts.googleapis.com/css?family=Inter&display=swap"
@@ -76,7 +76,6 @@ include_once '../php/conexao.php';
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="sobre.css" />
 
     <link
       href="https://fonts.googleapis.com/css?family=Inter&display=swap"
@@ -127,24 +126,12 @@ include_once '../php/conexao.php';
 
         <div class="navMenu">
           <ul class="navItems">
-            <li>
-              <div id="produtosListaDropDown">
-                <a> <span>Destaques</span> <i class="fa fa-caret-down"></i> </a>
-                <ul id="produtosListaDropDownUl">
-                  <li id="promocaoBtn">Promoções</li>
-                  <li id="maisVendidosBtn">Mais vendidos</li>
-                </ul>
-              </div>
-            </li>
 
             <li>
                 <a href="../index.php">Home</a>
             </li>
             <li>
               <a href="../products/produtos.php">Produtos</a>
-            </li>
-            <li>
-                <a href="../contato/contato.php">Contato</a>
             </li>
 
             <li>
