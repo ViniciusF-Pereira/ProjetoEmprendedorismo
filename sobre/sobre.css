@@ -51,7 +51,7 @@ body {
 
 .quemSomos {
   position: relative;
-  width: 10vw;
+  width: 100vw;
   height: 35vh;
 
   background-image: url(../images/background/sobreBg.jpg);
