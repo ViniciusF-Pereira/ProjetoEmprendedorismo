@@ -537,8 +537,8 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
           <a href="https://www.instagram.com/wolffit848/" target="_blank"
             >Instagram <i class="fa-brands fa-instagram"></i
           ></a>
-          <a href="/components/sobre/sobre.html"> Sobre Nós</a>
-          <a href="/components/contato/contato.html">Fale Conosco</a>
+          <a href="../sobre/sobre.php"> Sobre Nós</a>
+          <a href="../contato/contato.php">Fale Conosco</a>
         </div>
 
         <div class="imagens">

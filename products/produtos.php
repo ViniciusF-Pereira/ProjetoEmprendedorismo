@@ -82,7 +82,7 @@ if(!empty($dados["ordemAfabetica_desc"])){
     <link rel="stylesheet" href="../css/footer.css">
 
     <!-- CSS DO PRODUTOS                                                                 CSS DO PRODUTOS -->
-    <link rel="stylesheet" href="produtos.css">
+    <link rel="stylesheet" href="./produtos.css">
     <!-- CSS DO PRODUTOS                                                                 CSS DO PRODUTOS -->
 	<link
       href="https://fonts.googleapis.com/css?family=Inter&display=swap"
@@ -255,7 +255,7 @@ if(!empty($dados["ordemAfabetica_desc"])){
 				<h1>Produtos</h1>
 			</div>
             <div class= "Vitrine">
-          <form method="POST" action=""> 
+          <form  id="formFiltro" method="POST" action=""> 
             <input name="Preco_baixo" value="Preco_baixo" type="submit">
             <input name="Preco_alto" value="Preco_alto" type="submit">
             <input name="ordemAfabetica_desc" value="ordemAfabetica_desc" type="submit">
@@ -264,7 +264,7 @@ if(!empty($dados["ordemAfabetica_desc"])){
         	<div class="row">
          
 				<?php while($rows_produtos = mysqli_fetch_assoc($result_produto_sTotals)){ ?>
-					<div class="col-sm-6 col-md-4">
+					<div class="produtoContainer">
 						<div class="thumbnail">
                  
                        <?php
@@ -306,7 +306,6 @@ if(!empty($dados["ordemAfabetica_desc"])){
                         ?>
                               
                             
-                              <hr>
 						</div>
 					</div>
 				<?php } ?>

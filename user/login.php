@@ -110,15 +110,6 @@ include_once '../php/conexao.php';
 
         <div class="navMenu">
           <ul class="navItems">
-            <li>
-              <div id="produtosListaDropDown">
-                <a> <span>Destaques</span> <i class="fa fa-caret-down"></i> </a>
-                <ul id="produtosListaDropDownUl">
-                  <li id="promocaoBtn">Promoções</li>
-                  <li id="maisVendidosBtn">Mais vendidos</li>
-                </ul>
-              </div>
-            </li>
 
             <li>
                 <a href="../index.php">Home</a>
@@ -308,8 +299,8 @@ unset ($_SESSION['msg']);
           <a href="https://www.instagram.com/wolffit848/" target="_blank"
             >Instagram <i class="fa-brands fa-instagram"></i
           ></a>
-          <a href="/components/sobre/sobre.html"> Sobre Nós</a>
-          <a href="/components/contato/contato.html">Fale Conosco</a>
+          <a href="../sobre/sobre.php"> Sobre Nós</a>
+          <a href="../contato/contato.php">Fale Conosco</a>
         </div>
 
         <div class="imagens">
