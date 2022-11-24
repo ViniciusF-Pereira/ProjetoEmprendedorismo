@@ -64,7 +64,7 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
     <p class="segundoTitulo">
       Frete Grátis, vide as regras | 1ª Troca sem custo* | Entrega realizada em até 7 dias úteis</p>
     <?php
-  if ($_SESSION['id'] != "" && $_SESSION['id']) {
+  if (isset($_SESSION['id'])) {
 
 
     echo    '<p class="primeiroTitulo ">Bem Vindo ' . $_SESSION['nome'] . '</p>';
@@ -115,7 +115,7 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
           <div class="navItems2">
             <button class="navBtn">
             <?php
-             if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){
+             if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                          
                      
                 echo  '<a href="user/login.php"> <i class="fa fa-user"></i></a></span>';

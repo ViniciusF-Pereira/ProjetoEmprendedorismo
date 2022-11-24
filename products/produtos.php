@@ -26,7 +26,7 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
 
 //Seta a quantidade de produtos por pagina
 
-$quantidade_pg = 9;
+$quantidade_pg = 16;
 
 
 //calcular o número de pagina necessárias para apresentar os produtos
@@ -143,7 +143,7 @@ if(!empty($dados["ordemAfabetica_desc"])){
         <p class="segundoTitulo">
             Frete Grátis, vide as regras | 1ª Troca sem custo* | Entrega realizada em até 7 dias úteis</p>
             <?php 
-            if ($_SESSION['id'] != "" && $_SESSION['id']) {
+            if (isset($_SESSION['id'])) {
 
 
               echo    '<p class="primeiroTitulo ">Bem Vindo ' . $_SESSION['nome'] . '</p>';
@@ -189,7 +189,7 @@ if(!empty($dados["ordemAfabetica_desc"])){
           <div class="navItems2">
             <button class="navBtn">
             <?php
-                        if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){
+                        if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                 
                   
     
@@ -269,6 +269,14 @@ if(!empty($dados["ordemAfabetica_desc"])){
                  
                        <?php
 
+                                $id_p = $rows_produtos['id_produtos'];
+                                $nome_p = $rows_produtos['nome_produtos'];
+                                $preco_p = $rows_produtos['preco_produtos'];
+                                $img_p = $rows_produtos['img_produtos'];
+
+                                $array_produto = [ $id_p, $nome_p,  $preco_p ];
+
+                        echo '<div class="Div_produtos_vitrine" id="Produto_id_'. $id_p.'">';
                         echo '<div class="div_produto">
                         <img class= Imagem_produtos_exibidos src="'. $rows_produtos['img_produtos'].'" alt="whey__wolffit">';
 
@@ -276,31 +284,26 @@ if(!empty($dados["ordemAfabetica_desc"])){
                         echo '
                         
                         <input type="hidden" name="id_'.$rows_produtos['id_produtos'].'" placeholder="'.$rows_produtos['id_produtos'].'" id="'.$rows_produtos['id_produtos'].'" value="'.$rows_produtos['id_produtos'].'" readonly>
->
+
                         ';
-                                
-   
+                                                               
+                      
+                              echo 
+                              '
+                              <p class="Id_produtos_id" id="i_id_'. $id_p.'">ID:' . $rows_produtos['id_produtos'].' </p>
+                              <p class="Nome_produtos_id" id="N_id_'. $id_p.'">Nome: '. $rows_produtos['nome_produtos']. '</p>
+                              <p class="Preco_produtos_id" id="P_id_'. $id_p.'">Preco: ' . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). '</p>
+                              <p class="Descricao_produtos_id" id="D_id_'. $id_p.'">Descrição: ' . $rows_produtos['descricao_produtos'].' </p>
 
-
-                                $id_p = $rows_produtos['id_produtos'];
-                                $nome_p = $rows_produtos['nome_produtos'];
-                                $preco_p = $rows_produtos['preco_produtos'];
-                                $img_p = $rows_produtos['img_produtos'];
-
-                                $array_produto = [ $id_p, $nome_p,  $preco_p ];
-                         
-                              echo "//ID: " . $rows_produtos['id_produtos']. "<br>";
-                              echo "Nome: " . $rows_produtos['nome_produtos']. "<br>";
-                              echo "Preco: " . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). "<br>";
-                              echo "Descrição: " . $rows_produtos['descricao_produtos']. "<br>";
-                             // echo ' <button onclick="back(`'.$id_p.'`)">COMPRAR</button>';
-                              echo ' <button onclick="adicionarProduto(`'.$id_p.'`,`'. $nome_p.'`,`'.$preco_p.'`,`'.$img_p.'`)">COMPRAR</button>';
+                              <button 
+                              class="butonn_produtos_id" id="B_id_'. $id_p.'"
+                              onclick="adicionarProduto(`'.$id_p.'`,`'. $nome_p.'`,`'.$preco_p.'`,`'.$img_p.'`)">COMPRAR</button>';
 
                                     
                                //echo "<pre>";
                               // echo json_encode( $array_produto );
                                //echo "</pre>";
-
+                               echo '</div>';
                             
                          echo '</div>';       
                         ?>

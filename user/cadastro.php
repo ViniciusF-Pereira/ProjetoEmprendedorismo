@@ -10,7 +10,7 @@ include_once '../php/conexao.php';
 
 
 
-if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
+if((isset($_SESSION['id'])) AND (isset($_SESSION['nome']))){
 
     $_SESSION['msg']= "<p style='color: #ff0000'> Erro, pagina restrida; Usuário não conectado]! </p>";
 
@@ -216,8 +216,13 @@ if(isset($_SESSION['msg'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="user.css">
+
+    
 	<link
       href="https://fonts.googleapis.com/css?family=Inter&display=swap"
       rel="stylesheet"
@@ -330,7 +335,7 @@ if(isset($_SESSION['msg'])){
           <div class="navItems2">
             <button class="navBtn">
             <?php
-                               if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){
+                               if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                          
                      
                                 echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';

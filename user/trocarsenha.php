@@ -57,9 +57,10 @@ if(!empty($dados["Voltar"])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/nav.css">
 	<link
       href="https://fonts.googleapis.com/css?family=Inter&display=swap"
       rel="stylesheet"
@@ -122,6 +123,7 @@ if(!empty($dados["Voltar"])){
 
 
 
+  
     <!-- Barra de navegação ------------------------------------------------------  Barra de navegação    -->
     <nav>
     <div class="navContainer">
@@ -141,15 +143,6 @@ if(!empty($dados["Voltar"])){
 
         <div class="navMenu">
           <ul class="navItems">
-            <li>
-              <div id="produtosListaDropDown">
-                <a> <span>Destaques</span> <i class="fa fa-caret-down"></i> </a>
-                <ul id="produtosListaDropDownUl">
-                  <li id="promocaoBtn">Promoções</li>
-                  <li id="maisVendidosBtn">Mais vendidos</li>
-                </ul>
-              </div>
-            </li>
 
             <li>
                 <a href="../index.php">Home</a>
@@ -169,7 +162,8 @@ if(!empty($dados["Voltar"])){
           <div class="navItems2">
             <button class="navBtn">
             <?php
-                     if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){                         
+                       if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
+                         
                      
                         echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
                       
@@ -192,6 +186,7 @@ if(!empty($dados["Voltar"])){
     </nav>
 
 
+    <div class="loginArea">
 
 
     <section >

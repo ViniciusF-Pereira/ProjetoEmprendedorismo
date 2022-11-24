@@ -181,8 +181,11 @@ if(!empty($dados["CadastrarEndereco"])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/nav.css">
+
 
     <!-- CSS DO USER                                                                 CSS DO USER -->
     <link rel="stylesheet" href="user.css">
@@ -232,6 +235,7 @@ if(!empty($dados["CadastrarEndereco"])){
       crossorigin="anonymous"
     />
 
+
     <title>WOLF FIT</title>
 
 
@@ -252,15 +256,15 @@ if(!empty($dados["CadastrarEndereco"])){
 
     <!-- Barra de navegação ------------------------------------------------------  Barra de navegação    -->
     <nav>
-    <div class="navContainer">
+      <div class="navContainer">
         <!-- Mobile Hamburguer -->
         <button id="hamburguerBtn" class="navBtn">
           <i class="fa fa-bars"></i>
         </button>
 
-        <a href="../index.php" class="logoArea">
+        <a href="index.php" class="logoArea">
           <img
-            src="../images/kisspng_gray_wolf_logo_mascot_clip_art_wolf_5ab4467dd78141_1.png"
+            src="./images/kisspng_gray_wolf_logo_mascot_clip_art_wolf_5ab4467dd78141_1.png"
             alt="Logo"
          
           />
@@ -279,39 +283,35 @@ if(!empty($dados["CadastrarEndereco"])){
               </div>
             </li>
 
+            <li><a href="./products/produtos.php">Produtos</a></li>
+
             <li>
-                <a href="../index.php">Home</a>
-            </li>
-            <li>
-              <a href="../products/produtos.php">Produtos</a>
-            </li>
-            <li>
-                <a href="../contato/contato.php">Contato</a>
+              <a href="./contato/contato.php"> Contato </a>
             </li>
 
             <li>
-                <a href="../sobre/sobre.php">Sobre</a>
+              <a href="sobre/sobre.php"> Sobre </a>
             </li>
           </ul>
 
           <div class="navItems2">
             <button class="navBtn">
             <?php
-                       if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){
+             if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                          
                      
-                        echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
-                      
-                      } else {
-                        echo  '<span class="menuItem"><a href="dashboard.php">Configurações</a></span>';
-          
-                        echo    '<a href="sair.php">SAIR</a>';
-                      
-                                   
-                      }
+                echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
+              
+              } else {
+                echo  '<span class="menuItem"><a href="dashboard.php">Configurações</a></span>';
+  
+                echo    '<a href="sair.php">SAIR</a>';
+              
+                           
+              }
             ?>
             </button>
-            <button id="abrirCarrinhoBtn" class="navBtn">
+            <button id="abrirCarrinhoBtn" class="navBtn" onclick="">
               <i class="fa fa-cart-shopping"></i>
               <span class="nav2ItemNome">Carrinho</span>
             </button>

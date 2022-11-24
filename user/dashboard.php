@@ -11,7 +11,7 @@ include_once '../php/conexao.php';
 
 
 
-if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){
+if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
 
     $_SESSION['msg']= "<p style='color: #ff0000'> Erro, pagina restrida; Usuário não conectado]! </p>";
 
@@ -152,6 +152,7 @@ if(!empty($dados["CadastrarEndereco"])){
 
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/nav.css">
 	<link
       href="https://fonts.googleapis.com/css?family=Inter&display=swap"
       rel="stylesheet"
