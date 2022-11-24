@@ -145,7 +145,7 @@ if(!empty($dados["CadastrarEndereco"])){
     $result = json_decode(webClient($url));
     
     if( $result){
-    var_dump($result->logradouro);
+   
    
 
     
@@ -185,6 +185,7 @@ if(!empty($dados["CadastrarEndereco"])){
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="user.css">
 
 
     <!-- CSS DO USER                                                                 CSS DO USER -->
@@ -389,47 +390,41 @@ if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() !=
                 echo '
 
                     <label>Tipo de endereço:</label>
-                    <input class="inputs_endereco" type="" name="nome_endereco" placeholder="digite se é casa, trabalho, etc  "id="" value="'.$__nome_endereco.'">
+                    <input class="inputs_endereco" type="" name="nome_endereco" placeholder="DEFINIR ENDEREÇO (CASA, TRABALHO)" id="" value="'.$__nome_endereco.'">
                 
         
-                    <BR>
-                    <BR>
+                 
                     <label>CEP:</label>
-                    <input class="inputs_endereco" type="" name="cep" placeholder="digite o cep"id=""  value="'.$__cep.'">
-                    <input type="submit" value="PROCURAR" name="getCep"  > 
+                    <input class="inputs_endereco" type="" name="cep" placeholder="DEFINIR CEP"id=""  value="'.$__cep.'">
+                    <input class="inputs_PROCURAR" type="submit" value="PROCURAR" name="getCep"  > 
 
-                    <BR>
-                    <BR>
+                    
+                    
                     <label>logradouro:</label>
                     <input  class="inputs_endereco" type="" name="logradouro" placeholder="digite o logradouro"id="" value="'.$__logradouro.'">
                     
             
-                    <BR>
-                    <BR>
+       
                     <label>complemento:</label>
                     <input class="inputs_endereco" type="" name="complemento" placeholder="digite o complemento"id="" value="">
-           
-
-                    <BR>
-                    <BR>
-                    <label>bairro:</label>
-                    <input class="inputs_endereco" type="" name="bairro" placeholder="digite o logradouro"id="" value="'.$__bairro.'" readonly>
-           
-                    <BR>
-                    <BR>
-                    <label>Cidade:</label>
-                    <input class="inputs_endereco" type="" name="localidade" placeholder="digite o logradouro"id="" value="'.$__localidade.'" readonly>
-                    
-                  
-
-                    <BR>
-                    <BR>
-                    <label>ESTADO:</label>
-                    <input class="inputs_endereco" type="" name="uf" placeholder="digite o logradouro"id="" value="'.$__uf.'" readonly>
-                    
+                         
+                    <div class="endereco_final">
+                      <div>
+                          <label>Bairro:</label>
+                         <input class="inputs_endereco" type="" name="bairro" placeholder="digite o logradouro"id="" value="'.$__bairro.'" readonly>
+                      </div>
+                      <div>
+                         <label>Cidade:</label>
+                         <input class="inputs_endereco" type="" name="localidade" placeholder="digite o logradouro"id="" value="'.$__localidade.'" readonly>
+                      </div>             
+                      <div>
+                         <label>ESTADO:</label>
+                         <input class="inputs_endereco" type="" name="uf" placeholder="digite o logradouro"id="" value="'.$__uf.'" readonly>
+                      </div>
+                    </div>
                     <BR>
 
-                    <input type="submit" value="Cadastrar Endereco" name="CadastrarEndereco">
+                    <input class="inputs_CadastrarEndereco" type="submit" value="Cadastrar Endereco" name="CadastrarEndereco">
 
          ';
 

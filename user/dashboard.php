@@ -339,9 +339,10 @@ if(!empty($dados["CadastrarEndereco"])){
                 
                 }
 
-                $query_dashboard_enderecos ="SELECT id_endereco, nome_endereco, cep, logradouro, complemento, usuario_id
+                $query_dashboard_enderecos ="SELECT id_endereco, nome_endereco, cep, logradouro, complemento, usuario_id, principal
                 FROM enderecos 
-                WHERE usuario_id =:usuario_id";        
+                WHERE usuario_id =:usuario_id
+                ORDER BY principal DESC";        
 
 
                 $result_dashboard_enderecos = $conn->prepare($query_dashboard_enderecos);
@@ -359,14 +360,15 @@ if(!empty($dados["CadastrarEndereco"])){
                         echo '<div class=row_EnderecosMenu>';
                         
                         echo '<form action="" method="post">';
-                        echo '<input type="radio" name="botao'.$id_endereco.'" value="'.$usuario_id.'"/>';
-                        echo ""; 
-                                                          
-                        echo "<h4>$nome_endereco</h4> <br>"; 
                         if($row_dashboard['id_endereco'] == $row_result_dashboard_enderecos['id_endereco']){
 
                           echo "Endereço Principal <br>"; 
                         }
+                        echo '<input type="radio" name="botao'.$id_endereco.'" value="'.$usuario_id.'"/>';
+                        echo ""; 
+                                                          
+                        echo "<h4>$nome_endereco</h4> <br>"; 
+                        
                         echo "CEP: $cep <br>"; 
                         echo "Logradouro: $logradouro <br>"; 
                         echo "Complemento: $complemento <br>"; 
@@ -391,7 +393,7 @@ if(!empty($dados["CadastrarEndereco"])){
                           
                          
                           $query_enderecoPrincipal ="UPDATE usuarios SET id_endereco =:id_endereco WHERE id =:id";       
-                         
+   
                           
                           $result_enderecoPrincipal = $conn->prepare($query_enderecoPrincipal);
 

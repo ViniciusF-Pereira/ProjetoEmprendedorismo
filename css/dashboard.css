@@ -14,20 +14,20 @@
     }
     
     .Div_adicionarEndereco {
-        margin-top: 20%;
         border: 1px solid black;
-        width: 60.33%;
-        margin: 2%;
-        padding: 1%;
+        width: 1000px;
         font-size: 20px;
-        display: flex;
         flex-direction: row;
         align-items: center;
+        padding-left: 4%;
     }
     /*  inputs */
     
     .inputs_endereco {
-        width: 150%;
+        margin: none;
+        padding: none;
+        width: 50%;
+        height: 4%;
         align-self: auto;
     }
     
@@ -35,9 +35,31 @@
         margin-top: 15%;
     }
     
+    .inputs_PROCURAR {
+        position: relative;
+        width: 32%;
+        height: 40px;
+        margin-top: -4%;
+        left: 55%;
+    }
+    
     .estrela {
         position: absolute;
-        margin-top: -17%;
+        margin-top: -14%;
         margin-left: 16%;
         border: black;
+    }
+    
+    .endereco_final {
+        display: flex;
+        flex-flow: row wrap;
+    }
+    
+    .endereco_final div {
+        width: 33%;
+    }
+    
+    .endereco_final input {
+        width: 80%;
+        height: 40px;
     }
