@@ -21,10 +21,10 @@ include_once '../php/conexao.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="user.css">
 	<link
       href="https://fonts.googleapis.com/css?family=Inter&display=swap"
@@ -129,7 +129,7 @@ include_once '../php/conexao.php';
           <div class="navItems2">
             <button class="navBtn">
             <?php
-                       if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){
+                       if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                          
                      
                         echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
@@ -270,60 +270,8 @@ unset ($_SESSION['msg']);
 
     <!-- Footer -->
     <footer>
-      <div class="cadastroEmail">
-        <p>
-          <i class="fas fa-envelope"></i> RECEBA OFERTAS E NOVIDADES POR E-MAIL:
-        </p>
-
-        <form>
-          <input type="email" placeholder="E-mail" />
-          <button class="cadastrarBtn">Cadastrar</button>
-        </form>
-      </div>
-
-      <div class="creditos">
-        <div class="criadores">
-          <h5>Criadores</h5>
-          <a href="https://github.com/Alcantara-Diego" target="_blank"
-            >Diego Alcântara</a
-          >
-          <a href="https://github.com/jhoneshark" target="_blank">Jhoneshark</a>
-          <a href="https://github.com/Claitonok" target="_blank"
-            >Claiton Silva</a
-          >
-          <a href="https://github.com/Digao46" target="_blank">Diogo Melo</a>
-        </div>
-
-        <div class="extras">
-          <h5>Extras</h5>
-          <a href="https://www.instagram.com/wolffit848/" target="_blank"
-            >Instagram <i class="fa-brands fa-instagram"></i
-          ></a>
-          <a href="../sobre/sobre.php"> Sobre Nós</a>
-          <a href="../contato/contato.php">Fale Conosco</a>
-        </div>
-
-        <div class="imagens">
-          <h5>Imagens</h5>
-
-          <a
-            href="https://unsplash.com/@sxoxm?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-            >Sven Mieke</a
-          >
-
-          <a
-            href="https://www.freepik.com/free-psd/protein-powder-container-mockup_17197932.htm#query=whey&position=5&from_view=search&track=sph"
-            target="_blank"
-            >xvector</a
-          >
-
-          <a
-            href="https://unsplash.com/@visualsbyroyalz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-            target="_blank"
-            >Anastase Maragos</a
-          >
-        </div>
-      </div>
+   
+     
       <div>Wolf-Fit suplementos LTDA©2022</div>
     </footer>
 

@@ -53,7 +53,6 @@ header p {
 }
 
 
-
 /*  Div carrosel  */
 
 .meio {
@@ -488,7 +487,6 @@ header p {
     header p {
         font-size: 13px;
     }
-    
     .botao__carinho {
         width: 240px;
         border-left: 2px solid var(--corPrimaria);
@@ -527,7 +525,6 @@ header p {
 }
 
 @media screen and (width < 460px) {
-    
     /* Div com os produtos em promoção */
     .produtoDestaque img {
         width: 80px;
@@ -569,7 +566,6 @@ header p {
         width: 90%;
         margin-bottom: 25px;
     }
-    
 }
 
 .dashboard {
@@ -634,18 +630,137 @@ header p {
     margin-top: 30%;
 }
 
+#formFiltro {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+#formFiltro input {
+    padding: 4px 8px;
+    background-color: white;
+    color: black;
+    margin: 10px 5px;
+    border-radius: 30px;
+    border: 2px solid black;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.butonn_produtos_id {
+    margin-top: 10%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px 5px;
+}
+
+.thumbnail {
+    width: fit-content;
+    margin: 0;
+}
+
+.div_produto {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 185px;
+    height: 350px;
+}
+
+.Div_produtos_vitrine {
+    margin-bottom: 55%;
+}
+
+.butonn_produtos_id {}
+
+.div_produto img {
+    display: block;
+    margin: auto;
+}
+
+.div_produto button {
+    width: 100%;
+    padding: 5px;
+    margin-top: 3px;
+    font-weight: bold;
+    border-radius: 30px;
+    background-color: #f8fffa;
+    color: #d404d4;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: 2px solid #d404d4;
+    transition: .5s;
+}
+
+.div_produto button:hover {
+    background-color: #d404d4;
+    color: #f8fffa;
+}
+
+.Imagem_produtos_exibidos {
+    display: block;
+    width: 160px;
+    height: 180px;
+}
+
+.adicionou {
+    height: 70px;
+    width: 150px;
+    color: aliceblue;
+    background-color: rgb(166, 111, 218);
+    position: fixed;
+    border: 1px solid black;
+    overflow: visible;
+    display: block;
+    font-size: 20px;
+    border-radius: 10%;
+    opacity: 0;
+    align-items: center;
+    text-align: center;
+    padding: .5%;
+}
+
+.sumiu {
+    opacity: .8;
+    animation: 2s AdicionouSumiu;
+}
+
+@keyframes AdicionouSumiu {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.carrinhoItem button {
+    position: static;
+}
+
+.alterarMais {
+    position: static;
+}
+
 .button_id {
-    margin-top: -40%;
-    left: 72%;
-    position: absolute;
+    margin-left: 50%;
+    width: 60%;
 }
 
-.alterarMais,
-.alterarMenos {
-    margin-top: 50%;
-    position: absolute;
-}
-
-.alterarMenos {
-    left: 20%;
+.texto_carrousel,
+.titulo_carrousel {
+    position: relative;
+    left: 140%;
 }

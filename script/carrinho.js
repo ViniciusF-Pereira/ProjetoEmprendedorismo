@@ -25,12 +25,9 @@ console.log(Section_ID);
 
 function adicionarProduto(id_p, nome_p, preco_p, img_p) {
 
-    //mostrarEsconderCarrinho();
     let carrinho = document.getElementById("botao__carinho");
-    carrinho.classList.add("carrinhoAberto"); // deixa o carrinho aberto
 
-
-
+    carrinho.classList.add("carrinhoAberto");
 
     id__produto = id_p;
     //localStorage.clear();
@@ -48,75 +45,33 @@ function adicionarProduto(id_p, nome_p, preco_p, img_p) {
     if (isNaN(localStorage.getItem("produto" + id_p, nome_p)).NaN) {
 
 
-        console.log(localStorage.getItem("produto" + id_p, nome_p));
+
+        localStorage.removeItem("produto" + id_p)
+        localStorage.removeItem("qtd" + id_p)
+        localStorage.removeItem("produto_id" + id_p)
+        localStorage.removeItem("valorTotal" + id_p)
+
+        localStorage.removeItem("valor" + id_p)
+        localStorage.removeItem("card" + id_p)
+
 
 
     } else {
-        localStorage.setItem("produto" + id_p, nome_p)
+
+        var div = document.getElementById(`produto${id_p}`);
+
 
         produto = localStorage.getItem("qtd" + id_p);
         setTimeout(() => {
-            if (produto >= 1 || isNaN(produto)) {
-
-                id__produto = id_p;
-                produto = parseInt(produto) + 1;
-
-                localStorage.setItem("produto_id" + id_p, id__produto)
-                localStorage.setItem("qtd" + id_p, produto)
-
-                preco_total = parseFloat(preco_p) * parseInt(produto);
-
-                localStorage.setItem("valor" + id_p, preco_p)
-                localStorage.setItem("valorTotal" + id_p, preco_total)
-
-                localStorage.setItem("card" + id_p, img_p)
-
-                console.log("Quantidade " + localStorage.getItem("qtd" + id_p, produto));
+            if (produto >= 1) {
+                adicionarProdutos(id_p, 1);
+                return;
 
 
-                vereficaCarrinho(id_p, preco_p, produto, preco_total);
+            }
+            if ((produto < 1) || (produto) == null || div == null) {
+                localStorage.setItem("produto" + id_p, nome_p)
 
-                carrinhoItem_id = document.getElementById(`carrinhoItem${id_p}`);
-
-
-
-                carrinhoItem_id = document.getElementById(`carrinhoItem${oid}`);
-
-                carrinhoItem_id.style.animation = 'produtouau 0.18s linear';
-
-
-                setTimeout(() => {
-
-                    carrinhoItem_id.style.animation = 'none';
-
-                }, 200)
-
-                var total = 0; // variável que retorna o total dos produtos que estão na LocalStorage.
-                var i = 0; // variável que irá percorrer as posições
-                var valortotalcarrinho = 0; // variável que irá receber o preço do produto convertido em Float.
-
-                for (i = 1; i <= 99; i++) // verifica até 99 produtos registrados na localStorage
-                {
-                    var prod = localStorage.getItem("produto" + i + ""); // verifica se há recheio nesta posição. 
-                    if (prod != null) {
-                        // exibe o total dos recheios
-                        valortotalcarrinho = parseFloat(localStorage.getItem("valorTotal" + i)); // valor convertido com o parseFloat()
-                        total = (total + valortotalcarrinho); // arredonda para 2 casas decimais com o .toFixed(2)
-                    }
-                }
-                // exibe o total dos recheios
-                document.getElementById("total").innerHTML = total.toFixed(2);
-                document.getElementById("total2").innerHTML = total.toFixed(2);
-
-                document.getElementById("total_full").innerHTML = total.toFixed(2);
-
-
-
-
-
-
-
-            } else {
                 localStorage.setItem("qtd" + id_p, 1)
                 localStorage.setItem("produto_id" + id_p, id__produto)
                 localStorage.setItem("valorTotal" + id_p, preco_p)
@@ -126,46 +81,39 @@ function adicionarProduto(id_p, nome_p, preco_p, img_p) {
 
                 console.log("Quantidade " + localStorage.getItem("qtd" + id_p, 1));
 
+                oid = id_p;
 
                 // exibe os dados da lista dentro da div itens
 
                 document.getElementById("itens").innerHTML +=
-                    `<ul id="carrinhoLista">
-                <li class="carrinhoItem" id="carrinhoItem${id_p}">
-                    <img class="produto_id${id_p}" 
-                    src="${img_p}" alt="">
-                    <div class="produtoInfo">
-                        <div class="topInfo">
-                           <h5 class="titulo">${nome_p}
-                           <p id="preco${id_p}" class="preco">1 x R$${preco_p} </p>
-                           </div>
-                                <p id="total_id${id_p}" class="bottomInfo">Total dos itens  R$   ${preco_p}</p>
-                            </div>
-               </li>
-               <button id="button_id${oid}" class"button_id" onclick="removerProduto(${oid})">DELETAR</button>
-               <button id="alterarMais${oid}" class"alterarMais" onclick="alterar(${oid}, 1)">mais</button>
-               <button id="alterarMenos${oid}" class"alterarMenos" onclick="alterar(${oid}, 0)">menos</button>
-            </ul>`;
+                    `<div class="CartaoCarrinho" id="produto${id_p}"> 
+                        <ul id="carrinhoLista">
+                        <li class="carrinhoItem" id="carrinhoItem${id_p}">
+                            <img class="produto_id${id_p}" 
+                            src="${img_p}" alt="">
+                            <div class="produtoInfo">
+                            <button id="button_id${oid}" class"button_id" onclick="removerProduto(${oid})" 
+                            style=" margin-left: 50%;     
+                            width: 50%;"
+                            >DELETAR</button>
+                            
+
+                                <div class="topInfo">
+                                <h5 class="titulo">${nome_p}
+                                <p id="preco${id_p}" class="preco">1 x R$${preco_p} </p>
+                                </div>
+                                        <p id="total_id${id_p}" class="bottomInfo">Total dos itens  R$   ${preco_p}</p>
+                                    </div>
+                                 
+                            </li>
+                             
+                            </ul>
+                            <button id="alterarMais${oid}" class"alterarMais" onclick="alterar(${oid}, 1)">ADICIONAR</button>
+                            <button id="alterarMenos${oid}" class"alterarMenos" onclick="alterar(${oid}, 0)">REMOVER</button>
+                     </di>`;
 
 
-                var total = 0; // variável que retorna o total dos produtos que estão na LocalStorage.
-                var i = 0; // variável que irá percorrer as posições
-                var valortotalcarrinho = 0; // variável que irá receber o preço do produto convertido em Float.
-
-                for (i = 1; i <= 99; i++) // verifica até 99 produtos registrados na localStorage
-                {
-                    var prod = localStorage.getItem("produto" + i + ""); // verifica se há recheio nesta posição. 
-                    if (prod != null) {
-                        // exibe o total dos recheios
-                        valortotalcarrinho = parseFloat(localStorage.getItem("valorTotal" + i)); // valor convertido com o parseFloat()
-                        total = (total + valortotalcarrinho); // arredonda para 2 casas decimais com o .toFixed(2)
-                    }
-                }
-                // exibe o total dos recheios
-                document.getElementById("total").innerHTML = total.toFixed(2);
-                document.getElementById("total2").innerHTML = total.toFixed(2);;
-
-                document.getElementById("total_full").innerHTML = total.toFixed(2);
+                verificaTotal();
 
 
                 carrinhoItem_id = document.getElementById(`carrinhoItem${oid}`);
@@ -215,7 +163,6 @@ function adicionarProduto(id_p, nome_p, preco_p, img_p) {
 
 
     }
-    carrinho();
 
 }
 
@@ -261,24 +208,7 @@ function vereficaCarrinho(id, valor, quantidade, valortotal) {
 
 
     // calcula o total dos recheios
-
-    var total = 0; // variável que retorna o total dos produtos que estão na LocalStorage.
-    var i = 0; // variável que irá percorrer as posições
-    var valortotalcarrinho = 0; // variável que irá receber o preço do produto convertido em Float.
-
-    for (i = 1; i <= 99; i++) // verifica até 99 produtos registrados na localStorage
-    {
-        var prod = localStorage.getItem("produto" + i + ""); // verifica se há recheio nesta posição. 
-        if (prod != null) {
-            // exibe o total dos recheios
-            valortotalcarrinho = parseFloat(localStorage.getItem("valorTotal" + i)); // valor convertido com o parseFloat()
-            total = (total + valortotalcarrinho); // arredonda para 2 casas decimais com o .toFixed(2)
-        }
-    }
-    // exibe o total dos recheios
-    document.getElementById("total").innerHTML = total.toFixed(2);
-    document.getElementById("total2").innerHTML = total.toFixed(2);
-    document.getElementById("total_full").innerHTML = total.toFixed(2);
+    verificaTotal();
 
 
 
@@ -298,41 +228,36 @@ function carrinho() {
             oid = localStorage.getItem("produto_id" + i);
             img = localStorage.getItem("card" + i);
             document.getElementById("itens").innerHTML +=
-                `<ul id="carrinhoLista">
+                `<div class="CartaoCarrinho" id="produto${oid}"> <ul id="carrinhoLista">
             <li class="carrinhoItem" id="carrinhoItem${i}">
                 <img class="produto_id${localStorage.getItem("produto_id" + i)}" 
                 src="${img}" alt="">
                 <div class="produtoInfo">
+                <button id="button_id${oid}" class"button_id" onclick="removerProduto(${oid})" 
+                style=" margin-left: 50%;     
+                width: 50%;"
+                >DELETAR</button>
+                
+
                     <div class="topInfo">
                        <h5 class="titulo">${localStorage.getItem("produto" + i)}
                        <p id="preco${oid}" class="preco">${localStorage.getItem("qtd" + i)} x R$${localStorage.getItem("valor" + i)} </p>
                        </div>
                             <p id="total_id${oid}" class="bottomInfo">Total dos itens  R$   ${localStorage.getItem("valorTotal" + i)}</p>
                         </div>
+                     
                                           
             </liv>
-            <button id="button_id${oid}" class="button_id" onclick="removerProduto(${oid})">DELETAR</button>
-            <button id="alterarMais${oid}" class="alterarMais" onclick="alterar(${oid}, 1)">mais</button>
-            <button id="alterarMenos${oid}" class="alterarMenos" onclick="alterar(${oid}, 0)">menos</button>
-        </ul>`;
+         </ul>
+         <button id="alterarMais${oid}" class"alterarMais" onclick="alterar(${oid}, 1)">ADICIONAR</button>
+         <button id="alterarMenos${oid}" class"alterarMenos" onclick="alterar(${oid}, 0)">REMOVER</button>
+        </div>`;
 
             // calcula o total dos recheios
             valortotalcarrinho = parseFloat(localStorage.getItem("valorTotal" + i)); // valor convertido com o parseFloat()
             total = (total + valortotalcarrinho); // arredonda para 2 casas decimais com o .toFixed(2)
 
 
-            setTimeout(() => {
-                carrinhoItem_id = document.getElementById(`carrinhoItem${oid}`);
-
-                carrinhoItem_id.style.animation = 'produtouau 0.18s linear';
-
-
-                setTimeout(() => {
-
-                    carrinhoItem_id.style.animation = 'none';
-
-                }, 200)
-            }, 200)
 
 
 
@@ -355,8 +280,14 @@ carrinho();
 
 
 function removerProduto(oid) {
+
     var prod = localStorage.getItem("produto" + oid + ""); // verifica se há recheio nesta posição. 
+    var div = document.getElementById(`produto${oid}`);
+
     if (prod != null) {
+
+        div.outerHTML = ""
+
         localStorage.removeItem("produto" + oid)
         localStorage.removeItem("qtd" + oid)
         localStorage.removeItem("produto_id" + oid)
@@ -365,14 +296,15 @@ function removerProduto(oid) {
         localStorage.removeItem("valor" + oid)
         localStorage.removeItem("card" + oid)
 
+
+
+        verificaTotal();
     }
-    mostrarEsconderCarrinho();
-    location.reload();
+
+
 }
 
-function alterar(oid, valor) {
-
-
+function adicionarProdutos(oid, valor) {
     produto = localStorage.getItem("qtd" + oid);
     preco_p = localStorage.getItem("valor" + oid);
     //aqui e o seguinte, vou receber dois valores
@@ -381,7 +313,7 @@ function alterar(oid, valor) {
 
 
 
-        produto = parseInt(produto) + 1;
+        produto = parseInt(localStorage.getItem("qtd" + oid)) + 1;
 
         localStorage.setItem("qtd" + oid, produto)
 
@@ -407,24 +339,50 @@ function alterar(oid, valor) {
 
         }, 200)
 
-        var total = 0; // variável que retorna o total dos produtos que estão na LocalStorage.
-        var i = 0; // variável que irá percorrer as posições
-        var valortotalcarrinho = 0; // variável que irá receber o preço do produto convertido em Float.
+        verificaTotal();
 
-        for (i = 1; i <= 99; i++) // verifica até 99 produtos registrados na localStorage
-        {
-            var prod = localStorage.getItem("produto" + i + ""); // verifica se há recheio nesta posição. 
-            if (prod != null) {
-                // exibe o total dos recheios
-                valortotalcarrinho = parseFloat(localStorage.getItem("valorTotal" + i)); // valor convertido com o parseFloat()
-                total = (total + valortotalcarrinho); // arredonda para 2 casas decimais com o .toFixed(2)
-            }
-        }
-        // exibe o total dos recheios
-        document.getElementById("total").innerHTML = total.toFixed(2);
-        document.getElementById("total2").innerHTML = total.toFixed(2);
+    }
 
-        document.getElementById("total_full").innerHTML = total.toFixed(2);
+}
+
+function alterar(oid, valor) {
+
+
+    produto = localStorage.getItem("qtd" + oid);
+    preco_p = localStorage.getItem("valor" + oid);
+    //aqui e o seguinte, vou receber dois valores
+
+    if (valor == 1) {
+
+
+
+        produto = parseInt(localStorage.getItem("qtd" + oid)) + 1;
+
+        localStorage.setItem("qtd" + oid, produto)
+
+        preco_total = parseFloat(preco_p) * parseInt(produto);
+
+        localStorage.setItem("valorTotal" + oid, preco_total)
+
+        console.log("Quantidade " + localStorage.getItem("qtd" + oid));
+
+
+        vereficaCarrinho(oid, preco_p, produto, preco_total);
+
+        carrinhoItem_id = document.getElementById(`carrinhoItem${oid}`);
+
+        carrinhoItem_id = document.getElementById(`carrinhoItem${oid}`);
+
+        carrinhoItem_id.style.animation = 'produtouau 0.18s linear';
+
+
+        setTimeout(() => {
+
+            carrinhoItem_id.style.animation = 'none';
+
+        }, 200)
+
+        verificaTotal();
 
     }
 
@@ -454,26 +412,10 @@ function alterar(oid, valor) {
 
             carrinhoItem_id.style.animation = 'none';
 
+
         }, 200)
 
-        var total = 0; // variável que retorna o total dos produtos que estão na LocalStorage.
-        var i = 0; // variável que irá percorrer as posições
-        var valortotalcarrinho = 0; // variável que irá receber o preço do produto convertido em Float.
-
-        for (i = 1; i <= 99; i++) // verifica até 99 produtos registrados na localStorage
-        {
-            var prod = localStorage.getItem("produto" + i + ""); // verifica se há recheio nesta posição. 
-            if (prod != null) {
-                // exibe o total dos recheios
-                valortotalcarrinho = parseFloat(localStorage.getItem("valorTotal" + i)); // valor convertido com o parseFloat()
-                total = (total + valortotalcarrinho); // arredonda para 2 casas decimais com o .toFixed(2)
-            }
-        }
-        // exibe o total dos recheios
-        document.getElementById("total").innerHTML = total.toFixed(2);
-        document.getElementById("total2").innerHTML = total.toFixed(2);
-
-        document.getElementById("total_full").innerHTML = total.toFixed(2);
+        verificaTotal();
 
         if (produto <= 0 || produto == null) {
 
@@ -482,21 +424,25 @@ function alterar(oid, valor) {
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
 }
 
+function verificaTotal() {
+    var total = 0; // variável que retorna o total dos produtos que estão na LocalStorage.
+    var i = 0; // variável que irá percorrer as posições
+    var valortotalcarrinho = 0; // variável que irá receber o preço do produto convertido em Float.
 
-if (location.reload) {
+    for (i = 1; i <= 99; i++) // verifica até 99 produtos registrados na localStorage
+    {
+        var prod = localStorage.getItem("produto" + i + ""); // verifica se há recheio nesta posição. 
+        if (prod != null) {
+            // exibe o total dos recheios
+            valortotalcarrinho = parseFloat(localStorage.getItem("valorTotal" + i)); // valor convertido com o parseFloat()
+            total = (total + valortotalcarrinho); // arredonda para 2 casas decimais com o .toFixed(2)
+        }
+    }
+    // exibe o total dos recheios
+    document.getElementById("total").innerHTML = total.toFixed(2);
+    document.getElementById("total2").innerHTML = total.toFixed(2);
 
-
+    document.getElementById("total_full").innerHTML = total.toFixed(2);
 }

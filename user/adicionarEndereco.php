@@ -145,7 +145,7 @@ if(!empty($dados["CadastrarEndereco"])){
     $result = json_decode(webClient($url));
     
     if( $result){
-    var_dump($result->logradouro);
+   
    
 
     
@@ -181,8 +181,12 @@ if(!empty($dados["CadastrarEndereco"])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="user.css">
+
 
     <!-- CSS DO USER                                                                 CSS DO USER -->
     <link rel="stylesheet" href="user.css">
@@ -232,6 +236,7 @@ if(!empty($dados["CadastrarEndereco"])){
       crossorigin="anonymous"
     />
 
+
     <title>WOLF FIT</title>
 
 
@@ -252,15 +257,15 @@ if(!empty($dados["CadastrarEndereco"])){
 
     <!-- Barra de navegação ------------------------------------------------------  Barra de navegação    -->
     <nav>
-    <div class="navContainer">
+      <div class="navContainer">
         <!-- Mobile Hamburguer -->
         <button id="hamburguerBtn" class="navBtn">
           <i class="fa fa-bars"></i>
         </button>
 
-        <a href="../index.php" class="logoArea">
+        <a href="index.php" class="logoArea">
           <img
-            src="../images/kisspng_gray_wolf_logo_mascot_clip_art_wolf_5ab4467dd78141_1.png"
+            src="./images/kisspng_gray_wolf_logo_mascot_clip_art_wolf_5ab4467dd78141_1.png"
             alt="Logo"
          
           />
@@ -279,39 +284,35 @@ if(!empty($dados["CadastrarEndereco"])){
               </div>
             </li>
 
+            <li><a href="./products/produtos.php">Produtos</a></li>
+
             <li>
-                <a href="../index.php">Home</a>
-            </li>
-            <li>
-              <a href="../products/produtos.php">Produtos</a>
-            </li>
-            <li>
-                <a href="../contato/contato.php">Contato</a>
+              <a href="./contato/contato.php"> Contato </a>
             </li>
 
             <li>
-                <a href="../sobre/sobre.php">Sobre</a>
+              <a href="sobre/sobre.php"> Sobre </a>
             </li>
           </ul>
 
           <div class="navItems2">
             <button class="navBtn">
             <?php
-                       if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){
+             if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                          
                      
-                        echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
-                      
-                      } else {
-                        echo  '<span class="menuItem"><a href="dashboard.php">Configurações</a></span>';
-          
-                        echo    '<a href="sair.php">SAIR</a>';
-                      
-                                   
-                      }
+                echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
+              
+              } else {
+                echo  '<span class="menuItem"><a href="dashboard.php">Configurações</a></span>';
+  
+                echo    '<a href="sair.php">SAIR</a>';
+              
+                           
+              }
             ?>
             </button>
-            <button id="abrirCarrinhoBtn" class="navBtn">
+            <button id="abrirCarrinhoBtn" class="navBtn" onclick="">
               <i class="fa fa-cart-shopping"></i>
               <span class="nav2ItemNome">Carrinho</span>
             </button>
@@ -389,47 +390,41 @@ if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() !=
                 echo '
 
                     <label>Tipo de endereço:</label>
-                    <input class="inputs_endereco" type="" name="nome_endereco" placeholder="digite se é casa, trabalho, etc  "id="" value="'.$__nome_endereco.'">
+                    <input class="inputs_endereco" type="" name="nome_endereco" placeholder="DEFINIR ENDEREÇO (CASA, TRABALHO)" id="" value="'.$__nome_endereco.'">
                 
         
-                    <BR>
-                    <BR>
+                 
                     <label>CEP:</label>
-                    <input class="inputs_endereco" type="" name="cep" placeholder="digite o cep"id=""  value="'.$__cep.'">
-                    <input type="submit" value="PROCURAR" name="getCep"  > 
+                    <input class="inputs_endereco" type="" name="cep" placeholder="DEFINIR CEP"id=""  value="'.$__cep.'">
+                    <input class="inputs_PROCURAR" type="submit" value="PROCURAR" name="getCep"  > 
 
-                    <BR>
-                    <BR>
+                    
+                    
                     <label>logradouro:</label>
                     <input  class="inputs_endereco" type="" name="logradouro" placeholder="digite o logradouro"id="" value="'.$__logradouro.'">
                     
             
-                    <BR>
-                    <BR>
+       
                     <label>complemento:</label>
                     <input class="inputs_endereco" type="" name="complemento" placeholder="digite o complemento"id="" value="">
-           
-
-                    <BR>
-                    <BR>
-                    <label>bairro:</label>
-                    <input class="inputs_endereco" type="" name="bairro" placeholder="digite o logradouro"id="" value="'.$__bairro.'" readonly>
-           
-                    <BR>
-                    <BR>
-                    <label>Cidade:</label>
-                    <input class="inputs_endereco" type="" name="localidade" placeholder="digite o logradouro"id="" value="'.$__localidade.'" readonly>
-                    
-                  
-
-                    <BR>
-                    <BR>
-                    <label>ESTADO:</label>
-                    <input class="inputs_endereco" type="" name="uf" placeholder="digite o logradouro"id="" value="'.$__uf.'" readonly>
-                    
+                         
+                    <div class="endereco_final">
+                      <div>
+                          <label>Bairro:</label>
+                         <input class="inputs_endereco" type="" name="bairro" placeholder="digite o logradouro"id="" value="'.$__bairro.'" readonly>
+                      </div>
+                      <div>
+                         <label>Cidade:</label>
+                         <input class="inputs_endereco" type="" name="localidade" placeholder="digite o logradouro"id="" value="'.$__localidade.'" readonly>
+                      </div>             
+                      <div>
+                         <label>ESTADO:</label>
+                         <input class="inputs_endereco" type="" name="uf" placeholder="digite o logradouro"id="" value="'.$__uf.'" readonly>
+                      </div>
+                    </div>
                     <BR>
 
-                    <input type="submit" value="Cadastrar Endereco" name="CadastrarEndereco">
+                    <input class="inputs_CadastrarEndereco" type="submit" value="Cadastrar Endereco" name="CadastrarEndereco">
 
          ';
 
