@@ -461,16 +461,16 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
   <!-- Categoria de produtos -->
   <div class="categoriaDeProdutosContainer">
-    <div class="categoriaDeProdutos">
+    <a href="./products/produtos.php" class="categoriaDeProdutos">
       <div class="overlay"></div>
       <h3 class="categoriaDeProdutosTitulo">Suplementos</h3>
-    </div>
+    </a>
 
-    <div class="categoriaDeProdutos">
+    <a href="./products/produtos.php" class="categoriaDeProdutos">
       <div class="overlay"></div>
       <h3 class="categoriaDeProdutosTitulo">Equipamentos</h3>
     </div>
-  </div>
+  </a>
 
   <section class="descricaoProdutosSection wheyDescricao">
     <h3>WheyProtein</h3>

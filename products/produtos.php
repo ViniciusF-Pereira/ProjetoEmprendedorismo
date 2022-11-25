@@ -247,13 +247,15 @@ if(!empty($dados["ordemAfabetica_desc"])){
 
 
 
+    <div class="cabecalho">
+      <img class="cabecalhoImg" src="../images/background/suplementosBg.jpg" alt="">
+      <h1 class="titulo">Suplementos</h1>
+    </div>
+
 
     <!-- Produtos -->
 
     <div class="container theme-showcase" role="main">
-			<div class="page-header">
-				<h1>Produtos</h1>
-			</div>
             <div class= "Vitrine">
           <form  id="formFiltro" method="POST" action=""> 
             <input name="Preco_baixo" value="Preco_baixo" type="submit">
