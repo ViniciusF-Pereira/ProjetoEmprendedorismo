@@ -220,6 +220,7 @@ if(isset($_SESSION['msg'])){
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="user.css">
 
     
@@ -307,15 +308,6 @@ if(isset($_SESSION['msg'])){
 
         <div class="navMenu">
           <ul class="navItems">
-            <li>
-              <div id="produtosListaDropDown">
-                <a> <span>Destaques</span> <i class="fa fa-caret-down"></i> </a>
-                <ul id="produtosListaDropDownUl">
-                  <li id="promocaoBtn">Promoções</li>
-                  <li id="maisVendidosBtn">Mais vendidos</li>
-                </ul>
-              </div>
-            </li>
 
             <li>
                 <a href="../index.php">Home</a>
@@ -362,60 +354,102 @@ if(isset($_SESSION['msg'])){
 
 
 
-    <section>
+    <div class="loginArea">
+      <section class="cadastroContainer">
+      <h1>Cadastro</h1>
+      
+      
+      
+      
+      <form method="POST" action="">
+      <label>Nome:</label>
+          <input type="text" name="nome" placeholder="digite o nome completo"id="" value="<?php if(isset($dados['nome']))
+          {echo $dados['nome']; } ?>">
+      
+          <label>CPF:</label>
+          <input type="text" name="cpf" placeholder="digite o e-cpf"id="" value="<?php if(isset($dados['cpf']))
+          {echo $dados['cpf']; } ?>">
+          <label>E-mail:</label>
+          <input type="email" name="usuario" placeholder="digite o e-mail"id="" value="<?php if(isset($dados['usuario']))
+          {echo $dados['usuario']; } ?>">
+      
+          <label >Senha:</label>
+          <input type="password" name="senha_usuario" placeholder="digite a senha"id="" value="<?php if(isset($dados['senha_usuario']))
+          {echo $dados['senha_usuario'];} ?>">
+      
+          <label >Digite novamente a senha:</label>
+          <input type="password" name="senha_usuario_2" placeholder="digite a senha novamente"id="" value="<?php if(isset($dados['senha_usuario']))
+          {echo $dados['senha_usuario'];} ?>">
+      
+          <div class="btnContainer">
+            <input type="submit" value="Cadastrar" name="SendCadastro">
+          </div>
+           
+      </form>
+      </section>
 
-    <h1>Cadastro</h1>
+      <div class="overlay"></div>
+    </div>
 
-
-
-
-<form method="POST" action="">
-
-    <label>Nome:</label>
-        <input type="text" name="nome" placeholder="digite o nome completo"id="" value="<?php if(isset($dados['nome']))
-        {echo $dados['nome']; } ?>">
-
-        
-        <br>
-        <br>
-        <label>CPF:</label>
-        <input type="text" name="cpf" placeholder="digite o e-cpf"id="" value="<?php if(isset($dados['cpf']))
-        {echo $dados['cpf']; } ?>">
-
-
-        <br>
-        <br>
-        <label>Usuário:</label>
-        <input type="email" name="usuario" placeholder="digite o e-mail"id="" value="<?php if(isset($dados['usuario']))
-        {echo $dados['usuario']; } ?>">
-
-        <br>
-        <br>
-
-        <label >Senha:</label>
-        <input type="password" name="senha_usuario" placeholder="digite a senha"id="" value="<?php if(isset($dados['senha_usuario']))
-        {echo $dados['senha_usuario'];} ?>">
-
-        <br>
-        <br>
-
-        <label >Digite novamente a senha:</label>
-        <input type="password" name="senha_usuario_2" placeholder="digite a senha novamente"id="" value="<?php if(isset($dados['senha_usuario']))
-        {echo $dados['senha_usuario'];} ?>">
-
-        <br>
-        <br>
-
-        <input type="submit" value="Cadastrar" name="SendCadastro"> 
-</form>
-
-
-    </section>
 
 
     <!-- Footer -->
     <footer>
-        Wolf-Fit suplementos LTDA©2022
+      <div class="cadastroEmail">
+        <p>
+          <i class="fas fa-envelope"></i> RECEBA OFERTAS E NOVIDADES POR E-MAIL:
+        </p>
+
+        <form>
+          <input type="email" placeholder="E-mail" />
+          <button class="cadastrarBtn">Cadastrar</button>
+        </form>
+      </div>
+
+      <div class="creditos">
+        <div class="criadores">
+          <h5>Criadores</h5>
+          <a href="https://github.com/Alcantara-Diego" target="_blank"
+            >Diego Alcântara</a
+          >
+          <a href="https://github.com/jhoneshark" target="_blank">Jhoneshark</a>
+          <a href="https://github.com/Claitonok" target="_blank"
+            >Claiton Silva</a
+          >
+          <a href="https://github.com/Digao46" target="_blank">Diogo Melo</a>
+        </div>
+
+        <div class="extras">
+          <h5>Extras</h5>
+          <a href="https://www.instagram.com/wolffit848/" target="_blank"
+            >Instagram <i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="/components/sobre/sobre.html"> Sobre Nós</a>
+          <a href="/components/contato/contato.html">Fale Conosco</a>
+        </div>
+
+        <div class="imagens">
+          <h5>Imagens</h5>
+
+          <a
+            href="https://unsplash.com/@sxoxm?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+            >Sven Mieke</a
+          >
+
+          <a
+            href="https://www.freepik.com/free-psd/protein-powder-container-mockup_17197932.htm#query=whey&position=5&from_view=search&track=sph"
+            target="_blank"
+            >xvector</a
+          >
+
+          <a
+            href="https://unsplash.com/@visualsbyroyalz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+            target="_blank"
+            >Anastase Maragos</a
+          >
+        </div>
+      </div>
+      <div>Wolf-Fit suplementos LTDA©2022</div>
     </footer>
 
 

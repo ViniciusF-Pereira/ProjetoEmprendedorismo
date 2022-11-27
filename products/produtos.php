@@ -292,10 +292,12 @@ if(!empty($dados["ordemAfabetica_desc"])){
                       
                               echo 
                               '
+                              <div class="produtoInfo">
                               <p class="Id_produtos_id" id="i_id_'. $id_p.'">ID:' . $rows_produtos['id_produtos'].' </p>
-                              <p class="Nome_produtos_id" id="N_id_'. $id_p.'">Nome: '. $rows_produtos['nome_produtos']. '</p>
-                              <p class="Preco_produtos_id" id="P_id_'. $id_p.'">Preco: ' . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). '</p>
+                              <p class="Nome_produtos_id" id="N_id_'. $id_p.'"> '. $rows_produtos['nome_produtos']. '</p>
+                              <p class="Preco_produtos_id" id="P_id_'. $id_p.'">R$ ' . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). '</p>
                               <p class="Descricao_produtos_id" id="D_id_'. $id_p.'">Descrição: ' . $rows_produtos['descricao_produtos'].' </p>
+                              </div>
 
                               <button 
                               class="butonn_produtos_id" id="B_id_'. $id_p.'"
@@ -314,7 +316,12 @@ if(!empty($dados["ordemAfabetica_desc"])){
 						</div>
 					</div>
 				<?php } ?>
-        <div class="adicionou">Produto Adicionado</div>
+        <div class="adicionou">Produto Adicionado 
+          <i class="fas fa-cart-fill"></i>
+          <i class="fas fa-check-circle-fill"></i>
+         </div>
+
+
 			    </div>
             </div>
 			<?php
