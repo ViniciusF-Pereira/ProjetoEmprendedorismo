@@ -66,7 +66,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 10px 5px;
 }
 
@@ -91,7 +91,25 @@
 
 .div_produto img {
     display: block;
-    margin: auto;
+    margin: auto auto 5px auto;
+}
+
+.div_produto .produtoInfo{
+    font-weight: bold;
+    text-align: center;
+}
+.div_produto .produtoInfo p{
+    text-transform: capitalize;
+}
+
+.Nome_produtos_id{
+    text-transform: capitalize;
+    margin-bottom: 0;
+}
+
+.Preco_produtos_id{
+    color: #03c203;
+    font-size: 1.3rem;
 }
 
 .div_produto button {
@@ -107,6 +125,9 @@
     border: 2px solid #d404d4;
     transition: .5s;
 }
+.Descricao_produtos_id, .Id_produtos_id{
+    display: none;
+}
 
 .div_produto button:hover {
     background-color: #d404d4;
@@ -120,20 +141,40 @@
 }
 
 .adicionou {
-    height: 70px;
-    width: 150px;
+    /* 
     color: aliceblue;
-    background-color: rgb(166, 111, 218);
+    background-color: #181818;
     position: fixed;
-    border: 1px solid black;
+    bottom: 10px;
+    left: 10px;
+    border: 1px solid #cecece;
     overflow: visible;
     display: block;
-    font-size: 20px;
-    border-radius: 10%;
-    opacity: 0;
-    align-items: center;
+    font-size: 1.2rem;
+    border-radius: 7px;
+     */
+
+    position: fixed;
+    bottom: 20px;
+    left: 20px;    
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+
+    padding: 4px 10px;
+    color: #fff;    
+    background-image: radial-gradient(#3b3b3b,#202020);
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+
     text-align: center;
-    padding: .5%;
+    font-weight: bold;
+
+    opacity: 1;
+    z-index: 100;
 }
 
 .sumiu {

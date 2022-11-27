@@ -525,11 +525,7 @@ header p {
 }
 
 @media screen and (width < 460px) {
-    /* Div com os produtos em promoção */
-    .produtoDestaque img {
-        width: 80px;
-        height: 120px;
-    }
+    
     .listaDeProdutos {
         gap: 0;
     }

@@ -1,21 +1,33 @@
 
 .loginArea{
+    position: relative;
     background-color: rgb(216, 216, 216);
     background-image: url(../images/background/carroselBg.jpg);
+    background-position: center;
     
     padding: 30px 0;
 }
+
 h1{
     margin: auto;
     text-align: center;
 }
 
 section{
+    position: relative;
     margin: auto;
-    padding: 30px;
     background-color: white;
     border-radius: 10px;
+    z-index: 500;
+}
+
+.loginContainer{
+    padding: 30px;
     width: fit-content;
+}
+.cadastroContainer{
+    width: 500px;
+    padding: 30px 45px;
 }
 
 form{
@@ -47,15 +59,28 @@ form label+input{
     
 }
 
-.btnContainer > input[type="submit"]:first-of-type{
-    background-color: #04d62e;
-    border: 2px solid black;
-    color: black;
-}
+
 
 .btnContainer > input[type="submit"]:last-of-type{
     border: none;
     background: none;
     text-decoration: underline;
     color: black;
+}
+
+.btnContainer > input[type="submit"]:first-of-type{
+    background-color: #04d62e;
+    border: 2px solid black;
+    color: black;
+}
+
+
+@media screen and (width < 500px){
+
+    .cadastroContainer{
+        padding: 25px 40px;
+        
+        width: fit-content;
+      
+    }
 }
