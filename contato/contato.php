@@ -147,7 +147,7 @@ include_once '../php/conexao.php';
                 
                   
     
-                            echo  '<a href="../user/login.php"> <i class="fa fa-user"></i></a></span>';
+                            echo  '<a href="user/login.php"> <i class="fa fa-user"></i><span class="nav2ItemNome">Login</span></a>';
                           }
                            else {
               
@@ -328,9 +328,9 @@ include_once '../php/conexao.php';
       <div>Wolf-Fit suplementos LTDA©2022</div>
     </footer>
 
+    <script src="../script/hamburguer.js"></script>
 </body>
 
-<script src="../../JS/hamburguerBtn.js"></script>
 <script src="../../JS/carrinho.js "></script>
 
 </html>

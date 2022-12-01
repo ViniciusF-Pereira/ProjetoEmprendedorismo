@@ -330,7 +330,7 @@ if(isset($_SESSION['msg'])){
                                if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                          
                      
-                                echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
+                                echo  '<a href="user/login.php"> <i class="fa fa-user"></i><span class="nav2ItemNome">Login</span></a>';
                               
                               } else {
                                 echo  '<span class="menuItem"><a href="dashboard.php">Configurações</a></span>';
@@ -452,6 +452,8 @@ if(isset($_SESSION['msg'])){
       <div>Wolf-Fit suplementos LTDA©2022</div>
     </footer>
 
+
+    <script src="../script/hamburguer.js"></script>
 
 </body>
 

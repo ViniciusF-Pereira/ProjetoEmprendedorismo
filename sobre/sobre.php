@@ -24,10 +24,9 @@ include_once '../php/conexao.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../css/style.css">
-    
     <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="sobre.css">
+    <link rel="stylesheet" href="../css/footer.css">
 
 	<link
       href="https://fonts.googleapis.com/css?family=Inter&display=swap"
@@ -143,7 +142,7 @@ include_once '../php/conexao.php';
                 
                   
     
-                        echo  '<a href="../user/login.php"> <i class="fa fa-user"></i></a></span>';                      }
+                        echo  '<a href="user/login.php"> <i class="fa fa-user"></i><span class="nav2ItemNome">Login</span></a>';                      }
                        else {
           
                         echo  '<span class="menuItem"><a href="../user/dashboard.php">Configurações</a></span>';
@@ -251,8 +250,7 @@ include_once '../php/conexao.php';
       </div>
       <div>Wolf-Fit suplementos LTDA©2022</div>
     </footer>
+    <script src="../script/hamburguer.js"></script>
   </body>
-
-  <script src="../../JS/hamburguerBtn.js"></script>
   <script src="../../JS/carrinho.js"></script>
 </html>
