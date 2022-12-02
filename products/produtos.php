@@ -39,10 +39,18 @@ $num_pagina = ceil($total_produtos/$quantidade_pg);
 $incio = ($quantidade_pg*$pagina)-$quantidade_pg;
 
 //Selecionar os produtos a serem apresentado na página
-$result_produtos_querys = "SELECT * FROM produtos ORDER BY id_produtos  DESC limit $incio, $quantidade_pg ";
+$result_produtos_querys = "SELECT * FROM produtos
+  ORDER BY preco_promo IS  NULL, preco_promo ASC
+
+limit $incio, $quantidade_pg ";
 $result_produto_sTotals = mysqli_query($connect, $result_produtos_querys);
 $total_produtos = mysqli_num_rows($result_produto_sTotal);
 
+if(!empty($dados["Preco_promo"])){
+  $result_produtos_querys = "SELECT * FROM produtos WHERE preco_promo is not null ORDER BY preco_promo ASC limit $incio, $quantidade_pg ";
+  $result_produto_sTotals = mysqli_query($connect, $result_produtos_querys);
+  $total_produtos = mysqli_num_rows($result_produto_sTotal);
+}
 if(!empty($dados["Preco_baixo"])){
   $result_produtos_querys = "SELECT * FROM produtos ORDER BY preco_produtos ASC limit $incio, $quantidade_pg ";
   $result_produto_sTotals = mysqli_query($connect, $result_produtos_querys);
@@ -263,10 +271,12 @@ if(!empty($dados["ordemAfabetica_desc"])){
     <div class="container theme-showcase" role="main">
             <div class= "Vitrine">
           <form  id="formFiltro" method="POST" action=""> 
+            <input name="Preco_promo" value="Preco_promo" type="submit">
             <input name="Preco_baixo" value="Preco_baixo" type="submit">
             <input name="Preco_alto" value="Preco_alto" type="submit">
             <input name="ordemAfabetica_desc" value="ordemAfabetica_desc" type="submit">
             <input name="ordemAfabetica_asc" value="ordemAfabetica_asc" type="submit">
+         
           </form>
         	<div class="row">
          
@@ -279,7 +289,9 @@ if(!empty($dados["ordemAfabetica_desc"])){
                                 $id_p = $rows_produtos['id_produtos'];
                                 $nome_p = $rows_produtos['nome_produtos'];
                                 $preco_p = $rows_produtos['preco_produtos'];
+                                $promo_p = $rows_produtos['preco_promo'];
                                 $img_p = $rows_produtos['img_produtos'];
+
 
                                 $array_produto = [ $id_p, $nome_p,  $preco_p ];
 
@@ -299,14 +311,27 @@ if(!empty($dados["ordemAfabetica_desc"])){
                               '
                               <div class="produtoInfo">
                               <p class="Id_produtos_id" id="i_id_'. $id_p.'">ID:' . $rows_produtos['id_produtos'].' </p>
-                              <p class="Nome_produtos_id" id="N_id_'. $id_p.'"> '. $rows_produtos['nome_produtos']. '</p>
-                              <p class="Preco_produtos_id" id="P_id_'. $id_p.'">R$ ' . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). '</p>
-                              <p class="Descricao_produtos_id" id="D_id_'. $id_p.'">Descrição: ' . $rows_produtos['descricao_produtos'].' </p>
+                              <p class="Nome_produtos_id" id="N_id_'. $id_p.'"> '. $rows_produtos['nome_produtos']. '</p>';
+
+                              if(  $promo_p != 0  && $promo_p != null ){
+                                echo '<p class="Preco_produtos_id Promo" id="P_id_'. $id_p.'">R$ ' . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). '</p>';
+                                echo '<p class="Preco_promo_id" id="P_promo_'. $id_p.'"> RS '.number_format($rows_produtos['preco_promo'], 2, ",",".").'</p>';
+                              }
+                              else{
+                              echo '<p class="Preco_produtos_id" id="P_id_'. $id_p.'">R$ ' . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). '</p>';
+                              }
+                              echo '<p class="Descricao_produtos_id" id="D_id_'. $id_p.'">Descrição: ' . $rows_produtos['descricao_produtos'].' </p>
                               </div>
 
                               <button 
                               class="butonn_produtos_id" id="B_id_'. $id_p.'"
-                              onclick="adicionarProduto(`'.$id_p.'`,`'. $nome_p.'`,`'.$preco_p.'`,`'.$img_p.'`)">COMPRAR</button>';
+                              onclick="adicionarProduto(`'.$id_p.'`,`'. $nome_p.'`,';
+                              if( $promo_p != 0  && $promo_p != null){
+                                echo '`'.$promo_p.'`,`'.$img_p.'`)">COMPRAR</button>';
+                              }
+                              else{
+                                echo '`'.$preco_p.'`,`'.$img_p.'`)">COMPRAR</button>';
+                              }
 
                                     
                                //echo "<pre>";

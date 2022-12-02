@@ -1,12 +1,8 @@
-
 .cabecalho {
     position: relative;
     width: 100vw;
     height: 35vh;
-  
-    
     background-image: linear-gradient(to bottom, #cecece, #c9c9c9, #dadada);
-  
     margin-top: 30px;
     margin-bottom: 20px;
     display: flex;
@@ -15,14 +11,15 @@
     background-color: black;
     box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.397);
 }
-.cabecalho img{
+
+.cabecalho img {
     display: block;
     margin: auto;
     height: 35vh;
     z-index: 10;
 }
-  
-.cabecalho > .titulo {
+
+.cabecalho>.titulo {
     position: absolute;
     top: 35%;
     color: white;
@@ -33,12 +30,7 @@
     z-index: 100;
 }
 
-
-
-
-
 #formFiltro {
-
     margin: auto;
     display: flex;
     flex-direction: row;
@@ -94,20 +86,21 @@
     margin: auto auto 5px auto;
 }
 
-.div_produto .produtoInfo{
+.div_produto .produtoInfo {
     font-weight: bold;
     text-align: center;
 }
-.div_produto .produtoInfo p{
+
+.div_produto .produtoInfo p {
     text-transform: capitalize;
 }
 
-.Nome_produtos_id{
+.Nome_produtos_id {
     text-transform: capitalize;
     margin-bottom: 0;
 }
 
-.Preco_produtos_id{
+.Preco_produtos_id {
     color: #03c203;
     font-size: 1.3rem;
 }
@@ -125,7 +118,9 @@
     border: 2px solid #d404d4;
     transition: .5s;
 }
-.Descricao_produtos_id, .Id_produtos_id{
+
+.Descricao_produtos_id,
+.Id_produtos_id {
     display: none;
 }
 
@@ -141,7 +136,6 @@
 }
 
 .adicionou {
-    
     color: aliceblue;
     background-color: #181818;
     position: fixed;
@@ -170,4 +164,17 @@
         opacity: 0;
         visibility: hidden;
     }
+}
+
+.Promo {
+    text-decoration: line-through;
+    margin-bottom: -4%;
+    font-size: 0.8rem;
+    color: #dd5330;
+}
+
+.Preco_promo_id {
+    margin-bottom: 2%;
+    color: #03c203;
+    font-size: 1.3rem;
 }
