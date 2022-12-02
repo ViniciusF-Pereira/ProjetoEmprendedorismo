@@ -26,7 +26,7 @@ $total_produtos = mysqli_num_rows($result_produto_sTotal);
 
 //Seta a quantidade de produtos por pagina
 
-$quantidade_pg = 16;
+$quantidade_pg = 15;
 
 
 //calcular o número de pagina necessárias para apresentar os produtos

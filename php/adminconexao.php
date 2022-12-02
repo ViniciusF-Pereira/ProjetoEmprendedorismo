@@ -42,7 +42,12 @@ if($row_usuarioisAdmin['isAdmin'] == true){
 
 
 
-            header("Location: ../admin/daxhboard.php");
+            echo '
+            <div class="AdminDiv">
+                
+            <button><a href="../admin/daxhboard.php"> PAINEL ADMINISTRATIVO </a></button>
+            
+            </div>';
 
         
             }

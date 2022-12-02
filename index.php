@@ -6,7 +6,7 @@ ob_start();
 
 
 include_once 'php/conexao.php';
-
+include_once 'php/adminconexao.php';
 
 
 
