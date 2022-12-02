@@ -106,6 +106,7 @@ include_once '../php/conexao.php';
     <header>
        <!-- Barra de navegação ------------------------------------------------------  Barra de navegação    -->
        <nav>
+        
       <div class="navContainer">
         <!-- Mobile Hamburguer -->
         <button id="hamburguerBtn" class="navBtn">
@@ -150,12 +151,12 @@ include_once '../php/conexao.php';
              if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                          
                      
-                echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
+                echo  '<a href="../user/login.php"> <i class="fa fa-user"></i></a></span>';
               
               } else {
-                echo  '<span class="menuItem"><a href="dashboard.php">Configurações</a></span>';
+                echo  '<span class="menuItem"><a href="../user/dashboard.php">Configurações</a></span>';
   
-                echo    '<a href="sair.php">SAIR</a>';
+                echo    '<a href="../user/sair.php">SAIR</a>';
               
                            
               }

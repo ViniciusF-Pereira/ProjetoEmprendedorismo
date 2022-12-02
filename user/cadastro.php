@@ -289,6 +289,7 @@ if(isset($_SESSION['msg'])){
 
 
     <!-- Barra de navegação ------------------------------------------------------  Barra de navegação    -->
+  
     <nav>
     <div class="navContainer">
         <!-- Mobile Hamburguer -->
@@ -307,7 +308,7 @@ if(isset($_SESSION['msg'])){
 
         <div class="navMenu">
           <ul class="navItems">
-            <li>
+          <li>
               <div id="produtosListaDropDown">
                 <a> <span>Destaques</span> <i class="fa fa-caret-down"></i> </a>
                 <ul id="produtosListaDropDownUl">
@@ -316,13 +317,12 @@ if(isset($_SESSION['msg'])){
                 </ul>
               </div>
             </li>
+            
 
             <li>
                 <a href="../index.php">Home</a>
             </li>
-            <li>
-              <a href="../products/produtos.php">Produtos</a>
-            </li>
+            
             <li>
                 <a href="../contato/contato.php">Contato</a>
             </li>
@@ -335,21 +335,22 @@ if(isset($_SESSION['msg'])){
           <div class="navItems2">
             <button class="navBtn">
             <?php
-                               if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
-                         
-                     
-                                echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
-                              
-                              } else {
-                                echo  '<span class="menuItem"><a href="dashboard.php">Configurações</a></span>';
+                        if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
+                
                   
-                                echo    '<a href="sair.php">SAIR</a>';
-                              
-                                           
-                              }
+    
+                          echo  '<a href="../user/login.php"> <i class="fa fa-user"></i></a></span>';
+                        }
+                         else {
+            
+                          echo  '<span class="menuItem"><a href="../user/dashboard.php">Configurações</a></span>';
+            
+                          echo    '<a href="../user/sair.php">SAIR</a>';
+                        
+                      }
             ?>
             </button>
-            <button id="abrirCarrinhoBtn" class="navBtn">
+            <button id="abrirCarrinhoBtn" class="navBtn" onclick="">
               <i class="fa fa-cart-shopping"></i>
               <span class="nav2ItemNome">Carrinho</span>
             </button>
@@ -357,8 +358,6 @@ if(isset($_SESSION['msg'])){
         </div>
       </div>
     </nav>
-
-
 
 
 

@@ -140,7 +140,7 @@ include_once '../php/conexao.php';
             <li><a href="../products/produtos.php">Produtos</a></li>
 
             <li>
-              <a href="/contato.php"> Contato </a>
+              <a href="contato.php"> Contato </a>
             </li>
 
             <li>
@@ -154,12 +154,12 @@ include_once '../php/conexao.php';
              if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                          
                      
-                echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
+                echo  '<a href="../user/login.php"> <i class="fa fa-user"></i></a></span>';
               
               } else {
-                echo  '<span class="menuItem"><a href="dashboard.php">Configurações</a></span>';
+                echo  '<span class="menuItem"><a href="../user/dashboard.php">Configurações</a></span>';
   
-                echo    '<a href="sair.php">SAIR</a>';
+                echo    '<a href="../user/sair.php">SAIR</a>';
               
                            
               }

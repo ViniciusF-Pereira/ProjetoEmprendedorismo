@@ -6,7 +6,7 @@ ob_start();
 
 
 include_once '../php/conexao.php';
-include_once '../php/adminconexao.php';
+
 
 
 
@@ -105,6 +105,12 @@ if(!empty($dados["Voltar"])){
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous"
     />
+
+    <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/produtosGrid.css">
+  <link rel="stylesheet" href="../css/promocao.css">
+  <link rel="stylesheet" href="../css/footer.css">
     <title>WOLF FIT</title>
 
 
@@ -119,22 +125,21 @@ if(!empty($dados["Voltar"])){
         <p class="segundoTitulo">
             Frete Grátis, vide as regras | 1ª Troca sem custo* | Entrega realizada em até 7 dias úteis</p>
 
-    </header>
 
-
+</header>
 
   
     <!-- Barra de navegação ------------------------------------------------------  Barra de navegação    -->
     <nav>
-    <div class="navContainer">
+      <div class="navContainer">
         <!-- Mobile Hamburguer -->
         <button id="hamburguerBtn" class="navBtn">
           <i class="fa fa-bars"></i>
         </button>
 
-        <a href="../index.php" class="logoArea">
+        <a href="index.php" class="logoArea">
           <img
-            src="../images/kisspng_gray_wolf_logo_mascot_clip_art_wolf_5ab4467dd78141_1.png"
+            src="./images/kisspng_gray_wolf_logo_mascot_clip_art_wolf_5ab4467dd78141_1.png"
             alt="Logo"
          
           />
@@ -143,40 +148,45 @@ if(!empty($dados["Voltar"])){
 
         <div class="navMenu">
           <ul class="navItems">
+            <li>
+              <div id="produtosListaDropDown">
+                <a> <span>Destaques</span> <i class="fa fa-caret-down"></i> </a>
+                <ul id="produtosListaDropDownUl">
+                  <li id="promocaoBtn">Promoções</li>
+                  <li id="maisVendidosBtn">Mais vendidos</li>
+                </ul>
+              </div>
+            </li>
+
+            <li><a href="../products/produtos.php">Produtos</a></li>
 
             <li>
-                <a href="../index.php">Home</a>
-            </li>
-            <li>
-              <a href="../products/produtos.php">Produtos</a>
-            </li>
-            <li>
-                <a href="../contato/contato.php">Contato</a>
+              <a href="../contato/contato.php"> Contato </a>
             </li>
 
             <li>
-                <a href="../sobre/sobre.php">Sobre</a>
+              <a href="../sobre/sobre.php"> Sobre </a>
             </li>
           </ul>
 
           <div class="navItems2">
             <button class="navBtn">
             <?php
-                       if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
+             if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                          
                      
-                        echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
-                      
-                      } else {
-                        echo  '<span class="menuItem"><a href="dashboard.php">Configurações</a></span>';
-          
-                        echo    '<a href="sair.php">SAIR</a>';
-                      
-                                   
-                      }
+                echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
+              
+              } else {
+                echo  '<span class="menuItem"><a href="dashboard.php">Configurações</a></span>';
+  
+                echo    '<a href="sair.php">SAIR</a>';
+              
+                           
+              }
             ?>
             </button>
-            <button id="abrirCarrinhoBtn" class="navBtn">
+            <button id="abrirCarrinhoBtn" class="navBtn" onclick="">
               <i class="fa fa-cart-shopping"></i>
               <span class="nav2ItemNome">Carrinho</span>
             </button>
@@ -185,6 +195,7 @@ if(!empty($dados["Voltar"])){
       </div>
     </nav>
 
+   
 
     <div class="loginArea">
 

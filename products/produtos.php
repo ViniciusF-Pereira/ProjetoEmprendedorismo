@@ -171,6 +171,15 @@ if(!empty($dados["ordemAfabetica_desc"])){
 
         <div class="navMenu">
           <ul class="navItems">
+          <li>
+              <div id="produtosListaDropDown">
+                <a> <span>Destaques</span> <i class="fa fa-caret-down"></i> </a>
+                <ul id="produtosListaDropDownUl">
+                  <li id="promocaoBtn">Promoções</li>
+                  <li id="maisVendidosBtn">Mais vendidos</li>
+                </ul>
+              </div>
+            </li>
             
 
             <li>
