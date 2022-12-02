@@ -160,7 +160,7 @@ include_once '../php/conexao.php';
                 
                   
     
-                          echo  '<a href="user/login.php"> <i class="fa fa-user"></i><span class="nav2ItemNome">Login</span></a>';
+                          echo  '<a href="../user/login.php"> <i class="fa fa-user"></i><span class="nav2ItemNome">Login</span></a>';
                         }
                          else {
             

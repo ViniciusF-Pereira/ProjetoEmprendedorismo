@@ -210,7 +210,7 @@ if(!empty($dados["ordemAfabetica_desc"])){
                 
                   
     
-                          echo  '<a href="user/login.php"> <i class="fa fa-user"></i><span class="nav2ItemNome">Login</span></a>';
+                          echo  '<a href="../user/login.php"> <i class="fa fa-user"></i><span class="nav2ItemNome">Login</span></a>';
                         }
                          else {
             
