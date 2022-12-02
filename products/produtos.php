@@ -297,6 +297,7 @@ if(!empty($dados["ordemAfabetica_desc"])){
 
                         echo '<div class="Div_produtos_vitrine" id="Produto_id_'. $id_p.'">';
                         echo '<div class="div_produto">
+                        <a href="detalhes.php?product_id='.$id_p.'">
                         <img class= Imagem_produtos_exibidos src="'. $rows_produtos['img_produtos'].'" alt="whey__wolffit">';
 
 
@@ -321,7 +322,7 @@ if(!empty($dados["ordemAfabetica_desc"])){
                               echo '<p class="Preco_produtos_id" id="P_id_'. $id_p.'">R$ ' . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). '</p>';
                               }
                               echo '<p class="Descricao_produtos_id" id="D_id_'. $id_p.'">Descrição: ' . $rows_produtos['descricao_produtos'].' </p>
-                              </div>
+                              </a> </div>
 
                               <button 
                               class="butonn_produtos_id" id="B_id_'. $id_p.'"
@@ -332,15 +333,17 @@ if(!empty($dados["ordemAfabetica_desc"])){
                               else{
                                 echo '`'.$preco_p.'`,`'.$img_p.'`)">COMPRAR</button>';
                               }
-
-                                    
+                        
+                                                      
                                //echo "<pre>";
                               // echo json_encode( $array_produto );
                                //echo "</pre>";
-                               echo '</div>';
+                               echo ' </div>';
                             
                          echo '</div>';       
                         ?>
+                     
+
                               
                             
 						</div>
