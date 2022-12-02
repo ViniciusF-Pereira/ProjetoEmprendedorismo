@@ -340,11 +340,7 @@ if(isset($_SESSION['msg'])){
                      
                                 echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
                               
-                              } else {
-                                echo  '<span class="menuItem"><a href="dashboard.php">Configurações</a></span>';
-                  
-    
-                          echo  '<a href="../user/login.php"> <i class="fa fa-user"></i></a></span>';
+                          
                         }
                          else {
             

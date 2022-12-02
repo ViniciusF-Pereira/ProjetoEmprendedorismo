@@ -256,11 +256,7 @@ if(!empty($dados["ordemAfabetica_desc"])){
 
 
 
-    <div class="cabecalho">
-      <img class="cabecalhoImg" src="../images/background/suplementosBg.jpg" alt="">
-      <h1 class="titulo">Suplementos</h1>
-    </div>
-
+  
 
     <!-- Produtos -->
 

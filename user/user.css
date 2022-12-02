@@ -1,19 +1,17 @@
-
-.loginArea{
+.loginArea {
     position: relative;
     background-color: rgb(216, 216, 216);
     background-image: url(../images/background/carroselBg.jpg);
     background-position: center;
-    
     padding: 30px 0;
 }
 
-h1{
+h1 {
     margin: auto;
     text-align: center;
 }
 
-section{
+section {
     position: relative;
     margin: auto;
     background-color: white;
@@ -21,66 +19,64 @@ section{
     z-index: 500;
 }
 
-.loginContainer{
+.loginContainer {
     padding: 30px;
     width: fit-content;
 }
-.cadastroContainer{
+
+.cadastroContainer {
     width: 500px;
     padding: 30px 45px;
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
 }
-form label{
+
+form label {
     margin-top: 18px;
 }
-form label+input{
+
+form label+input {
     padding: 6px;
     border: 1px solid black;
     margin-bottom: 0;
 }
 
-.btnContainer{
+.btnContainer {
     display: flex;
     flex-direction: column;
 }
 
-.btnContainer > input[type="submit"]{
+.btnContainer>input[type="submit"] {
     padding: 3px;
     margin-top: 9px;
     font-weight: bold;
     cursor: pointer;
     transition: .5s;
-
-    
-    
 }
 
-
-
-.btnContainer > input[type="submit"]:last-of-type{
+.btnContainer>input[type="submit"]:last-of-type {
     border: none;
     background: none;
     text-decoration: underline;
     color: black;
 }
 
-.btnContainer > input[type="submit"]:first-of-type{
+.btnContainer>input[type="submit"]:first-of-type {
     background-color: #04d62e;
     border: 2px solid black;
     color: black;
 }
 
-
-@media screen and (width < 500px){
-
-    .cadastroContainer{
+@media screen and (width < 500px) {
+    .cadastroContainer {
         padding: 25px 40px;
-        
         width: fit-content;
-      
     }
+}
+
+.Div_adicionarEndereco {
+    margin: auto;
 }

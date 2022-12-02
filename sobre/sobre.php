@@ -114,7 +114,7 @@ include_once '../php/conexao.php';
 
         <a href="index.php" class="logoArea">
           <img
-            src="./images/kisspng_gray_wolf_logo_mascot_clip_art_wolf_5ab4467dd78141_1.png"
+            src="../images/kisspng_gray_wolf_logo_mascot_clip_art_wolf_5ab4467dd78141_1.png"
             alt="Logo"
          
           />

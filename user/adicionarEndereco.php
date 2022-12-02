@@ -7,7 +7,6 @@ ob_start();
 
 
 include_once '../php/conexao.php';
-include_once '../php/adminconexao.php';
 
 $__logradouro = '';
 $__bairro = '';
@@ -265,7 +264,7 @@ if(!empty($dados["CadastrarEndereco"])){
 
         <a href="index.php" class="logoArea">
           <img
-            src="./images/kisspng_gray_wolf_logo_mascot_clip_art_wolf_5ab4467dd78141_1.png"
+            src="../images/kisspng_gray_wolf_logo_mascot_clip_art_wolf_5ab4467dd78141_1.png"
             alt="Logo"
          
           />
@@ -284,14 +283,14 @@ if(!empty($dados["CadastrarEndereco"])){
               </div>
             </li>
 
-            <li><a href="./products/produtos.php">Produtos</a></li>
+            <li><a href="../products/produtos.php">Produtos</a></li>
 
             <li>
-              <a href="./contato/contato.php"> Contato </a>
+              <a href="../contato/contato.php"> Contato </a>
             </li>
 
             <li>
-              <a href="sobre/sobre.php"> Sobre </a>
+              <a href="../sobre/sobre.php"> Sobre </a>
             </li>
           </ul>
 
@@ -395,31 +394,31 @@ if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() !=
         
                  
                     <label>CEP:</label>
-                    <input class="inputs_endereco" type="" name="cep" placeholder="DEFINIR CEP"id=""  value="'.$__cep.'">
+                    <input class="inputs_endereco" type="" name="cep" placeholder="Digite o CEP" id=""  value="'.$__cep.'">
                     <input class="inputs_PROCURAR" type="submit" value="PROCURAR" name="getCep"  > 
 
                     
                     
                     <label>logradouro:</label>
-                    <input  class="inputs_endereco" type="" name="logradouro" placeholder="digite o logradouro"id="" value="'.$__logradouro.'">
+                    <input  class="inputs_endereco" type="" name="logradouro" placeholder="Digite o logradouro"id="" value="'.$__logradouro.'">
                     
             
        
                     <label>complemento:</label>
-                    <input class="inputs_endereco" type="" name="complemento" placeholder="digite o complemento"id="" value="">
+                    <input class="inputs_endereco" type="" name="complemento" placeholder="Digite o complemento"id="" value="">
                          
                     <div class="endereco_final">
                       <div>
                           <label>Bairro:</label>
-                         <input class="inputs_endereco" type="" name="bairro" placeholder="digite o logradouro"id="" value="'.$__bairro.'" readonly>
+                         <input class="inputs_endereco" type="" name="bairro" placeholder="Digite o logradouro"id="" value="'.$__bairro.'" readonly>
                       </div>
                       <div>
                          <label>Cidade:</label>
-                         <input class="inputs_endereco" type="" name="localidade" placeholder="digite o logradouro"id="" value="'.$__localidade.'" readonly>
+                         <input class="inputs_endereco" type="" name="localidade" placeholder="Digite o logradouro"id="" value="'.$__localidade.'" readonly>
                       </div>             
                       <div>
                          <label>ESTADO:</label>
-                         <input class="inputs_endereco" type="" name="uf" placeholder="digite o logradouro"id="" value="'.$__uf.'" readonly>
+                         <input class="inputs_endereco" type="" name="uf" placeholder="Digite o logradouro"id="" value="'.$__uf.'" readonly>
                       </div>
                     </div>
                     <BR>
