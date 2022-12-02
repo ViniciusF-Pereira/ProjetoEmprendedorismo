@@ -180,10 +180,12 @@
     }
     
     .Imagem_produto_x {
-        margin-top: 10%;
-        width: 25%;
-        height: 20%;
+        position: absolute;
+        margin-top: 2%;
+        width: 350px;
+        height: 420px;
         margin-left: 10%;
+        border: 1px solid black;
     }
     
     .Id_produto_x {
@@ -192,9 +194,9 @@
     
     .Nome_produto_x {
         position: absolute;
-        left: 45%;
+        left: 50%;
         top: 20%;
-        font-size: 2.4rem;
+        font-size: 2.8rem;
     }
     
     .Preco_produto_x {
@@ -223,11 +225,12 @@
     
     .butonn_produto_x {
         position: absolute;
-        left: 45%;
+        left: 50%;
         top: 40%;
         width: 20%;
         padding: 5px;
         margin-top: 3px;
+        margin-bottom: 10%;
         font-weight: bold;
         border-radius: 30px;
         background-color: #f8fffa;
@@ -239,11 +242,11 @@
     }
     
     .Descricao_produto_x {
-        position: relative;
-        margin-left: 45%;
-        margin-right: 5%;
-        margin-top: -14%;
-        margin-bottom: 8%;
+        position: absolute;
+        margin-top: 20%;
+        margin-right: 4%;
+        margin-left: 40%;
+        margin-bottom: 40%;
         font-size: 1.4rem;
         color: #070707;
         word-break: break-word;
@@ -251,6 +254,9 @@
     
     .produto_x {
         margin-left: 10%;
+        width: 80%;
+        height: 90%;
+        margin-bottom: 45%;
     }
     
     .produtos_x_images {
@@ -266,8 +272,8 @@
     
     .produtos_x_images_1 {
         border: 1px solid black;
-        width: 150px;
-        height: 150px;
-        margin-left: 25px;
-        margin-top: 25px;
+        width: 170px;
+        height: 170px;
+        margin-left: 15px;
+        margin-top: 15px;
     }

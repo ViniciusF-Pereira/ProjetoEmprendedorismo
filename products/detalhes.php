@@ -247,7 +247,8 @@ include_once '../php/conexao.php';
                         echo '<div class="produtos_x_images">
 
                         <img class="produtos_x_images_1" src="'. $img_p1.'" alt="whey__wolffit"> 
-                        <img class="produtos_x_images_1" src="'. $img_p2.'" alt="whey__wolffit"> 
+                        <img class="produtos_x_images_1" src="'; 
+                        if(! $img_p2){echo  $img_p2;}{echo  $img_p1;} echo '" alt="whey__wolffit"> 
                         
                         </div>';
                         echo '<div class="div_produto_x">
