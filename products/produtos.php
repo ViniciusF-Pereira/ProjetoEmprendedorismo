@@ -202,7 +202,7 @@ if(!empty($dados["ordemAfabetica_desc"])){
                 
                   
     
-                          echo  '<a href="../user/login.php"> <i class="fa fa-user"></i></a></span>';
+                          echo  '<a href="user/login.php"> <i class="fa fa-user"></i><span class="nav2ItemNome">Login</span></a>';
                         }
                          else {
             
@@ -256,13 +256,15 @@ if(!empty($dados["ordemAfabetica_desc"])){
 
 
 
+    <div class="cabecalho">
+      <img class="cabecalhoImg" src="../images/background/suplementosBg.jpg" alt="">
+      <h1 class="titulo">Suplementos</h1>
+    </div>
+
 
     <!-- Produtos -->
 
     <div class="container theme-showcase" role="main">
-			<div class="page-header">
-				<h1>Produtos</h1>
-			</div>
             <div class= "Vitrine">
           <form  id="formFiltro" method="POST" action=""> 
             <input name="Preco_baixo" value="Preco_baixo" type="submit">
@@ -299,10 +301,12 @@ if(!empty($dados["ordemAfabetica_desc"])){
                       
                               echo 
                               '
+                              <div class="produtoInfo">
                               <p class="Id_produtos_id" id="i_id_'. $id_p.'">ID:' . $rows_produtos['id_produtos'].' </p>
-                              <p class="Nome_produtos_id" id="N_id_'. $id_p.'">Nome: '. $rows_produtos['nome_produtos']. '</p>
-                              <p class="Preco_produtos_id" id="P_id_'. $id_p.'">Preco: ' . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). '</p>
+                              <p class="Nome_produtos_id" id="N_id_'. $id_p.'"> '. $rows_produtos['nome_produtos']. '</p>
+                              <p class="Preco_produtos_id" id="P_id_'. $id_p.'">R$ ' . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). '</p>
                               <p class="Descricao_produtos_id" id="D_id_'. $id_p.'">Descrição: ' . $rows_produtos['descricao_produtos'].' </p>
+                              </div>
 
                               <button 
                               class="butonn_produtos_id" id="B_id_'. $id_p.'"
@@ -321,7 +325,12 @@ if(!empty($dados["ordemAfabetica_desc"])){
 						</div>
 					</div>
 				<?php } ?>
-        <div class="adicionou">Produto Adicionado</div>
+        <div class="adicionou">Produto Adicionado 
+          <i class="fas fa-cart-fill"></i>
+          <i class="fas fa-check-circle-fill"></i>
+         </div>
+
+
 			    </div>
             </div>
 			<?php
@@ -422,6 +431,7 @@ if(!empty($dados["ordemAfabetica_desc"])){
     </footer>
 
 
+    <script src="../script/hamburguer.js"></script>
 </body>
 
 

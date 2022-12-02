@@ -91,15 +91,6 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
         <div class="navMenu">
           <ul class="navItems">
-            <li>
-              <div id="produtosListaDropDown">
-                <a> <span>Destaques</span> <i class="fa fa-caret-down"></i> </a>
-                <ul id="produtosListaDropDownUl">
-                  <li id="promocaoBtn">Promoções</li>
-                  <li id="maisVendidosBtn">Mais vendidos</li>
-                </ul>
-              </div>
-            </li>
 
             <li><a href="./products/produtos.php">Produtos</a></li>
 
@@ -118,7 +109,7 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
              if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                          
                      
-                echo  '<a href="user/login.php"> <i class="fa fa-user"></i></a></span>';
+                echo  '<a href="user/login.php"> <i class="fa fa-user"></i><span class="nav2ItemNome">Login</span></a>';
               
               } else {
                 echo  '<span class="menuItem"><a href="user/dashboard.php">Configurações</a></span>';
@@ -330,31 +321,31 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
         <section class="listaDeProdutos">
           <div class="cardProduto produto1">
-            <img src="images/gold-whey.png" alt="Pote de creatina" />
+            <img src="images/gold-whey.png" alt=">Whey gold Standard" />
             <div class="cardProdutoInfo">
-              <h6 class="tituloProduto">Whey gold Standart</h6>
+              <h6 class="tituloProduto">Whey gold Standard</h6>
               <h5 class="preçoProduto">R$349,90</h5>
             </div>
           </div>
 
           <div class="cardProduto produto2">
-            <img src="images/gold-whey.png" alt="Pote de creatina" />
+            <img src="images/whey.png" alt="Wolf-Fit Whey" />
             <div class="cardProdutoInfo">
-              <h6 class="tituloProduto">Whey gold Standart</h6>
-              <h5 class="preçoProduto">R$349,90</h5>
+              <h6 class="tituloProduto">Wolf-Fit Whey</h6>
+              <h5 class="preçoProduto">R$174,99</h5>
             </div>
           </div>
 
           <div class="cardProduto produto3">
-            <img src="images/gold-whey.png" alt="Pote de creatina" />
+            <img src="images/gold-whey.png" alt=">Whey gold Standard" />
             <div class="cardProdutoInfo">
-              <h6 class="tituloProduto">Whey gold Standart</h6>
+              <h6 class="tituloProduto">Whey gold Standard</h6>
               <h5 class="preçoProduto">R$349,90</h5>
             </div>
           </div>
 
           <div class="cardProduto produto4">
-            <img src="images/barra-proteina.png" alt="Pote de creatina" />
+            <img src="images/barra-proteina.png" alt="Whey Protein bar" />
             <div class="cardProdutoInfo">
               <h6 class="tituloProduto">Whey Protein bar</h6>
               <h5 class="preçoProduto">R$19,90</h5>
@@ -375,11 +366,11 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
           </div>
 
           <div class="cardProduto produto2">
-            <img src="images/creatina2.jpg" alt="Pote de creatina" />
+            <img src="images/creatina.png" alt="Creatina Wolf-Fit" />
 
             <div class="cardProdutoInfo">
-              <h6 class="tituloProduto">Creatina hardcore</h6>
-              <h5 class="preçoProduto">R$299,90</h5>
+              <h6 class="tituloProduto">Creatina Wolf-Fit</h6>
+              <h5 class="preçoProduto">R$174,99</h5>
             </div>
           </div>
 
@@ -393,7 +384,7 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
           </div>
 
           <div class="cardProduto produto4">
-            <img src="images/barra-proteina.png" alt="Pote de creatina" />
+            <img src="images/barra-proteina.png" alt="Whey Protein bara" />
             <div class="cardProdutoInfo">
               <h6 class="tituloProduto">Whey Protein bar</h6>
               <h5 class="preçoProduto">R$19,90</h5>
@@ -461,16 +452,16 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
   <!-- Categoria de produtos -->
   <div class="categoriaDeProdutosContainer">
-    <div class="categoriaDeProdutos">
+    <a href="./products/produtos.php" class="categoriaDeProdutos">
       <div class="overlay"></div>
       <h3 class="categoriaDeProdutosTitulo">Suplementos</h3>
-    </div>
+    </a>
 
-    <div class="categoriaDeProdutos">
+    <a href="./products/produtos.php" class="categoriaDeProdutos">
       <div class="overlay"></div>
       <h3 class="categoriaDeProdutosTitulo">Equipamentos</h3>
     </div>
-  </div>
+  </a>
 
   <section class="descricaoProdutosSection wheyDescricao">
     <h3>WheyProtein</h3>
@@ -567,6 +558,7 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 
 <script src="script/carrinho.js"></script>
+<script src="script/hamburguer.js"></script>
 
 </body>
 

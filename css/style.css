@@ -13,7 +13,7 @@ html,
 body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 .overlay {
@@ -525,11 +525,7 @@ header p {
 }
 
 @media screen and (width < 460px) {
-    /* Div com os produtos em promoção */
-    .produtoDestaque img {
-        width: 80px;
-        height: 120px;
-    }
+    
     .listaDeProdutos {
         gap: 0;
     }
@@ -560,10 +556,10 @@ header p {
         justify-content: center;
     }
     .produtoDescricao .descricaoTexto {
-        width: 90%;
+        width: 90%!important;
     }
     .produtoDescricao img {
-        width: 90%;
+        width: 90%!important;
         margin-bottom: 25px;
     }
 }

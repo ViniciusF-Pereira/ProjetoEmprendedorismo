@@ -24,10 +24,9 @@ include_once '../php/conexao.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../css/style.css">
-    
     <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="sobre.css">
+    <link rel="stylesheet" href="../css/footer.css">
 
 	<link
       href="https://fonts.googleapis.com/css?family=Inter&display=swap"
@@ -148,19 +147,19 @@ include_once '../php/conexao.php';
           <div class="navItems2">
             <button class="navBtn">
             <?php
-             if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
-                         
-                     
-                echo  '<a href="../user/login.php"> <i class="fa fa-user"></i></a></span>';
-              
-              } else {
-                echo  '<span class="menuItem"><a href="../user/dashboard.php">Configurações</a></span>';
-  
-                echo    '<a href="../user/sair.php">SAIR</a>';
-              
-                           
-              }
-            ?>
+                      if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
+                
+                  
+    
+                        echo  '<a href="../user/login.php"> <i class="fa fa-user"></i></a></span>';                      }
+                       else {
+          
+                        echo  '<span class="menuItem"><a href="../user/dashboard.php">Configurações</a></span>';
+          
+                        echo    '<a href="../user/sair.php">SAIR</a>';
+                      
+                    }
+                ?>
             </button>
             <button id="abrirCarrinhoBtn" class="navBtn" onclick="">
               <i class="fa fa-cart-shopping"></i>
@@ -268,8 +267,7 @@ include_once '../php/conexao.php';
       </div>
       <div>Wolf-Fit suplementos LTDA©2022</div>
     </footer>
+    <script src="../script/hamburguer.js"></script>
   </body>
-
-  <script src="../../JS/hamburguerBtn.js"></script>
   <script src="../../JS/carrinho.js"></script>
 </html>

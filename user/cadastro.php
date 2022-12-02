@@ -220,6 +220,7 @@ if(isset($_SESSION['msg'])){
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="user.css">
 
     
@@ -308,7 +309,7 @@ if(isset($_SESSION['msg'])){
 
         <div class="navMenu">
           <ul class="navItems">
-          <li>
+            <li>
               <div id="produtosListaDropDown">
                 <a> <span>Destaques</span> <i class="fa fa-caret-down"></i> </a>
                 <ul id="produtosListaDropDownUl">
@@ -317,7 +318,6 @@ if(isset($_SESSION['msg'])){
                 </ul>
               </div>
             </li>
-            
 
             <li>
                 <a href="../index.php">Home</a>
@@ -335,8 +335,13 @@ if(isset($_SESSION['msg'])){
           <div class="navItems2">
             <button class="navBtn">
             <?php
-                        if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
-                
+                               if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
+                         
+                     
+                                echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
+                              
+                              } else {
+                                echo  '<span class="menuItem"><a href="dashboard.php">Configurações</a></span>';
                   
     
                           echo  '<a href="../user/login.php"> <i class="fa fa-user"></i></a></span>';
@@ -358,6 +363,8 @@ if(isset($_SESSION['msg'])){
         </div>
       </div>
     </nav>
+
+
 
 
 
@@ -411,12 +418,72 @@ if(isset($_SESSION['msg'])){
 
     </section>
 
+      <div class="overlay"></div>
+    </div>
+
+
 
     <!-- Footer -->
     <footer>
-        Wolf-Fit suplementos LTDA©2022
+      <div class="cadastroEmail">
+        <p>
+          <i class="fas fa-envelope"></i> RECEBA OFERTAS E NOVIDADES POR E-MAIL:
+        </p>
+
+        <form>
+          <input type="email" placeholder="E-mail" />
+          <button class="cadastrarBtn">Cadastrar</button>
+        </form>
+      </div>
+
+      <div class="creditos">
+        <div class="criadores">
+          <h5>Criadores</h5>
+          <a href="https://github.com/Alcantara-Diego" target="_blank"
+            >Diego Alcântara</a
+          >
+          <a href="https://github.com/jhoneshark" target="_blank">Jhoneshark</a>
+          <a href="https://github.com/Claitonok" target="_blank"
+            >Claiton Silva</a
+          >
+          <a href="https://github.com/Digao46" target="_blank">Diogo Melo</a>
+        </div>
+
+        <div class="extras">
+          <h5>Extras</h5>
+          <a href="https://www.instagram.com/wolffit848/" target="_blank"
+            >Instagram <i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="/components/sobre/sobre.html"> Sobre Nós</a>
+          <a href="/components/contato/contato.html">Fale Conosco</a>
+        </div>
+
+        <div class="imagens">
+          <h5>Imagens</h5>
+
+          <a
+            href="https://unsplash.com/@sxoxm?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+            >Sven Mieke</a
+          >
+
+          <a
+            href="https://www.freepik.com/free-psd/protein-powder-container-mockup_17197932.htm#query=whey&position=5&from_view=search&track=sph"
+            target="_blank"
+            >xvector</a
+          >
+
+          <a
+            href="https://unsplash.com/@visualsbyroyalz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+            target="_blank"
+            >Anastase Maragos</a
+          >
+        </div>
+      </div>
+      <div>Wolf-Fit suplementos LTDA©2022</div>
     </footer>
 
+
+    <script src="../script/hamburguer.js"></script>
 
 </body>
 
