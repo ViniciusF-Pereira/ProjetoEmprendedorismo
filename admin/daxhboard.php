@@ -338,9 +338,33 @@ if(!empty($dados["CadastrarEndereco"])){
 
 
 
-    <!-- Footer -->
-    <footer>
-        Wolf-Fit suplementos LTDA©2022
+ <footer>
+      <div class="cadastroEmail">
+        <p>
+          <i class="fas fa-envelope"></i> RECEBA OFERTAS E NOVIDADES POR E-MAIL:
+        </p>
+
+        <form>
+          <input type="email" placeholder="E-mail" />
+          <button class="cadastrarBtn">Cadastrar</button>
+        </form>
+      </div>
+
+      <div class="creditos">
+      
+        <div class="extras">
+          <h5>Extras</h5>
+          <a href="https://www.instagram.com/wolffit848/" target="_blank"
+            >Instagram <i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="../sobre/sobre.php"> Sobre Nós</a>
+          <a href="../contato/contato.php">Fale Conosco</a>
+        </div>
+
+                    
+        </div>
+      </div>
+      <div>Wolf-Fit suplementos LTDA©2022</div>
     </footer>
 
 

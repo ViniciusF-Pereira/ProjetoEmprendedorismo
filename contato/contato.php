@@ -135,15 +135,14 @@ include_once '../php/conexao.php';
                   <li id="maisVendidosBtn">Mais vendidos</li>
                 </ul>
               </div>
+              <li>
+              <a href="../index.php"> Home </a>
+            </li>
+
             </li>
 
             <li><a href="../products/produtos.php">Produtos</a></li>
-
-            <li>
-              <a href="contato.php"> Contato </a>
-            </li>
-
-            <li>
+                <li>
               <a href="../sobre/sobre.php"> Sobre </a>
             </li>
           </ul>
@@ -301,18 +300,7 @@ include_once '../php/conexao.php';
       </div>
 
       <div class="creditos">
-        <div class="criadores">
-          <h5>Criadores</h5>
-          <a href="https://github.com/Alcantara-Diego" target="_blank"
-            >Diego Alcântara</a
-          >
-          <a href="https://github.com/jhoneshark" target="_blank">Jhoneshark</a>
-          <a href="https://github.com/Claitonok" target="_blank"
-            >Claiton Silva</a
-          >
-          <a href="https://github.com/Digao46" target="_blank">Diogo Melo</a>
-        </div>
-
+      
         <div class="extras">
           <h5>Extras</h5>
           <a href="https://www.instagram.com/wolffit848/" target="_blank"
@@ -322,30 +310,11 @@ include_once '../php/conexao.php';
           <a href="../contato/contato.php">Fale Conosco</a>
         </div>
 
-        <div class="imagens">
-          <h5>Imagens</h5>
-
-          <a
-            href="https://unsplash.com/@sxoxm?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-            >Sven Mieke</a
-          >
-
-          <a
-            href="https://www.freepik.com/free-psd/protein-powder-container-mockup_17197932.htm#query=whey&position=5&from_view=search&track=sph"
-            target="_blank"
-            >xvector</a
-          >
-
-          <a
-            href="https://unsplash.com/@visualsbyroyalz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-            target="_blank"
-            >Anastase Maragos</a
-          >
+                    
         </div>
       </div>
       <div>Wolf-Fit suplementos LTDA©2022</div>
     </footer>
-
     <script src="../script/hamburguer.js"></script>
 </body>
 
