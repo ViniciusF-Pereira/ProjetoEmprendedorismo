@@ -1,14 +1,7 @@
 <?php 
 
 
-if(isset($_GET['product_id']) && $_GET['product_id'] !== ''){
-  $product_id = $_GET['product_id'];
-  echo $product_id;
-} else {
-  echo "failed";
-}
-?>
-<?php
+
 
 
 session_start();
@@ -35,7 +28,7 @@ include_once '../php/conexao.php';
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="sobre.css">
+    <link rel="stylesheet" href="produtos.css">
     <link rel="stylesheet" href="../css/footer.css">
 
 	<link
@@ -114,15 +107,15 @@ include_once '../php/conexao.php';
   <body>
     <header>
        <!-- Barra de navegação ------------------------------------------------------  Barra de navegação    -->
+      
        <nav>
-        
-      <div class="navContainer">
+    <div class="navContainer">
         <!-- Mobile Hamburguer -->
         <button id="hamburguerBtn" class="navBtn">
           <i class="fa fa-bars"></i>
         </button>
 
-        <a href="index.php" class="logoArea">
+        <a href="../index.php" class="logoArea">
           <img
             src="../images/kisspng_gray_wolf_logo_mascot_clip_art_wolf_5ab4467dd78141_1.png"
             alt="Logo"
@@ -133,7 +126,7 @@ include_once '../php/conexao.php';
 
         <div class="navMenu">
           <ul class="navItems">
-            <li>
+          <li>
               <div id="produtosListaDropDown">
                 <a> <span>Destaques</span> <i class="fa fa-caret-down"></i> </a>
                 <ul id="produtosListaDropDownUl">
@@ -141,35 +134,42 @@ include_once '../php/conexao.php';
                   <li id="maisVendidosBtn">Mais vendidos</li>
                 </ul>
               </div>
-              <li>
-              <a href="../index.php"> Home </a>
             </li>
-            </li>
-
-            <li><a href="../products/produtos.php">Produtos</a></li>
+            
 
             <li>
-              <a href="../contato/contato.php"> Contato </a>
+                <a href="../index.php">Home</a>
             </li>
-         
+             
+            <li>
+                <a href="produtos.php">Produtos</a>
+            </li>
+            <li>
+                <a href="../contato/contato.php">Contato</a>
+            </li>
+
+            <li>
+                <a href="../sobre/sobre.php">Sobre</a>
+            </li>
           </ul>
 
           <div class="navItems2">
             <button class="navBtn">
             <?php
-                      if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
+                        if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                 
                   
     
-                        echo  '<a href="../user/login.php"> <i class="fa fa-user"></i></a></span>';                      }
-                       else {
-          
-                        echo  '<span class="menuItem"><a href="../user/dashboard.php">Configurações</a></span>';
-          
-                        echo    '<a href="../user/sair.php">SAIR</a>';
-                      
-                    }
-                ?>
+                          echo  '<a href="user/login.php"> <i class="fa fa-user"></i><span class="nav2ItemNome">Login</span></a>';
+                        }
+                         else {
+            
+                          echo  '<span class="menuItem"><a href="../user/dashboard.php">Configurações</a></span>';
+            
+                          echo    '<a href="../user/sair.php">SAIR</a>';
+                        
+                      }
+            ?>
             </button>
             <button id="abrirCarrinhoBtn" class="navBtn" onclick="">
               <i class="fa fa-cart-shopping"></i>
@@ -179,6 +179,39 @@ include_once '../php/conexao.php';
         </div>
       </div>
     </nav>
+
+   
+  <div id="botao__carinho" class="botao__carinho">
+      <h3>Carrinho <i class="fa fa-cart-shopping"></i></h3>
+      <button
+        type="button"
+        class="limparCarrinhoBtn"
+        onclick=" localStorage.clear(); location.reload();"
+      >
+        Limpar
+      </button>
+      <button
+        type="button"
+        class="limparCarrinhoBtn"
+        onclick=" location.reload();"
+      >
+        Atualizar
+      </button>
+      <div>Total R$: <span id="total"></span> </div>            
+      <div id="botao__carinho___tabela">
+      <div id="itens"> </div>
+      <div class="total2">Total R$: <span id="total2"></span> 
+      <input type="hidden" value="" id="total_full"></input></div>
+        
+      </div>
+
+      
+
+      
+
+      <button id="fecharCarrinhoBtn"><i class="fa fa-close"></i></button>
+    </div>
+
           
     </header>
     <section class="produto_x">
@@ -188,6 +221,15 @@ include_once '../php/conexao.php';
 						<div class="thumbnail">
                  
                        <?php
+                       if(isset($_GET['product_id']) && $_GET['product_id'] !== ''){
+                        $product_id = $_GET['product_id'];
+                       
+                                          
+                        
+                                $result_produtos_query = "SELECT * FROM produtos WHERE id_produtos  = $product_id ";
+                                $result_produto_sTotal = mysqli_query($connect, $result_produtos_query);
+
+                                $rows_produtos = mysqli_fetch_assoc($result_produto_sTotal);
 
                                 $id_p = $rows_produtos['id_produtos'];
                                 $nome_p = $rows_produtos['nome_produtos'];
@@ -195,13 +237,22 @@ include_once '../php/conexao.php';
                                 $promo_p = $rows_produtos['preco_promo'];
                                 $img_p = $rows_produtos['img_produtos'];
 
+                                $img_p1 = $rows_produtos['img_produtos'];
+                                $img_p2 = $rows_produtos['img_produtos2'];
+
 
                                 $array_produto = [ $id_p, $nome_p,  $preco_p ];
 
-                        echo '<div class="Div_produtos_vitrine" id="Produto_id_'. $id_p.'">';
-                        echo '<div class="div_produto">
+                        echo '<div class="Div_produto_x_vitrine" id="Produto_id_'. $id_p.'">';
+                        echo '<div class="produtos_x_images">
+
+                        <img class="produtos_x_images_1" src="'. $img_p1.'" alt="whey__wolffit"> 
+                        <img class="produtos_x_images_1" src="'. $img_p2.'" alt="whey__wolffit"> 
+                        
+                        </div>';
+                        echo '<div class="div_produto_x">
                         <a href="detalhes.php?product_id='.$id_p.'">
-                        <img class= Imagem_produtos_exibidos src="'. $rows_produtos['img_produtos'].'" alt="whey__wolffit">';
+                        <img class="Imagem_produto_x" src="'. $img_p.'" alt="whey__wolffit"> </a>';
 
 
                         echo '
@@ -214,21 +265,22 @@ include_once '../php/conexao.php';
                               echo 
                               '
                               <div class="produtoInfo">
-                              <p class="Id_produtos_id" id="i_id_'. $id_p.'">ID:' . $rows_produtos['id_produtos'].' </p>
-                              <p class="Nome_produtos_id" id="N_id_'. $id_p.'"> '. $rows_produtos['nome_produtos']. '</p>';
+                              <p class="Id_produto_x" id="i_id_'. $id_p.'">ID:' . $rows_produtos['id_produtos'].' </p>
+                              <p class="Nome_produto_x" id="N_id_'. $id_p.'"> '. $rows_produtos['nome_produtos']. '</p>';
 
                               if(  $promo_p != 0  && $promo_p != null ){
-                                echo '<p class="Preco_produtos_id Promo" id="P_id_'. $id_p.'">R$ ' . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). '</p>';
-                                echo '<p class="Preco_promo_id" id="P_promo_'. $id_p.'"> RS '.number_format($rows_produtos['preco_promo'], 2, ",",".").'</p>';
+                                echo '<p class="Preco_produto_x Promo_x" id="P_id_'. $id_p.'">R$ ' . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). '</p>';
+                                echo '<p class="Promo_produto_x" id="P_promo_'. $id_p.'"> RS '.number_format($rows_produtos['preco_promo'], 2, ",",".").'</p>';
                               }
                               else{
-                              echo '<p class="Preco_produtos_id" id="P_id_'. $id_p.'">R$ ' . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). '</p>';
+                              echo '<p class="Preco_produto_x" id="P_id_'. $id_p.'">R$ ' . number_format($rows_produtos['preco_produtos'], 2, ",",'.'). '</p>';
                               }
-                              echo '<p class="Descricao_produtos_id" id="D_id_'. $id_p.'">Descrição: ' . $rows_produtos['descricao_produtos'].' </p>
-                              </a> </div>
+
+                              echo '<p class="Descricao_produto_x" id="D_id_'. $id_p.'">Descrição: ' . $rows_produtos['descricao_produtos'].' </p>
+                              </div>
 
                               <button 
-                              class="butonn_produtos_id" id="B_id_'. $id_p.'"
+                              class="butonn_produto_x" id="B_id_'. $id_p.'"
                               onclick="adicionarProduto(`'.$id_p.'`,`'. $nome_p.'`,';
                               if( $promo_p != 0  && $promo_p != null){
                                 echo '`'.$promo_p.'`,`'.$img_p.'`)">COMPRAR</button>';
@@ -243,7 +295,11 @@ include_once '../php/conexao.php';
                                //echo "</pre>";
                                echo ' </div>';
                             
-                         echo '</div>';       
+                         echo '</div>';  
+                         
+                        } else {
+                            echo "failed";
+                          }
                         ?>
                      
 
@@ -255,6 +311,11 @@ include_once '../php/conexao.php';
 
         
         </div>
+
+        <div class="adicionou">Produto Adicionado 
+          <i class="fas fa-cart-fill"></i>
+          <i class="fas fa-check-circle-fill"></i>
+         </div>
     </section>
  
 
@@ -289,5 +350,5 @@ include_once '../php/conexao.php';
     </footer>
     <script src="../script/hamburguer.js"></script>
   </body>
-  <script src="../../JS/carrinho.js"></script>
+  <script type="text/javascript" src="../script/carrinho.js"> </script>
 </html>

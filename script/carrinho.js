@@ -143,7 +143,7 @@ function adicionarProduto(id_p, nome_p, preco_p, img_p) {
 
         adicionou = document.querySelector('.adicionou');
 
-        adicionou.style.top = clickY + (-300) + 'px';
+        adicionou.style.top = clickY + (-150) + 'px';
         adicionou.style.left = clickX + (-50) + 'px';
 
 
