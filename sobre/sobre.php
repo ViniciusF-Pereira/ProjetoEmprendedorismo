@@ -105,16 +105,16 @@ include_once '../php/conexao.php';
   <body>
     <header>
        <!-- Barra de navegação ------------------------------------------------------  Barra de navegação    -->
- <nav>
-    <div class="navContainer">
+       <nav>
+      <div class="navContainer">
         <!-- Mobile Hamburguer -->
         <button id="hamburguerBtn" class="navBtn">
           <i class="fa fa-bars"></i>
         </button>
 
-        <a href="../index.php" class="logoArea">
+        <a href="index.php" class="logoArea">
           <img
-            src="../images/kisspng_gray_wolf_logo_mascot_clip_art_wolf_5ab4467dd78141_1.png"
+            src="./images/kisspng_gray_wolf_logo_mascot_clip_art_wolf_5ab4467dd78141_1.png"
             alt="Logo"
          
           />
@@ -123,36 +123,52 @@ include_once '../php/conexao.php';
 
         <div class="navMenu">
           <ul class="navItems">
+            <li>
+              <div id="produtosListaDropDown">
+                <a> <span>Destaques</span> <i class="fa fa-caret-down"></i> </a>
+                <ul id="produtosListaDropDownUl">
+                  <li id="promocaoBtn">Promoções</li>
+                  <li id="maisVendidosBtn">Mais vendidos</li>
+                </ul>
+              </div>
+            </li>
+
+            <li><a href="../products/produtos.php">Produtos</a></li>
 
             <li>
-                <a href="../index.php">Home</a>
-            </li>
-            <li>
-              <a href="../products/produtos.php">Produtos</a>
-            </li>
-            <li>
-                <a href="../contato/contato.php">Contato</a>
+              <a href="../contato/contato.php"> Contato </a>
             </li>
 
+            <li>
+              <a href="sobre.php"> Sobre </a>
+            </li>
           </ul>
 
           <div class="navItems2">
             <button class="navBtn">
             <?php
-                      if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
-                
-                  
-    
-                        echo  '<a href="../user/login.php"> <i class="fa fa-user"></i></a></span>';                      }
-                       else {
-          
-                        echo  '<span class="menuItem"><a href="../user/dashboard.php">Configurações</a></span>';
-          
-                        echo    '<a href="../user/sair.php">SAIR</a>';
-                      
-                    }
-                ?>
+             if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
+                         
+                     
+                echo  '<a href="login.php"> <i class="fa fa-user"></i></a></span>';
+              
+              } else {
+                echo  '<span class="menuItem"><a href="dashboard.php">Configurações</a></span>';
+  
+                echo    '<a href="sair.php">SAIR</a>';
+              
+                           
+              }
+            ?>
             </button>
+            <button id="abrirCarrinhoBtn" class="navBtn" onclick="">
+              <i class="fa fa-cart-shopping"></i>
+              <span class="nav2ItemNome">Carrinho</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
           
     </header>
 

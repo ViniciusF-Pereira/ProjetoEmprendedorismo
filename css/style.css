@@ -764,3 +764,8 @@ header p {
     position: relative;
     left: 140%;
 }
+
+.menuItem {
+    right: 22%;
+    position: absolute;
+}
