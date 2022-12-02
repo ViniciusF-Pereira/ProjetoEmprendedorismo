@@ -246,14 +246,14 @@ include_once '../php/conexao.php';
                         echo '<div class="Div_produto_x_vitrine" id="Produto_id_'. $id_p.'">';
                         echo '<div class="produtos_x_images">
 
-                        <img class="produtos_x_images_1" src="'. $img_p1.'" alt="whey__wolffit"> 
-                        <img class="produtos_x_images_1" src="'; 
-                        if(! $img_p2){echo  $img_p2;}{echo  $img_p1;} echo '" alt="whey__wolffit"> 
+                        <img class="produtos_x_images_1" onclick= "myScript(1)" src="'. $img_p1.'"> 
+                        <img class="produtos_x_images_2" onclick= "myScript(2)" 
+                        src="'.$img_p2.'" > 
                         
-                        </div>';
+                        </div>'; 
                         echo '<div class="div_produto_x">
                         <a href="detalhes.php?product_id='.$id_p.'">
-                        <img class="Imagem_produto_x" src="'. $img_p.'" alt="whey__wolffit"> </a>';
+                        <img class="Imagem_produto_x" src="'. $img_p.'"> </a>';
 
 
                         echo '
@@ -352,4 +352,5 @@ include_once '../php/conexao.php';
     <script src="../script/hamburguer.js"></script>
   </body>
   <script type="text/javascript" src="../script/carrinho.js"> </script>
+  <script src="script.js"></script>
 </html>
