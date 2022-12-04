@@ -89,12 +89,12 @@ function adicionarProduto(id_p, nome_p, preco_p, img_p) {
                     `<div class="CartaoCarrinho" id="produto${id_p}"> 
                         <ul id="carrinhoLista">
                         <li class="carrinhoItem" id="carrinhoItem${id_p}">
-                            <img class="produto_id${id_p}" 
+                            <img class="produto_id produto_id${id_p}" 
                             src="${img_p}" alt="">
                             <div class="produtoInfo">
                             <button id="button_id${oid}" class"button_id" onclick="removerProduto(${oid})" 
                             style=" margin-left: 50%;     
-                            width: 50%;"
+                            width: 20%;"
                             >DELETAR</button>
                             
 
@@ -230,12 +230,12 @@ function carrinho() {
             document.getElementById("itens").innerHTML +=
                 `<div class="CartaoCarrinho" id="produto${oid}"> <ul id="carrinhoLista">
             <li class="carrinhoItem" id="carrinhoItem${i}">
-                <img class="produto_id${localStorage.getItem("produto_id" + i)}" 
+                <img class="produto_id produto_id${localStorage.getItem("produto_id" + i)}" 
                 src="${img}" alt="">
                 <div class="produtoInfo">
                 <button id="button_id${oid}" class"button_id" onclick="removerProduto(${oid})" 
                 style=" margin-left: 50%;     
-                width: 50%;"
+                max-width: 50%;"
                 >DELETAR</button>
                 
 

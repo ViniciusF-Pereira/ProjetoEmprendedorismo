@@ -1,0 +1,46 @@
+.produto_id {
+    width: 100px;
+    height: 100px;
+}
+
+.carrinhoItem button {
+    max-width: 50%;
+    height: 40px;
+    margin-top: 0%;
+    margin-left: 36%;
+    position: absolute;
+}
+
+.carrinhoItem {
+    margin-top: 2%;
+    padding: 0;
+}
+
+.CartaoCarrinho {
+    background-color: white;
+    border: 1px solid black;
+    padding: 2%;
+}
+
+#itens {
+    margin: 5% 5% 5% 5%;
+    border: 1px solid black;
+    padding: 0.1%;
+    max-width: 10%;
+    min-width: 50%;
+    background-color: #d404d4;
+}
+
+.titulo {
+    margin-left: 25%;
+    margin-top: -18%;
+    margin-bottom: 10%;
+}
+
+.botoesai {
+    position: absolute;
+    margin-left: 13%;
+    margin-top: -6%;
+}
+
+.botoesai button {}
