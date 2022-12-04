@@ -360,6 +360,36 @@ if(isset($_SESSION['msg'])){
       </div>
     </nav>
 
+    <div id="botao__carinho" class="botao__carinho">
+      <h3>Carrinho <i class="fa fa-cart-shopping"></i></h3>
+      <button
+        type="button"
+        class="limparCarrinhoBtn"
+        onclick=" localStorage.clear(); location.reload();"
+      >
+        Limpar
+      </button>
+      <button
+        type="button"
+        class="limparCarrinhoBtn"
+        onclick=" location.reload();"
+      >
+        Atualizar
+      </button>
+      <div>Total R$: <span id="total"></span> </div>            
+      <div id="botao__carinho___tabela">
+      <div id="itens"> </div>
+      <div class="total2">Total R$: <span id="total2"></span> 
+      <input type="hidden" value="" id="total_full"></input></div>
+        
+      </div>
+
+      
+
+      
+
+      <button id="fecharCarrinhoBtn"><i class="fa fa-close"></i></button>
+    </div>
 
 
 

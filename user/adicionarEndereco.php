@@ -17,41 +17,7 @@ $__nome_endereco = '';
 
 
 
-if((!($_SESSION['id'])) AND (!($_SESSION['nome']))){
 
-  $_SESSION['msg']= "<p style='color: #ff0000'> Erro, pagina restrida; Usuário não conectado]! </p>";
-
-  header("Location: ../index.php");
-
-
-  
-  if(isset($_SESSION['msg'])){
-      echo $_SESSION['msg'];
-      unset ($_SESSION['msg']);
-  }
-
-  
-
-}
-
-
-
-if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
-
-    $_SESSION['msg']= "<p style='color: #ff0000'> Erro, pagina restrida; Usuário não conectado]! </p>";
-
-    header("Location: ../index.php");
-
-
-    
-    if(isset($_SESSION['msg'])){
-        echo $_SESSION['msg'];
-        unset ($_SESSION['msg']);
-    }
-
-    
-
-}
 
 ?>
 
@@ -320,6 +286,36 @@ if(!empty($dados["CadastrarEndereco"])){
       </div>
     </nav>
 
+    <div id="botao__carinho" class="botao__carinho">
+      <h3>Carrinho <i class="fa fa-cart-shopping"></i></h3>
+      <button
+        type="button"
+        class="limparCarrinhoBtn"
+        onclick=" localStorage.clear(); location.reload();"
+      >
+        Limpar
+      </button>
+      <button
+        type="button"
+        class="limparCarrinhoBtn"
+        onclick=" location.reload();"
+      >
+        Atualizar
+      </button>
+      <div>Total R$: <span id="total"></span> </div>            
+      <div id="botao__carinho___tabela">
+      <div id="itens"> </div>
+      <div class="total2">Total R$: <span id="total2"></span> 
+      <input type="hidden" value="" id="total_full"></input></div>
+        
+      </div>
+
+      
+
+      
+
+      <button id="fecharCarrinhoBtn"><i class="fa fa-close"></i></button>
+    </div>
 
 
 
@@ -442,8 +438,9 @@ if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() !=
     </section>
 
 
-    <!-- Footer -->
-    <footer>
+ <!-- Footer -->
+    
+ <footer>
       <div class="cadastroEmail">
         <p>
           <i class="fas fa-envelope"></i> RECEBA OFERTAS E NOVIDADES POR E-MAIL:
@@ -470,9 +467,16 @@ if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() !=
         </div>
       </div>
       <div>Wolf-Fit suplementos LTDA©2022</div>
+    
     </footer>
 
 
+    <script src="../script/hamburguer.js"></script>
 </body>
 
+
+<script type="text/javascript" src="../script/carrinho.js"> </script>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/nav.css">
+<link rel="stylesheet" href="../css/footer.css">
 </html>

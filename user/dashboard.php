@@ -177,6 +177,36 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
         </div>
       </div>
     </nav>
+    <div id="botao__carinho" class="botao__carinho">
+      <h3>Carrinho <i class="fa fa-cart-shopping"></i></h3>
+      <button
+        type="button"
+        class="limparCarrinhoBtn"
+        onclick=" localStorage.clear(); location.reload();"
+      >
+        Limpar
+      </button>
+      <button
+        type="button"
+        class="limparCarrinhoBtn"
+        onclick=" location.reload();"
+      >
+        Atualizar
+      </button>
+      <div>Total R$: <span id="total"></span> </div>            
+      <div id="botao__carinho___tabela">
+      <div id="itens"> </div>
+      <div class="total2">Total R$: <span id="total2"></span> 
+      <input type="hidden" value="" id="total_full"></input></div>
+        
+      </div>
+
+      
+
+      
+
+      <button id="fecharCarrinhoBtn"><i class="fa fa-close"></i></button>
+    </div>
 
 
 
@@ -213,16 +243,14 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                         echo "usuario: $usuario <br>"; 
                         echo '<div class="enderecos">';
 
-                        echo '<form action="" method="post">';
+            
 
-                        echo ' <input type="submit" name="alterarSenha" id="btnAlterarSenha" value="Alterar senha" />';
+                        echo ' <a href=" trocarsenha.php">
+                                     <button>Alterar Senha</button>
+                               </a>
+                               <br>';
 
-                        if(!empty($dados['alterarSenha'])){
-                            header("Location: trocarsenha.php");
-                        }
-
-                        echo '</form>';
-
+                    
 
 
 
@@ -317,27 +345,22 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
 
 
 
-<form method="POST" action="">
-<input class="input_AdicionarEndereco" type="submit" value="Adicionar Endereco" name="AdicionarEndereco">
-<BR>
-<BR>
-<?php
 
-if(!empty($dados["AdicionarEndereco"])){
-  
-    header("Location: adicionarEndereco.php");
+<a href="adicionarEndereco.php">
+      <button>Adicionar Endereco</button>
+</a>
 
-}
-?>
-</section>
+
 </div>
+</section>
                     
                     
- </form>
+
 
 
 
     <!-- Footer -->
+    
     <footer>
       <div class="cadastroEmail">
         <p>
@@ -365,9 +388,16 @@ if(!empty($dados["AdicionarEndereco"])){
         </div>
       </div>
       <div>Wolf-Fit suplementos LTDA©2022</div>
+    
     </footer>
 
 
+    <script src="../script/hamburguer.js"></script>
 </body>
 
-</html> 
+
+<script type="text/javascript" src="../script/carrinho.js"> </script>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/nav.css">
+<link rel="stylesheet" href="../css/footer.css">
+</html>

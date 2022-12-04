@@ -52,7 +52,11 @@ if(!empty($dados["Preco_promo"])){
   $total_produtos = mysqli_num_rows($result_produto_sTotal);
 }
 if(!empty($dados["Preco_baixo"])){
-  $result_produtos_querys = "SELECT * FROM produtos ORDER BY preco_produtos ASC limit $incio, $quantidade_pg ";
+  $result_produtos_querys = "SELECT * FROM produtos
+  ORDER BY preco_promo IS  NULL, preco_promo,preco_produtos ASC
+
+  
+  limit $incio, $quantidade_pg ";
   $result_produto_sTotals = mysqli_query($connect, $result_produtos_querys);
   $total_produtos = mysqli_num_rows($result_produto_sTotal);
 }
@@ -271,11 +275,11 @@ if(!empty($dados["ordemAfabetica_desc"])){
     <div class="container theme-showcase" role="main">
             <div class= "Vitrine">
           <form  id="formFiltro" method="POST" action=""> 
-            <input name="Preco_promo" value="Preco_promo" type="submit">
-            <input name="Preco_baixo" value="Preco_baixo" type="submit">
-            <input name="Preco_alto" value="Preco_alto" type="submit">
-            <input name="ordemAfabetica_desc" value="ordemAfabetica_desc" type="submit">
-            <input name="ordemAfabetica_asc" value="ordemAfabetica_asc" type="submit">
+            <input name="Preco_promo" value="Promoções" type="submit">
+            <input name="Preco_baixo" value="Preço - Baixo" type="submit">
+            <input name="Preco_alto" value="Praço - Alto" type="submit">
+            <input name="ordemAfabetica_asc" value="Ordenar A - Z " type="submit">
+            <input name="ordemAfabetica_desc" value="Ordenar Z - A " type="submit">
          
           </form>
         	<div class="row">
@@ -348,7 +352,8 @@ if(!empty($dados["ordemAfabetica_desc"])){
                             
 						</div>
 					</div>
-				<?php } ?>
+				<?php } 
+        ?>
         <div class="adicionou">Produto Adicionado 
           <i class="fas fa-cart-fill"></i>
           <i class="fas fa-check-circle-fill"></i>

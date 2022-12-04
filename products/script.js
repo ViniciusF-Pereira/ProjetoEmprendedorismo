@@ -1,21 +1,7 @@
-var x = document.getElementsByClassName("Imagem_produto_x").src;
+var img = document.getElementsByClassName('Imagem_produto_x')[0];
 
+var img1 = document.getElementsByClassName('produtos_x_images_1')[0];
+var img2 = document.getElementsByClassName('produtos_x_images_2')[0];
 
-var imagem1 = document.getElementsByClassName("produtos_x_images_1");
-var imagem2 = document.getElementsByClassName("produtos_x_images_2");
-var imagem = document.getElementsByClassName("Imagem_produto_x");
-
-
-function myScript(i) {
-
-
-
-    if (i = 1) {
-
-        console.log(x);
-
-    } else {
-        console.log(x);
-
-    }
-}
+img1.addEventListener("click", function() { img.style.backgroundImage = img1.style.backgroundImage; });
+img2.addEventListener("click", function() { img.style.backgroundImage = img2.style.backgroundImage; });
