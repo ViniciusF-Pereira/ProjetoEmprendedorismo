@@ -14,26 +14,48 @@ function mostrarEsconderNavMobile() {
 
 var EnderecoContainer = document.getElementsByClassName("EnderecoContainer")[0];
 var adicionarEnderecoContainer = document.getElementsByClassName("adicionarEnderecoContainer")[0];
+var dashboard = document.getElementsByClassName("dashboard")[0];
+
+function default_divs() {
+    EnderecoContainer.classList.remove("visible");
+    adicionarEnderecoContainer.classList.remove("visible");
+
+}
 
 function AdicionarEndereco() {
 
-
-
     adicionarEnderecoContainer.classList.toggle("visible");
-    if (EnderecoContainer.style.display = "block") {
-        EnderecoContainer.style.display = "none";
-    }
+    EnderecoContainer.classList.remove("visible");
+    dashboard.classList.remove("visible");
+
 
 }
 
 function GerenciarEndereco() {
 
+    EnderecoContainer.classList.toggle("visible");
+    adicionarEnderecoContainer.classList.remove("visible");
+    dashboard.classList.remove("visible");
 
-    if (EnderecoContainer.style.display = "none") {
-        EnderecoContainer.style.display = "block";
-    }
+}
 
 
+function AlterarSenha() {
+
+    dashboard.classList.toggle("visible");
 
     adicionarEnderecoContainer.classList.remove("visible");
+    EnderecoContainer.classList.remove("visible");
+
+
+
+}
+
+document.onload(validando());
+
+function validando() {
+
+    dashboard.classList.toggle("visible");
+
+
 }

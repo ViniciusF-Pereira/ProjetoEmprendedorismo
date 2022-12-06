@@ -191,7 +191,7 @@ $_SESSION['msg']= "<p style='color: GREEN'> Endereço de Email não cadastrado n
                                 $_SESSION['nome'] = $row_usuario['nome'];
 
 
-                                header("Location: adicionarEndereco.php");
+                                header("Location: dashboard.php");
 
                             }
                     

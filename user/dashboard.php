@@ -9,8 +9,6 @@ include_once '../php/conexao.php';
 
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-
-
 if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
 
     $_SESSION['msg']= "<p style='color: #ff0000'> Erro, pagina restrida; Usuário não conectado]! </p>";
@@ -23,10 +21,120 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
         echo $_SESSION['msg'];
         unset ($_SESSION['msg']);
     }
-
-    
-
+   
 }
+
+
+$__logradouro = '';
+$__bairro = '';
+$__localidade = '';
+$__uf = '';
+$__cep = '';
+$__nome_endereco = '';
+
+
+
+$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+if(!empty($dados["Voltar"])){
+
+    header("Location: dashboard.php");
+ }
+
+
+
+if(!empty($dados["CadastrarEndereco"])){
+  
+    $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+
+
+    $_SESSION['id']; 
+
+
+
+    echo "<pre>";
+    var_dump($dados);
+    echo "</pre>";
+
+
+    $query_endereco =   "INSERT INTO enderecos (nome_endereco , cep, logradouro, complemento, usuario_id) 
+                        VALUES (:nome_endereco , :cep, :logradouro, :complemento, :usuario_id)";
+    $cad_endereco = $conn->prepare($query_endereco);
+
+    $cad_endereco -> bindParam(':nome_endereco', $dados['nome_endereco']);
+    $cad_endereco -> bindParam(':cep', $dados['cep']);
+    $cad_endereco -> bindParam(':logradouro', $dados['logradouro']);
+    $cad_endereco -> bindParam(':complemento',  $dados['complemento']);
+    $cad_endereco -> bindParam(':usuario_id',  $_SESSION['id']);
+
+
+    $cad_endereco -> execute();
+
+    if($cad_endereco->rowCount()){
+        
+        echo "<p> Endereço cadastrado com sucesso </p>";
+
+        header("Location: dashboard.php");
+
+    }
+    else{
+
+        echo "<p> Endereço não cadastrado </p>";
+
+    }
+  }
+  function webClient ($url)
+  {
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+      $data = curl_exec($ch);
+      curl_close($ch);
+      return $data;
+  }
+
+  if(empty($dados["cep"]))
+  {
+
+
+  $__cep = "";
+
+
+  }
+  else {
+  $__cep = $dados["cep"];
+  $url = sprintf('http://viacep.com.br/ws/%s/json/ ', $__cep);
+  $result = json_decode(webClient($url));
+  
+  if( $result){
+ 
+ 
+
+  
+      $__nome_endereco = $dados['nome_endereco'];
+      $__logradouro = $result->logradouro;
+      $__bairro = $result->bairro;
+      $__localidade = $result->localidade;
+      $__uf = $result->uf;
+  
+
+
+
+  //echo $logradouro;
+  //echo "<pre>";
+  //var_dump($result);
+  //echo "</pre>";
+  }
+  else {
+
+  }
+  }
+
+
+
 
 ?>
 
@@ -40,10 +148,8 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="user.css">
 
-    <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/nav.css">
 	<link
       href="https://fonts.googleapis.com/css?family=Inter&display=swap"
       rel="stylesheet"
@@ -212,117 +318,327 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
 
 
 
-    <section class="dashboard"  >
-
-    <h1>Informações do Usuario
-    </h1>
-    
-                <?php 
-
-                $query_dashboard ="SELECT id, nome, cpf, usuario, senha_usuario, id_endereco
-                FROM usuarios 
-                WHERE id =:id
-                LIMIT 1";        
 
 
-                $result_dashboard = $conn->prepare($query_dashboard);
-                $result_dashboard -> bindParam(':id', $_SESSION['id'], PDO::PARAM_STR);     
-                $result_dashboard -> execute();
+    <div class="btn_usuarios">
+    <button type="submit" onclick="GerenciarEndereco()" name="GerenciarEndereco">Gerenciar Endereços</button>
+
+    <button type="submit" onclick="AdicionarEndereco()" name="AdicionarEndereco">Adicionar Endereços </button>
+
+    <button type="submit" onclick="AlterarSenha()" name="AdicionarEndereco">Informações do Usuário </button>
+    </div>
+                  
+    <section class="dashboard">
+
+       
+      <h1>Informações do Usuário
+      </h1>       
+                  <?php 
+
+                  $query_dashboard ="SELECT id, nome, cpf, usuario, senha_usuario, id_endereco
+                  FROM usuarios 
+                  WHERE id =:id
+                  LIMIT 1";        
+
+
+                  $result_dashboard = $conn->prepare($query_dashboard);
+                  $result_dashboard -> bindParam(':id', $_SESSION['id'], PDO::PARAM_STR);     
+                  $result_dashboard -> execute();
+                  
+
+
+                  if(($result_dashboard) and ($result_dashboard->rowCount() != 0)){
+
+                      $row_dashboard = $result_dashboard->fetch(PDO::FETCH_ASSOC);
+
+                    
+                          extract($row_dashboard);
+                          echo "ID: $id <br>"; 
+                          echo "nome: $nome <br>"; 
+                          echo "cpf: $cpf <br>"; 
+                          echo "usuario: $usuario <br>"; 
+                        
+
+              
+
+                          echo ' <a href=" trocarsenha.php">
+                                      <button>Alterar Senha</button>
+                                </a>
+                                <br>';
+
+                                echo '<div class="enderecos">';
+
+
+                          if ($id_endereco != null && $id_endereco != '' && $id_endereco != 0){
+
+                              $Endereco_antigo = $id_endereco;
+
+                          } 
+                          else{
+
+                            $Endereco_antigo = null;
+                            
+                          }
+                      
+                 
+                  }
+
+                  $valor = 0;
+                  $query_dashboard_enderecos ="SELECT id_endereco, nome_endereco, cep, logradouro, complemento, usuario_id, principal
+                  FROM enderecos 
+                  WHERE usuario_id =:usuario_id
+                  AND principal is not null AND principal != $valor
+                  ORDER BY principal ";        
+
+
+                  $result_dashboard_enderecos = $conn->prepare($query_dashboard_enderecos);
+                  $result_dashboard_enderecos -> bindParam(':usuario_id', $_SESSION['id'], PDO::PARAM_STR);     
+                  $result_dashboard_enderecos -> execute();
+
+                  if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() != 0)){
+                      while ($row_result_dashboard_enderecos = $result_dashboard_enderecos->fetch(PDO::FETCH_ASSOC)){
+
+                          extract($row_result_dashboard_enderecos);
+                                                
+                          
+                        $_SESSION['principal'] = $id_endereco;
+
+                          echo '<div class=row_EnderecosMenu>';
+                          
+                          echo "<P class='EnderecoPrincipal'> Endereço Principal </p>
+                                <h4 class='nome_endereco'>$nome_endereco</h4> <br>
+                          
+                                <h4 class='CEP'>CEP: $cep  </h4><br>
+                                <h4 class='Logradouro'>Logradouro: $logradouro  </h4><br>
+                                <h4 class='Complemento'>Complemento: $complemento  </h4><br>
+                              
+                            
+
+                              </div>
+
+                          "; 
+                          
+                        
+                                                            
+                      
+                          
+                          
+
+                      }
+                  }
+                  ?>
+  </div>
+  </section>
+
+<div class="adicionarEnderecoArea">
+    <section class="EnderecoContainer <?php if(!empty($dados['Deletar']) || !empty($dados['Favoritar'])){echo "visible";}?>">
+       <div class="enderecos">
+        <?php 
+
+        $query_dashboard ="SELECT id, nome, cpf, usuario, senha_usuario
+        FROM usuarios 
+        WHERE id =:id
+        LIMIT 1";        
+
+
+        $result_dashboard = $conn->prepare($query_dashboard);
+        $result_dashboard -> bindParam(':id', $_SESSION['id'], PDO::PARAM_STR);     
+        $result_dashboard -> execute();
+
+
+        if(($result_dashboard) and ($result_dashboard->rowCount() != 0)){
+
+            $row_dashboard = $result_dashboard->fetch(PDO::FETCH_ASSOC);
+
+          
+        }
+
+        $query_dashboard_enderecos ="SELECT id_endereco, nome_endereco, cep, logradouro, complemento, usuario_id, id_endereco
+        FROM enderecos 
+        WHERE usuario_id =:usuario_id";        
+
+
+        $result_dashboard_enderecos = $conn->prepare($query_dashboard_enderecos);
+        $result_dashboard_enderecos -> bindParam(':usuario_id', $_SESSION['id'], PDO::PARAM_STR);     
+        $result_dashboard_enderecos -> execute();
+
+        $valor = 1;
+        $query_dashboard_enderecos ="SELECT id_endereco, nome_endereco, cep, logradouro, complemento, usuario_id, principal
+        FROM enderecos 
+        WHERE usuario_id =:usuario_id
+        AND principal != $valor
+        ORDER BY principal ";        
+
+        $query_principal ="SELECT id_endereco, principal 
+        FROM enderecos 
+        WHERE usuario_id =:usuario_id
+        AND principal = $valor";
+        $result_principal = $conn->prepare($query_principal);
+        $result_principal -> bindParam(':usuario_id', $_SESSION['id'], PDO::PARAM_STR);     
+        $result_principal -> execute();
+        $row_principal = $result_principal->fetch(PDO::FETCH_ASSOC);
+          
+        $principal_antigo = $row_principal['id_endereco'];
+
+
+        $result_dashboard_enderecos = $conn->prepare($query_dashboard_enderecos);
+        $result_dashboard_enderecos -> bindParam(':usuario_id', $_SESSION['id'], PDO::PARAM_STR);     
+        $result_dashboard_enderecos -> execute();
+
+
+
+        if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() != 0)){
+
+
+        $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+            while ($row_result_dashboard_enderecos = $result_dashboard_enderecos->fetch(PDO::FETCH_ASSOC)){
                 
+                extract($row_result_dashboard_enderecos);
+                                      
+                    
+              echo '<div class=row_EnderecosMenu>';
+                
+                echo '
+                    
+                      <div class="valores">';
+
+                            if($principal != null && $principal != 0){
+                              echo '<p class="principal">Endereço Favorito</p>';
+                            }
 
 
-                if(($result_dashboard) and ($result_dashboard->rowCount() != 0)){
 
-                    $row_dashboard = $result_dashboard->fetch(PDO::FETCH_ASSOC);
+                            echo '
+                            
+                            <p class="nome_endereco">'.$nome_endereco.'</p>
+                          
+                            <p class="CEP">CEP: '.$cep.'  </p>
+                            <p class="Logradouro">Logradouro: '.$logradouro.'  </p>
+                            <p class="Complemento">Complemento: '.$complemento.'  </p>
+                      </div>
+                        
+                            
+                            <form method="POST" action="">
+                            <input class="Favoritar" type="submit" value="Favoritar" name="Favoritar'.$id_endereco.'"  > 
+                            <input class="Deletar" type="submit" value="Deletar" name="Deletar'.$id_endereco.'"  > 
+                            </form>
+                  
+
+                    </div>
+
+                ';  
+
+                if(!empty($dados['Deletar'.$id_endereco.''])){
 
                   
-                        extract($row_dashboard);
-                        echo "ID: $id <br>"; 
-                        echo "nome: $nome <br>"; 
-                        echo "cpf: $cpf <br>"; 
-                        echo "usuario: $usuario <br>"; 
-                       
-
-            
-
-                        echo ' <a href=" trocarsenha.php">
-                                     <button>Alterar Senha</button>
-                               </a>
-                               <br>';
-
-                               echo '<div class="enderecos">';
-
-
-                        if ($id_endereco != null && $id_endereco != '' && $id_endereco != 0){
-
-                            $Endereco_antigo = $id_endereco;
-
-                        } 
-                        else{
-
-                          $Endereco_antigo = null;
-                          
-                        }
-                    
-
-
-
-
+                  $query_Deletar = 
+                  "DELETE FROM enderecos WHERE id_endereco =$id_endereco";
                 
+                  $result__Deletar = $conn->prepare($query_Deletar);
+                  $result__Deletar -> execute();
+
+                }
+                if(!empty($dados['Favoritar'.$id_endereco.''])){
+
+                  $principal_antigo = $_SESSION['principal'];
+
+                  $query_RemoverAnterior = 
+                  "UPDATE enderecos 
+                  SET principal = 0
+                  WHERE usuario_id =:usuario_id
+                  AND principal = $valor";
+
+                  $query_Favoritar = 
+                  "UPDATE enderecos 
+                  SET principal = $valor
+                  WHERE id_endereco =$id_endereco";
+                                    
+                  $result__RemoverAnterior = $conn->prepare($query_RemoverAnterior);
+                  $result__RemoverAnterior -> bindParam(':usuario_id', $_SESSION['id'], PDO::PARAM_STR); 
+                  $result__RemoverAnterior -> execute();
+
+
+                  $result__Favoritar = $conn->prepare($query_Favoritar);
+                  $result__Favoritar -> execute();
+                  
                 }
 
-                $valor = 0;
-                $query_dashboard_enderecos ="SELECT id_endereco, nome_endereco, cep, logradouro, complemento, usuario_id, principal
-                FROM enderecos 
-                WHERE usuario_id =:usuario_id
-                AND principal is not null AND principal != $valor
-                ORDER BY principal ";        
-
-
-                $result_dashboard_enderecos = $conn->prepare($query_dashboard_enderecos);
-                $result_dashboard_enderecos -> bindParam(':usuario_id', $_SESSION['id'], PDO::PARAM_STR);     
-                $result_dashboard_enderecos -> execute();
-
-                if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() != 0)){
-                    while ($row_result_dashboard_enderecos = $result_dashboard_enderecos->fetch(PDO::FETCH_ASSOC)){
-
-                        extract($row_result_dashboard_enderecos);
-                                              
-                        
-                       $_SESSION['principal'] = $id_endereco;
-
-                        echo '<div class=row_EnderecosMenu>';
-                        
-                        echo "<P class='EnderecoPrincipal'> Endereço Principal </p>
-                              <h4 class='nome_endereco'>$nome_endereco</h4> <br>
-                        
-                              <h4 class='CEP'>CEP: $cep  </h4><br>
-                              <h4 class='Logradouro'>Logradouro: $logradouro  </h4><br>
-                              <h4 class='Complemento'>Complemento: $complemento  </h4><br>
-                            
-                          
-
-                            </div>
-
-                        "; 
-                        
-                       
-                                                          
-                     
-                        
-                        
-
-                    }
-                }
-                ?>
-</div>
-      
-<a href='adicionarEndereco.php'>
-                                  <button>Adicionar Endereco</button>
-                            </a>
+            }    
+            
+            
+          
+        }
+        else{
+          echo "
+          
+            <p class='vazio'> 
+            Nenhum endereços além do favorito cadastrado.
+            </p>";
+         }
+       
+       
+        ?>
+        
+ </div> 
 </section>
+
+  <section    id="anchor" class="adicionarEnderecoContainer <?php if(!empty($dados['getCep'])){echo "visible";}?>">
+ 
+             
+                  
+                  <h1>Cadastrar Endereço</h1>
+                   <form method="POST" action="">
+                  
+                    <label>Tipo de endereço:</label>
+                    <input class="inputs_endereco" type="text" name="nome_endereco" placeholder="DEFINIR ENDEREÇO (CASA, TRABALHO)"  value="<?php  echo ''.$__nome_endereco.''; ?>">
+                
+                    <?php 
+
+                    echo '<label>CEP:</label>
+                    <input class="inputs_endereco CEP" type="" name="cep" placeholder="Digite o CEP" id=""  value="'.$__cep.'">
+                    <input class="inputs_PROCURAR" type="submit" value="PROCURAR" name="getCep"  > 
+
                     
                     
+                    <label>Logradouro:</label>
+                    <input  class="inputs_endereco Logradouro" type="" name="logradouro" placeholder="Digite o logradouro"id="" value="'.$__logradouro.'">
+                    
+            
+       
+                    <label>Complemento:</label>
+                    <input class="inputs_endereco complemento" type="" name="complemento" placeholder="Digite o complemento"id="" value="">
+                         
+                    <div class="endereco_final">
+                      <div>
+                          <label>Bairro:</label>
+                         <input class="inputs_endereco bairro" type="" name="bairro" placeholder="Bairro"id="" value="'.$__bairro.'" readonly>
+                      </div>
+                      <div>
+                         <label>Cidade:</label>
+                         <input class="inputs_endereco localidade" type="" name="localidade" placeholder="Cidade" id="" value="'.$__localidade.'" readonly>
+                      </div>             
+                      <div>
+                         <label>ESTADO:</label>
+                         <input class="inputs_endereco uf" type="" name="uf" placeholder="UF"id="" value="'.$__uf.'" readonly>
+                      </div>
+                    </div>
+                    <BR>
+
+                    <input class="inputs_CadastrarEndereco" type="submit" value="Cadastrar Endereco" name="CadastrarEndereco">
+                
+                
+
+         ';
+
+         
+
+?>
+</section>   
+              
+    
+</form>
+</div>   
 
 
 

@@ -129,11 +129,6 @@ form label+input {
     margin-left: 4%;
 }
 
-.visible {
-    visibility: visible;
-    display: block;
-}
-
 
 /* formatação das caixa de endereços.*/
 
@@ -166,4 +161,13 @@ form label+input {
     border-radius: 10px;
     z-index: 500;
     display: none;
+}
+
+.dashboard {
+    display: none;
+}
+
+.visible {
+    visibility: visible;
+    display: block;
 }
