@@ -250,6 +250,17 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                                </a>
                                <br>';
 
+
+                        if ($id_endereco != null && $id_endereco != '' && $id_endereco != 0){
+
+                            $Endereco_antigo = $id_endereco;
+
+                        } 
+                        else{
+
+                          $Endereco_antigo = null;
+                          
+                        }
                     
 
 
@@ -258,10 +269,12 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                 
                 }
 
+                $valor = 0;
                 $query_dashboard_enderecos ="SELECT id_endereco, nome_endereco, cep, logradouro, complemento, usuario_id, principal
                 FROM enderecos 
                 WHERE usuario_id =:usuario_id
-                ORDER BY principal DESC";        
+                AND principal is not null AND principal != $valor
+                ORDER BY principal ";        
 
 
                 $result_dashboard_enderecos = $conn->prepare($query_dashboard_enderecos);
@@ -278,79 +291,31 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                              
                         echo '<div class=row_EnderecosMenu>';
                         
-                        echo '<form action="" method="post">';
-                        if($row_dashboard['id_endereco'] == $row_result_dashboard_enderecos['id_endereco']){
-
-                          echo "Endereço Principal <br>"; 
-                        }
-                        echo '<input type="radio" name="botao'.$id_endereco.'" value="'.$usuario_id.'"/>';
-                        echo ""; 
-                                                          
-                        echo "<h4>$nome_endereco</h4> <br>"; 
+                        echo "<P class='EnderecoPrincipal'> Endereço Principal </p>
+                              <h4 class='nome_endereco'>$nome_endereco</h4> <br>
                         
-                        echo "CEP: $cep <br>"; 
-                        echo "Logradouro: $logradouro <br>"; 
-                        echo "Complemento: $complemento <br>"; 
-
-                        echo ' <input class="estrela" type="submit" name="favoritar" value="★" />';
-
-                        echo ' <input type="submit" name="deletar" value="DELETAR ENDEREÇO" />';
-                        echo '</div>';
-                        if (isset($_POST['botao'.$id_endereco.''])) {
-                        
-
-                          if(!empty($dados['deletar'])){
-                            $delete_dashboard_enderecos = "DELETE from enderecos WHERE id_endereco ='$id_endereco'";
-                            $qdelete_dashboard_enderecos = $conn->prepare($delete_dashboard_enderecos);
-                            $qdelete_dashboard_enderecos->execute();
-
-                            echo "Endereço deletado com sucesso";
+                              <h4 class='CEP'>CEP: $cep  </h4><br>
+                              <h4 class='Logradouro'>Logradouro: $logradouro  </h4><br>
+                              <h4 class='Complemento'>Complemento: $complemento  </h4><br>
                             
-                            header("Location: dashboard.php");
-                         }
-                         if(!empty($dados['favoritar'])){
-                          
-                         
-                          $query_enderecoPrincipal ="UPDATE usuarios SET id_endereco =:id_endereco WHERE id =:id";       
-   
-                          
-                          $result_enderecoPrincipal = $conn->prepare($query_enderecoPrincipal);
+                                
+                            <a href='adicionarEndereco.php'>
+                                  <button>Adicionar Endereco</button>
+                            </a>
 
-                          $result_enderecoPrincipal -> bindParam(':id', $_SESSION['id']);  
-                          $result_enderecoPrincipal -> bindParam(':id_endereco', $id_endereco);  
-                                                        
+                            </div>
 
-                          
-
-                          
-                          $result_enderecoPrincipal -> execute();
-
-                          
-                         header("Location: dashboard.php");
-
-                         }
-
-                        } else {
+                        "; 
                         
-                        }
-                        echo '</form>';
                        
-                    
-                            
+                                                          
+                     
+                        
                         
 
                     }
                 }
                 ?>
-
-
-
-
-<a href="adicionarEndereco.php">
-      <button>Adicionar Endereco</button>
-</a>
-
-
 </div>
 </section>
                     

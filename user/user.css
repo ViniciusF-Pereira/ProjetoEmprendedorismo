@@ -80,3 +80,56 @@ form label+input {
 .Div_adicionarEndereco {
     margin: auto;
 }
+
+.CadastroArea {
+    position: relative;
+    background-color: rgb(216, 216, 216);
+    background-image: url(../images/background/carroselBg.jpg);
+    background-position: center;
+    padding: 30px 0;
+}
+
+.CadastroContainer {
+    padding: 30px;
+    width: fit-content;
+}
+
+.CadastroContainer form label {
+    margin-top: -20px;
+}
+
+.CadastroContainer h1 {
+    margin-top: -12px;
+    margin-bottom: 24px;
+    padding-top: -1px;
+}
+
+.adicionarEnderecoArea {
+    position: relative;
+    background-color: rgb(216, 216, 216);
+    background-image: url(../images/background/carroselBg.jpg);
+    background-position: center;
+    padding: 30px 0;
+}
+
+.adicionarEnderecoContainer {
+    padding: 30px;
+    width: fit-content;
+}
+
+.endereco_final {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.endereco_final div {
+    width: 33%;
+}
+
+.localidade {
+    width: 70%;
+}
+
+.uf {
+    width: 15%;
+}

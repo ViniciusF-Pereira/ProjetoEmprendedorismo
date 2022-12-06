@@ -43,4 +43,8 @@
     margin-top: -6%;
 }
 
-.botoesai button {}
+.total1 {
+    position: absolute;
+    left: 70%;
+    top: 30%;
+}

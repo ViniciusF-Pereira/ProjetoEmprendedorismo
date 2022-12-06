@@ -96,9 +96,9 @@ if(!empty($dados["SendCadastro"])){
 
 
     
-    echo "<pre>";
-    var_dump($dados);
-    echo "</pre>";
+   // echo "<pre>";
+   // var_dump($dados);
+   // echo "</pre>";
 
 
 
@@ -123,6 +123,15 @@ $_SESSION['msg']= "<p style='color: GREEN'> Endereço de Email não cadastrado n
         if($dados['senha_usuario'] != $dados['senha_usuario_2']){
             $_SESSION['msg']= "<p style='color: RED'> Senhas digitadas não são indenticas.! </p>";
         }
+        else if ($dados['nome'] == null){
+          $_SESSION['msg']= "<p style='color: RED'> Nome digitado não pode ser nulo.! </p>";
+        }
+        else if ($dados['usuario'] == null){
+          $_SESSION['msg']= "<p style='color: RED'> Usuário digitado não pode ser nulo.! </p>";
+        } else if ($dados['cpf'] == null){
+          $_SESSION['msg']= "<p style='color: RED'> CPF digitado não pode ser nulo.! </p>";
+        }
+
 
         
         else{
@@ -182,7 +191,7 @@ $_SESSION['msg']= "<p style='color: GREEN'> Endereço de Email não cadastrado n
                                 $_SESSION['nome'] = $row_usuario['nome'];
 
 
-                                header("Location: ../index.php");
+                                header("Location: adicionarEndereco.php");
 
                             }
                     
@@ -396,10 +405,13 @@ if(isset($_SESSION['msg'])){
 
     <section>
 
+   
+
+
+
+    <div class="CadastroArea">
+    <section class="CadastroContainer">
     <h1>Cadastro</h1>
-
-
-
 
 <form method="POST" action="">
 

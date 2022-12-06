@@ -147,11 +147,6 @@ if(!empty($dados["CadastrarEndereco"])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="user.css">
-
 
     <!-- CSS DO USER                                                                 CSS DO USER -->
     <link rel="stylesheet" href="user.css">
@@ -277,49 +272,19 @@ if(!empty($dados["CadastrarEndereco"])){
               }
             ?>
             </button>
-            <button id="abrirCarrinhoBtn" class="navBtn" onclick="">
-              <i class="fa fa-cart-shopping"></i>
-              <span class="nav2ItemNome">Carrinho</span>
-            </button>
+         
           </div>
         </div>
       </div>
     </nav>
 
-    <div id="botao__carinho" class="botao__carinho">
-      <h3>Carrinho <i class="fa fa-cart-shopping"></i></h3>
-      <button
-        type="button"
-        class="limparCarrinhoBtn"
-        onclick=" localStorage.clear(); location.reload();"
-      >
-        Limpar
-      </button>
-      <button
-        type="button"
-        class="limparCarrinhoBtn"
-        onclick=" location.reload();"
-      >
-        Atualizar
-      </button>
-      <div>Total R$: <span id="total"></span> </div>            
-      <div id="botao__carinho___tabela">
-      <div id="itens"> </div>
-      <div class="total2">Total R$: <span id="total2"></span> 
-      <input type="hidden" value="" id="total_full"></input></div>
-        
-      </div>
+   
 
-      
-
-      
-
-      <button id="fecharCarrinhoBtn"><i class="fa fa-close"></i></button>
-    </div>
+   
 
 
-
-    <section>
+    <div class="adicionarEnderecoArea">
+<section class="adicionarEnderecoContainer">
 
     <h1>Cadastrar Endereço</h1>
 
@@ -374,16 +339,17 @@ if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() !=
     
 }
 ?>
-<div class=Div_adicionarEndereco>
+
+
 <form method="POST" action="">
 
 
 <?php
 
 {
-  
-                echo '
 
+                echo '
+                  
                     <label>Tipo de endereço:</label>
                     <input class="inputs_endereco" type="" name="nome_endereco" placeholder="DEFINIR ENDEREÇO (CASA, TRABALHO)" id="" value="'.$__nome_endereco.'">
                 
@@ -395,26 +361,26 @@ if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() !=
 
                     
                     
-                    <label>logradouro:</label>
+                    <label>Logradouro:</label>
                     <input  class="inputs_endereco" type="" name="logradouro" placeholder="Digite o logradouro"id="" value="'.$__logradouro.'">
                     
             
        
-                    <label>complemento:</label>
+                    <label>Complemento:</label>
                     <input class="inputs_endereco" type="" name="complemento" placeholder="Digite o complemento"id="" value="">
                          
                     <div class="endereco_final">
                       <div>
                           <label>Bairro:</label>
-                         <input class="inputs_endereco" type="" name="bairro" placeholder="Digite o logradouro"id="" value="'.$__bairro.'" readonly>
+                         <input class="inputs_endereco bairro" type="" name="bairro" placeholder="Digite o logradouro"id="" value="'.$__bairro.'" readonly>
                       </div>
                       <div>
                          <label>Cidade:</label>
-                         <input class="inputs_endereco" type="" name="localidade" placeholder="Digite o logradouro"id="" value="'.$__localidade.'" readonly>
+                         <input class="inputs_endereco localidade" type="" name="localidade" placeholder="Digite o logradouro"id="" value="'.$__localidade.'" readonly>
                       </div>             
                       <div>
                          <label>ESTADO:</label>
-                         <input class="inputs_endereco" type="" name="uf" placeholder="Digite o logradouro"id="" value="'.$__uf.'" readonly>
+                         <input class="inputs_endereco uf" type="" name="uf" placeholder="Digite o logradouro"id="" value="'.$__uf.'" readonly>
                       </div>
                     </div>
                     <BR>
