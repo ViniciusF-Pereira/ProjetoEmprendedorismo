@@ -284,9 +284,9 @@ if(!empty($dados["CadastrarEndereco"])){
 
 
     <div class="adicionarEnderecoArea">
-<section class="adicionarEnderecoContainer">
+  
 
-    <h1>Cadastrar Endereço</h1>
+
 
     <?php 
 
@@ -318,9 +318,21 @@ if(($result_dashboard) and ($result_dashboard->rowCount() != 0)){
   
 }
 
-$query_dashboard_enderecos ="SELECT id_endereco, nome_endereco, cep, logradouro, complemento, usuario_id
+$query_dashboard_enderecos ="SELECT id_endereco, nome_endereco, cep, logradouro, complemento, usuario_id, id_endereco
 FROM enderecos 
 WHERE usuario_id =:usuario_id";        
+
+
+$result_dashboard_enderecos = $conn->prepare($query_dashboard_enderecos);
+$result_dashboard_enderecos -> bindParam(':usuario_id', $_SESSION['id'], PDO::PARAM_STR);     
+$result_dashboard_enderecos -> execute();
+
+$valor = 0;
+$query_dashboard_enderecos ="SELECT id_endereco, nome_endereco, cep, logradouro, complemento, usuario_id, principal
+FROM enderecos 
+WHERE usuario_id =:usuario_id
+AND principal is not null AND principal != $valor
+ORDER BY principal ";        
 
 
 $result_dashboard_enderecos = $conn->prepare($query_dashboard_enderecos);
@@ -330,25 +342,47 @@ $result_dashboard_enderecos -> execute();
 
 
 if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() != 0)){
-   
-        echo '</form>';
-     
-            
+ echo "<section class=EnderecoContainer>";
+    while ($row_result_dashboard_enderecos = $result_dashboard_enderecos->fetch(PDO::FETCH_ASSOC)){
         
+        extract($row_result_dashboard_enderecos);
+                              
+             
+        echo '<div class=row_EnderecosMenu>';
+        
+        echo '
+              <input class="Favoritar" type="submit" value="Favoritar" name="Favoritar"  > 
+              <input class="Deletar" type="submit" value="Deletar" name="Deletar"  > 
+              <div class="valores">
+              <p class="nome_endereco">'.$nome_endereco.'</p>
+             
+              <p class="CEP">CEP: '.$cep.'  </p>
+              <p class="Logradouro">Logradouro: '.$logradouro.'  </p>
+              <p class="Complemento">Complemento: '.$complemento.'  </p>
+              </div>
+            
+          
 
-    
+            </div>
+
+        ';  
+
+    }
+
+    echo "</section>";
 }
-?>
 
 
-<form method="POST" action="">
 
 
-<?php
+   
 
-{
 
                 echo '
+             
+                  <section class="adicionarEnderecoContainer">
+                  <h1>Cadastrar Endereço</h1>
+                   <form method="POST" action="">
                   
                     <label>Tipo de endereço:</label>
                     <input class="inputs_endereco" type="" name="nome_endereco" placeholder="DEFINIR ENDEREÇO (CASA, TRABALHO)" id="" value="'.$__nome_endereco.'">
@@ -372,36 +406,41 @@ if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() !=
                     <div class="endereco_final">
                       <div>
                           <label>Bairro:</label>
-                         <input class="inputs_endereco bairro" type="" name="bairro" placeholder="Digite o logradouro"id="" value="'.$__bairro.'" readonly>
+                         <input class="inputs_endereco bairro" type="" name="bairro" placeholder="Bairro"id="" value="'.$__bairro.'" readonly>
                       </div>
                       <div>
                          <label>Cidade:</label>
-                         <input class="inputs_endereco localidade" type="" name="localidade" placeholder="Digite o logradouro"id="" value="'.$__localidade.'" readonly>
+                         <input class="inputs_endereco localidade" type="" name="localidade" placeholder="Cidade" id="" value="'.$__localidade.'" readonly>
                       </div>             
                       <div>
                          <label>ESTADO:</label>
-                         <input class="inputs_endereco uf" type="" name="uf" placeholder="Digite o logradouro"id="" value="'.$__uf.'" readonly>
+                         <input class="inputs_endereco uf" type="" name="uf" placeholder="UF"id="" value="'.$__uf.'" readonly>
                       </div>
                     </div>
                     <BR>
 
                     <input class="inputs_CadastrarEndereco" type="submit" value="Cadastrar Endereco" name="CadastrarEndereco">
+                
+                    </section>     
 
          ';
 
-}
+         
+
 ?>
-                    
+              
        
 </form>
 </div>   
+<button type="submit" onclick="AdicionarEndereco()" name="Adicionar">Adicionar Endereço </button>
 
 <form action="" method="post">
             
+     
             <input type="submit" value="Voltar" name="Voltar"  > 
                 
 </form>
-    </section>
+    
 
 
  <!-- Footer -->
@@ -441,7 +480,6 @@ if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() !=
 </body>
 
 
-<script type="text/javascript" src="../script/carrinho.js"> </script>
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/nav.css">
 <link rel="stylesheet" href="../css/footer.css">

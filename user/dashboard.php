@@ -298,10 +298,7 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                               <h4 class='Logradouro'>Logradouro: $logradouro  </h4><br>
                               <h4 class='Complemento'>Complemento: $complemento  </h4><br>
                             
-                                
-                            <a href='adicionarEndereco.php'>
-                                  <button>Adicionar Endereco</button>
-                            </a>
+                          
 
                             </div>
 
@@ -317,6 +314,10 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                 }
                 ?>
 </div>
+      
+<a href='adicionarEndereco.php'>
+                                  <button>Adicionar Endereco</button>
+                            </a>
 </section>
                     
                     

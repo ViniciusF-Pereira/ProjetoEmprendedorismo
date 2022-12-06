@@ -115,6 +115,8 @@ form label+input {
 .adicionarEnderecoContainer {
     padding: 30px;
     width: fit-content;
+    visibility: hidden;
+    display: none;
 }
 
 .endereco_final {
@@ -123,13 +125,22 @@ form label+input {
 }
 
 .endereco_final div {
-    width: 33%;
+    width: 25%;
+    margin-left: 4%;
 }
 
-.localidade {
-    width: 70%;
+.visible {
+    visibility: visible;
+    display: block;
 }
 
-.uf {
-    width: 15%;
+
+/* formatação das caixa de endereços.*/
+
+.row_EnderecosMenu {
+    border: 1px solid black;
+    width: 25.33%;
+    margin: 2%;
+    padding: 2%;
+    font-size: 20px;
 }

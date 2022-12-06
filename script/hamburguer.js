@@ -9,3 +9,12 @@ function mostrarEsconderNavMobile() {
 
 
 }
+
+var adicionarEnderecoContainer = document.getElementsByClassName("adicionarEnderecoContainer")[0];
+
+function AdicionarEndereco() {
+
+
+
+    adicionarEnderecoContainer.classList.toggle("visible");
+}
