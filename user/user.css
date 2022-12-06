@@ -139,8 +139,31 @@ form label+input {
 
 .row_EnderecosMenu {
     border: 1px solid black;
-    width: 25.33%;
+    width: 25%;
     margin: 2%;
     padding: 2%;
     font-size: 20px;
+    flex-wrap: nowrap
+}
+
+.enderecos {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.EnderecoContainer {
+    padding: 30px;
+    width: fit-content;
+    background-color: rgb(216, 216, 216);
+    border: 1px solid black;
+    width: 80%;
+    font-size: 20px;
+    align-items: center;
+    padding-left: 4%;
+    position: relative;
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+    z-index: 500;
+    display: none;
 }

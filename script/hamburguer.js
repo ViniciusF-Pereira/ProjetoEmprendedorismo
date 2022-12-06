@@ -10,6 +10,9 @@ function mostrarEsconderNavMobile() {
 
 }
 
+
+
+var EnderecoContainer = document.getElementsByClassName("EnderecoContainer")[0];
 var adicionarEnderecoContainer = document.getElementsByClassName("adicionarEnderecoContainer")[0];
 
 function AdicionarEndereco() {
@@ -17,4 +20,20 @@ function AdicionarEndereco() {
 
 
     adicionarEnderecoContainer.classList.toggle("visible");
+    if (EnderecoContainer.style.display = "block") {
+        EnderecoContainer.style.display = "none";
+    }
+
+}
+
+function GerenciarEndereco() {
+
+
+    if (EnderecoContainer.style.display = "none") {
+        EnderecoContainer.style.display = "block";
+    }
+
+
+
+    adicionarEnderecoContainer.classList.remove("visible");
 }

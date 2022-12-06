@@ -327,12 +327,23 @@ $result_dashboard_enderecos = $conn->prepare($query_dashboard_enderecos);
 $result_dashboard_enderecos -> bindParam(':usuario_id', $_SESSION['id'], PDO::PARAM_STR);     
 $result_dashboard_enderecos -> execute();
 
-$valor = 0;
+$valor = 1;
 $query_dashboard_enderecos ="SELECT id_endereco, nome_endereco, cep, logradouro, complemento, usuario_id, principal
 FROM enderecos 
 WHERE usuario_id =:usuario_id
-AND principal is not null AND principal != $valor
+AND principal != $valor
 ORDER BY principal ";        
+
+$query_principal ="SELECT id_endereco, principal 
+FROM enderecos 
+WHERE usuario_id =:usuario_id
+AND principal = $valor";
+$result_principal = $conn->prepare($query_principal);
+$result_principal -> bindParam(':usuario_id', $_SESSION['id'], PDO::PARAM_STR);     
+$result_principal -> execute();
+$row_principal = $result_principal->fetch(PDO::FETCH_ASSOC);
+  
+$principal_antigo = $row_principal['id_endereco'];
 
 
 $result_dashboard_enderecos = $conn->prepare($query_dashboard_enderecos);
@@ -342,34 +353,92 @@ $result_dashboard_enderecos -> execute();
 
 
 if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() != 0)){
- echo "<section class=EnderecoContainer>";
+ echo "<div class=EnderecoContainer>";
+ echo '<div class="enderecos">';
+
+ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
     while ($row_result_dashboard_enderecos = $result_dashboard_enderecos->fetch(PDO::FETCH_ASSOC)){
         
         extract($row_result_dashboard_enderecos);
                               
              
-        echo '<div class=row_EnderecosMenu>';
+      echo '<div class=row_EnderecosMenu>';
         
         echo '
-              <input class="Favoritar" type="submit" value="Favoritar" name="Favoritar"  > 
-              <input class="Deletar" type="submit" value="Deletar" name="Deletar"  > 
-              <div class="valores">
-              <p class="nome_endereco">'.$nome_endereco.'</p>
-             
-              <p class="CEP">CEP: '.$cep.'  </p>
-              <p class="Logradouro">Logradouro: '.$logradouro.'  </p>
-              <p class="Complemento">Complemento: '.$complemento.'  </p>
-              </div>
             
+              <div class="valores">';
+
+                    if($principal != null && $principal != 0){
+                      echo '<p class="principal">Endereço Favorito</p>';
+                    }
+
+
+
+                    echo '
+                    
+                    <p class="nome_endereco">'.$nome_endereco.'</p>
+                  
+                    <p class="CEP">CEP: '.$cep.'  </p>
+                    <p class="Logradouro">Logradouro: '.$logradouro.'  </p>
+                    <p class="Complemento">Complemento: '.$complemento.'  </p>
+              </div>
+                
+                    
+                    <form method="POST" action="">
+                    <input class="Favoritar" type="submit" value="Favoritar" name="Favoritar'.$id_endereco.'"  > 
+                    <input class="Deletar" type="submit" value="Deletar" name="Deletar'.$id_endereco.'"  > 
+                    </form>
           
 
             </div>
 
         ';  
 
+        if(!empty($dados['Deletar'.$id_endereco.''])){
+
+          
+          $query_Deletar = 
+          "DELETE FROM enderecos WHERE id_endereco =$id_endereco";
+        
+          $result__Deletar = $conn->prepare($query_Deletar);
+          $result__Deletar -> execute();
+
+        }
+        if(!empty($dados['Favoritar'.$id_endereco.''])){
+
+          $principal_antigo = $_SESSION['principal'];
+
+          $query_RemoverAnterior = 
+          "UPDATE enderecos 
+          SET principal = 0
+          WHERE usuario_id =:usuario_id
+          AND principal = $valor";
+
+          $query_Favoritar = 
+          "UPDATE enderecos 
+          SET principal = $valor
+          WHERE id_endereco =$id_endereco";
+              
+
+               
+          $result__RemoverAnterior = $conn->prepare($query_RemoverAnterior);
+          $result__RemoverAnterior -> bindParam(':usuario_id', $_SESSION['id'], PDO::PARAM_STR); 
+          $result__RemoverAnterior -> execute();
+
+
+          $result__Favoritar = $conn->prepare($query_Favoritar);
+          $result__Favoritar -> execute();
+          
+        }
+
     }
 
-    echo "</section>";
+    echo "
+    </div>
+    </div>
+    </section>";
+    
 }
 
 
@@ -432,7 +501,9 @@ if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() !=
        
 </form>
 </div>   
-<button type="submit" onclick="AdicionarEndereco()" name="Adicionar">Adicionar Endereço </button>
+<button type="submit" onclick="GerenciarEndereco()" name="GerenciarEndereco">Gerenciar Endereço</button>
+
+<button type="submit" onclick="AdicionarEndereco()" name="AdicionarEndereco">Adicionar Endereço </button>
 
 <form action="" method="post">
             

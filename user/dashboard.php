@@ -7,7 +7,7 @@ ob_start();
 
 include_once '../php/conexao.php';
 
-
+$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 
 
@@ -241,7 +241,7 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                         echo "nome: $nome <br>"; 
                         echo "cpf: $cpf <br>"; 
                         echo "usuario: $usuario <br>"; 
-                        echo '<div class="enderecos">';
+                       
 
             
 
@@ -249,6 +249,8 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                                      <button>Alterar Senha</button>
                                </a>
                                <br>';
+
+                               echo '<div class="enderecos">';
 
 
                         if ($id_endereco != null && $id_endereco != '' && $id_endereco != 0){
@@ -281,14 +283,14 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome']))){
                 $result_dashboard_enderecos -> bindParam(':usuario_id', $_SESSION['id'], PDO::PARAM_STR);     
                 $result_dashboard_enderecos -> execute();
 
-
-
                 if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() != 0)){
                     while ($row_result_dashboard_enderecos = $result_dashboard_enderecos->fetch(PDO::FETCH_ASSOC)){
-                        
+
                         extract($row_result_dashboard_enderecos);
                                               
-                             
+                        
+                       $_SESSION['principal'] = $id_endereco;
+
                         echo '<div class=row_EnderecosMenu>';
                         
                         echo "<P class='EnderecoPrincipal'> Endereço Principal </p>
