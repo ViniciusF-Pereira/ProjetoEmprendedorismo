@@ -104,116 +104,107 @@ if(!empty($dados["SendCadastro"])){
 
 
 
-$query_usuario ="SELECT id, nome, cpf, usuario, senha_usuario
-    FROM usuarios 
-    WHERE usuario =:usuario
-    LIMIT 1";        
-    
-    $result_usuario = $conn->prepare($query_usuario);
-    $result_usuario -> bindParam(':usuario', $dados['usuario'], PDO::PARAM_STR);         
-    
-    $result_usuario -> execute();
-
-    
-if(($result_usuario) AND ($result_usuario->rowCount() == 0)){{
-$row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
-
-$_SESSION['msg']= "<p style='color: GREEN'> Endereço de Email não cadastrado no sistema.! </p>";
-}
-        if($dados['senha_usuario'] != $dados['senha_usuario_2']){
-            $_SESSION['msg']= "<p style='color: RED'> Senhas digitadas não são indenticas.! </p>";
-        }
-        else if ($dados['nome'] == null){
-          $_SESSION['msg']= "<p style='color: RED'> Nome digitado não pode ser nulo.! </p>";
-        }
-        else if ($dados['usuario'] == null){
-          $_SESSION['msg']= "<p style='color: RED'> Usuário digitado não pode ser nulo.! </p>";
-        } else if ($dados['cpf'] == null){
-          $_SESSION['msg']= "<p style='color: RED'> CPF digitado não pode ser nulo.! </p>";
-        }
-
-
-        
-        else{
-            
+      $query_usuario ="SELECT id, nome, cpf, usuario, senha_usuario
+          FROM usuarios 
+          WHERE usuario =:usuario
+          LIMIT 1";      
+          
+      $query_cpf ="SELECT id, nome, cpf, usuario, senha_usuario
+      FROM usuarios 
+      WHERE cpf =:cpf
+      LIMIT 1";   
           
 
-            $dadosCadastro_Nome = $dados['nome'];
-            $dadosCadastro_Usuario = $dados['usuario'];
-            $dadosCadastro_CPF = $dados['cpf'];
-            $dadosCadastro_senha = password_hash($dados['senha_usuario_2'], PASSWORD_ARGON2I);
-            $dadosCadastro_id_number =  $randomNumber = rand();
-            $dadosCadastro_id_hash = password_hash($dadosCadastro_id_number, PASSWORD_ARGON2I);
-            
+
+    $result_usuario = $conn->prepare($query_usuario);
+    $result_cpf = $conn->prepare($query_cpf);
+    $result_usuario -> bindParam(':usuario', $dados['usuario'], PDO::PARAM_STR);         
+    $result_cpf -> bindParam(':cpf', $dados['cpf'], PDO::PARAM_STR);         
+    $result_cpf -> execute();
+    $result_usuario -> execute();
 
 
-            
-            $query_cadastro =   "INSERT INTO usuarios (nome , cpf, usuario, senha_usuario, id_number, id_hash) 
-                                 VALUES (:nome ,:cpf, :usuario, :senha_usuario, :id_number, :id_hash)";
+    
 
-            $query_cadastro = $conn->prepare($query_cadastro);
+  if(($result_usuario) AND ($result_usuario->rowCount() == 0)){
+    if(($result_cpf) AND ($result_cpf->rowCount() == 0)){
+        $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
 
-            $query_cadastro -> bindParam(':nome', $dadosCadastro_Nome);
-            $query_cadastro -> bindParam(':cpf', $dadosCadastro_CPF);
-            $query_cadastro -> bindParam(':usuario', $dadosCadastro_Usuario);
-            $query_cadastro -> bindParam(':senha_usuario',  $dadosCadastro_senha);
-            $query_cadastro -> bindParam(':id_number',  $dadosCadastro_id_number);
-            $query_cadastro -> bindParam(':id_hash',  $dadosCadastro_id_hash);
 
+          $_a = $dados['nome'];
+          $_b = $dados['usuario'];
+          $_c = $dados['senha_usuario'];
+          $_c2 = $dados['senha_usuario_2'];
+          $_d = $dados['cpf'];
+
+        if($_c !=  $_c2 || $_a  == NULL || $_b  == NULL || $_c  == NULL || $_c2  == NULL || $_d  == NULL){
+            $_SESSION['msg']= "<p style='color: RED'> Senhas digitadas não são indenticas.! </p>";
+  
+      
+        } else {
+
+
+        $_nome = $dados['nome'];
+        $_usuario = $dados['usuario'];
+        $_cpf = $dados['cpf'];
+        $_senha = password_hash($dados['senha_usuario_2'], PASSWORD_DEFAULT);
+        $_number = $randomNumber = rand();
+        $_hash = password_hash($_number, PASSWORD_DEFAULT );
+ 
+
+          try {
+      
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "INSERT INTO usuarios (nome , cpf, usuario, senha_usuario, id_number, id_hash) 
+            VALUES ('$_nome','$_cpf','$_usuario','$_senha','$_number','$_hash')";
+            // use exec() because no results are returned
            
-           
 
+          if ($conn->exec($sql)) {
+              try {
 
-
-            $query_cadastro -> execute();
-
+                $query_usuario ="SELECT id, nome, cpf, usuario, senha_usuario, id_number
+                FROM usuarios 
+                WHERE usuario =:usuario
+                LIMIT 1";        
                 
-            
-                if($query_cadastro){
+                $result_usuario = $conn->prepare($query_usuario);
+                $result_usuario -> bindParam(':usuario', $dados['usuario'], PDO::PARAM_STR);         
+                
+                $result_usuario -> execute();
 
+                if (($result_usuario) and ($result_usuario->rowCount() != 0)) {
+                    $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
 
-                    $query_usuario ="SELECT id, nome, cpf, usuario, senha_usuario
-                    FROM usuarios 
-                    WHERE usuario =:usuario
-                    LIMIT 1";        
+                                
+                    $_SESSION['id_number'] = $row_usuario['id_number'];
+                    $_SESSION['id'] = $row_usuario['id'];
+                    $_SESSION['nome'] = $row_usuario['nome'];
+
+                    header("Location: ../user/dashboard.php");
+                  
                     
-                    $result_usuario = $conn->prepare($query_usuario);
-                    $result_usuario -> bindParam(':usuario', $dados['usuario'], PDO::PARAM_STR);         
-                    
-                            $result_usuario -> execute();
-                    
-                            if(($result_usuario) AND ($result_usuario->rowCount() != 0)){
-                            $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
-                    
+              
+               }
+              }
+              catch(PDOException $e) {
+                echo $sql . "<br>" . $e->getMessage();
+              }
+    
+            }
+          } 
+          catch(PDOException $e) {
+            echo $sql . "<br>" . $e->getMessage();
+          }
+
+    
+     
 
 
-                                $_SESSION['id'] = $row_usuario['id'];
-                                $_SESSION['nome'] = $row_usuario['nome'];
-
-
-                                header("Location: dashboard.php");
-
-                            }
-                    
-                    
-                 }
-
-            
-        
-           
-        }
-
-}
-else {
-    $_SESSION['msg']= "<p style='color: #ff0000'> Endereço de Email já cadastrado no sistema.! </p>";
-}
-
-if(isset($_SESSION['msg'])){
-    echo $_SESSION['msg'];
-    unset ($_SESSION['msg']);
-}
-
-}
+      }                      
+    }
+  }
+}       
 ?>
 
 
@@ -410,7 +401,7 @@ if(isset($_SESSION['msg'])){
 
 
     <div class="CadastroArea">
-    <section class="CadastroContainer">
+<section class="CadastroContainer">
     <h1>Cadastro</h1>
 
 <form method="POST" action="">

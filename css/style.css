@@ -488,7 +488,7 @@ header p {
         font-size: 13px;
     }
     .botao__carinho {
-        width: 240px;
+        width: 340px;
         border-left: 2px solid var(--corPrimaria);
     }
     /* Div com os produtos em promoção */

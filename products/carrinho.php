@@ -151,31 +151,18 @@
     </nav>
           <!---Aqui inicio o php para puxar o endereço principal do usuario.-->
           <div class="Endereco_principal">
-                      
-          <?php 
-             $query_dashboard ="SELECT id, nome, cpf, id_endereco
-             FROM usuarios 
-             WHERE id =:id
-             LIMIT 1";        
 
-
-             $result_dashboard = $conn->prepare($query_dashboard);
-             $result_dashboard -> bindParam(':id', $_SESSION['id'], PDO::PARAM_STR);     
-             $result_dashboard -> execute();
-             
-
-          
-          
-          
-          ?>        
           </div>
    
 
-    
+      <script type="text/javascript">
+      if(document.getElementsByClassName('itens') != ""){
+        console.log("sim");
+      } </script>
                     
       <div class=total1>Total R$: <span id="total"></span> </div>            
       <div id="botao__carinho___tabela">
-      <div id="itens"> </div>
+      <div id="itens"></div>
       <div class="total2">Total R$: <span id="total2"></span> 
       <input type="hidden" value="" id="total_full"></input></div>
         

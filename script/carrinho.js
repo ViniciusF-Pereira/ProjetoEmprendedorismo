@@ -94,7 +94,9 @@ function adicionarProduto(id_p, nome_p, preco_p, img_p) {
                             <div class="produtoInfo">
                             <button id="button_id${oid}" class"button_id" onclick="removerProduto(${oid})" 
                             style=" margin-left: 50%;     
-                            width: 20%;"
+                            max-width: 70%;
+                           
+                            "
                             >DELETAR</button>
                             
 
@@ -207,15 +209,15 @@ function vereficaCarrinho(id, valor, quantidade, valortotal) {
     total_id.innerHTML = `Total dos itens R$ ${parseFloat(valortotal)}`;
 
 
-    // calcula o total dos recheios
     verificaTotal();
+
 
 
 
 }
 
 function carrinho() {
-
+    var totalqtd = 0;
     var total = 0; // variável que retorna o total dos produtos que estão na LocalStorage.
     var i = 0; // variável que irá percorrer as posições
     var valortotalcarrinho = 0; // variável que irá receber o preço do produto convertido em Float.
@@ -235,7 +237,8 @@ function carrinho() {
                 <div class="produtoInfo">
                 <button id="button_id${oid}" class"button_id" onclick="removerProduto(${oid})" 
                 style=" margin-left: 50%;     
-                max-width: 50%;"
+                max-width: 70%;
+                "
                 >DELETAR</button>
                 
 
@@ -254,11 +257,14 @@ function carrinho() {
         </div>`;
 
             // calcula o total dos recheios
+
             valortotalcarrinho = parseFloat(localStorage.getItem("valorTotal" + i)); // valor convertido com o parseFloat()
             total = (total + valortotalcarrinho); // arredonda para 2 casas decimais com o .toFixed(2)
 
 
 
+            valorqtd = parseInt(localStorage.getItem("qtd" + i));
+            totalqtd = (totalqtd + valorqtd);
 
 
         }
@@ -266,11 +272,12 @@ function carrinho() {
 
 
     // exibe o total dos recheios
-    document.getElementById("total").innerHTML = total.toFixed(2);
+    document.getElementById("total").innerHTML = total.toFixed(2) + " <br> Quantidade total de produtos (" + totalqtd + ")</br>";
     document.getElementById("total2").innerHTML = total.toFixed(2);
 
     document.getElementById("total_full").innerHTML = total.toFixed(2);
 
+    verificaTotal();
 
 
 
@@ -367,6 +374,8 @@ function alterar(oid, valor) {
         console.log("Quantidade " + localStorage.getItem("qtd" + oid));
 
 
+        verificaTotal();
+
         vereficaCarrinho(oid, preco_p, produto, preco_total);
 
         carrinhoItem_id = document.getElementById(`carrinhoItem${oid}`);
@@ -382,7 +391,7 @@ function alterar(oid, valor) {
 
         }, 200)
 
-        verificaTotal();
+
 
     }
 
@@ -427,6 +436,7 @@ function alterar(oid, valor) {
 }
 
 function verificaTotal() {
+    var totalqtd = 0;
     var total = 0; // variável que retorna o total dos produtos que estão na LocalStorage.
     var i = 0; // variável que irá percorrer as posições
     var valortotalcarrinho = 0; // variável que irá receber o preço do produto convertido em Float.
@@ -436,12 +446,16 @@ function verificaTotal() {
         var prod = localStorage.getItem("produto" + i + ""); // verifica se há recheio nesta posição. 
         if (prod != null) {
             // exibe o total dos recheios
+
             valortotalcarrinho = parseFloat(localStorage.getItem("valorTotal" + i)); // valor convertido com o parseFloat()
             total = (total + valortotalcarrinho); // arredonda para 2 casas decimais com o .toFixed(2)
+            valorqtd = parseInt(localStorage.getItem("qtd" + i));
+            totalqtd = (totalqtd + valorqtd);
+
         }
     }
     // exibe o total dos recheios
-    document.getElementById("total").innerHTML = total.toFixed(2);
+    document.getElementById("total").innerHTML = total.toFixed(2) + " <br> Quantidade total de produtos (" + totalqtd + ")</br>";
     document.getElementById("total2").innerHTML = total.toFixed(2);
 
     document.getElementById("total_full").innerHTML = total.toFixed(2);

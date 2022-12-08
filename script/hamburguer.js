@@ -11,10 +11,11 @@ function mostrarEsconderNavMobile() {
 }
 
 
-
+var CadastroContainer = document.getElementsByClassName("CadastroContainer")[0];
 var EnderecoContainer = document.getElementsByClassName("EnderecoContainer")[0];
 var adicionarEnderecoContainer = document.getElementsByClassName("adicionarEnderecoContainer")[0];
 var dashboard = document.getElementsByClassName("dashboard")[0];
+
 
 function default_divs() {
     EnderecoContainer.classList.remove("visible");
@@ -24,16 +25,21 @@ function default_divs() {
 
 function AdicionarEndereco() {
 
-    adicionarEnderecoContainer.classList.toggle("visible");
+
+
+    adicionarEnderecoContainer.classList.add("visible");
     EnderecoContainer.classList.remove("visible");
     dashboard.classList.remove("visible");
+
+    window.scroll(0, 100)
+
 
 
 }
 
 function GerenciarEndereco() {
 
-    EnderecoContainer.classList.toggle("visible");
+    EnderecoContainer.classList.add("visible");
     adicionarEnderecoContainer.classList.remove("visible");
     dashboard.classList.remove("visible");
 
@@ -42,7 +48,7 @@ function GerenciarEndereco() {
 
 function AlterarSenha() {
 
-    dashboard.classList.toggle("visible");
+    dashboard.classList.add("visible");
 
     adicionarEnderecoContainer.classList.remove("visible");
     EnderecoContainer.classList.remove("visible");
@@ -51,11 +57,22 @@ function AlterarSenha() {
 
 }
 
-document.onload(validando());
+
 
 function validando() {
 
-    dashboard.classList.toggle("visible");
+    if (adicionarEnderecoContainer && EnderecoContainer) {
+        if (adicionarEnderecoContainer.classList.contains("visible") ||
+            EnderecoContainer.classList.contains("visible")) {
+
+            window.scroll(0, 100)
+            dashboard.classList.remove("visible");
+        } else {
+            dashboard.classList.add("visible");
+        }
+    }
 
 
 }
+
+validando();
