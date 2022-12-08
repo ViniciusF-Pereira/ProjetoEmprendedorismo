@@ -121,14 +121,7 @@ include_once '../php/conexao.php';
 
         <div class="navMenu">
           <ul class="navItems">
-            <li>
-              <div id="produtosListaDropDown">
-                <a> <span>Destaques</span> <i class="fa fa-caret-down"></i> </a>
-                <ul id="produtosListaDropDownUl">
-                  <li id="promocaoBtn">Promoções</li>
-                  <li id="maisVendidosBtn">Mais vendidos</li>
-                </ul>
-              </div>
+       
               <li>
               <a href="../index.php"> Home </a>
             </li>
