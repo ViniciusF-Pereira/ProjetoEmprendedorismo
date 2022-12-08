@@ -1,11 +1,101 @@
-.ProdutosArea img {
-    width: 40px;
-    height: 40px;
-    border: 1px solid white;
-}
-
-.ProdutosArea {
-    background-color: black;
-    color: aliceblue;
-    padding: 1%;
-}
+    .ProdutosArea img {
+        width: 80px;
+        height: 80px;
+        border: 1px solid black;
+        margin: 1%;
+    }
+    
+    .ProdutosArea {
+        padding: 1%;
+    }
+    
+    .produtos {
+        width: 85%;
+        border: 1px solid black;
+        padding: 3%;
+        margin: 2%;
+    }
+    
+    .status {
+        position: relative;
+        margin-left: 40%;
+    }
+    
+    .tag {
+        display: flex;
+        align-items: center;
+    }
+    
+    .tag div {
+        width: 40%;
+    }
+    
+    p {
+        border: 1px solid black;
+        padding: 1%;
+        margin-top: 14%;
+    }
+    
+    .produtos input:first-child {
+        position: absolute;
+        margin-top: 18%;
+        margin-left: 00%;
+        align-items: right;
+        font-size: 22px;
+        background-color: red;
+        cursor: pointer;
+    }
+    
+    .produtos input:nth-child(2) {
+        position: absolute;
+        margin-top: 16%;
+        margin-left: 55%;
+        align-items: right;
+        font-size: 22px;
+        background-color: red;
+        cursor: pointer;
+    }
+    
+    .produtos input:last-child {
+        position: absolute;
+        margin-top: 0%;
+        margin-left: 78%;
+        align-items: right;
+        font-size: 22px;
+        background-color: rgb(72, 255, 0);
+        cursor: pointer;
+    }
+    
+    .imgs img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .produtos_price {
+        color: aliceblue;
+        position: fixed;
+        left: 5%;
+        top: 20%;
+        background-color: black;
+        width: 80%;
+        height: 30%;
+        font-size: 30px;
+        padding: 3%;
+        border: solid 1px whitesmoke;
+    }
+    
+    .preco_promo,
+    .Digite_senha {
+        display: none;
+    }
+    
+    .preco_promo,
+    .promo_check {
+        display: none;
+    }
+    
+    .visible {
+        display: block;
+        content: visible;
+        visibility: visible;
+    }
