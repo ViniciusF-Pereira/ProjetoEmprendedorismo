@@ -116,21 +116,31 @@ if (!empty($dados["CadastrarEndereco"])) {
 
       $id = $conn->lastInsertId();
 
-      if (!isset($_SESSION['principal'])) {
+      $valor = 0;
+      $query_dashboard_enderecos ="SELECT id_endereco, usuario_id, principal
+      FROM enderecos 
+      WHERE usuario_id =:usuario_id
+      AND principal = 1";        
 
-        $valor = 1;
-        
-                  $query_Favoritar = 
-                  "UPDATE enderecos 
-                  SET principal = $valor
+
+      $result_dashboard_enderecos = $conn->prepare($query_dashboard_enderecos);
+      $result_dashboard_enderecos -> bindParam(':usuario_id', $_SESSION['id'], PDO::PARAM_STR);     
+      $result_dashboard_enderecos -> execute();
+
+      if(($result_dashboard_enderecos) and ($result_dashboard_enderecos->rowCount() == 0)){
+       
+
+          $query_Favoritar =
+            "UPDATE enderecos 
+                  SET principal = 1;
                   WHERE id_endereco =$id";
 
-                                    
-                  $result__Favoritar = $conn->prepare($query_Favoritar);
-                  $result__Favoritar -> execute();
-                  header("Location: dashboard.php");
 
+          $result__Favoritar = $conn->prepare($query_Favoritar);
+          $result__Favoritar->execute();
+          header("Location: dashboard.php");
 
+        
       }
    
 
@@ -514,7 +524,7 @@ if (!empty($dados["CadastrarEndereco"])) {
       
                // texto
 
-        if (($resu_dashboard_enderecos) and ($resu_dashboard_enderecos->rowCount() == 1)) {
+        if (($resu_dashboard_enderecos) and ($resu_dashboard_enderecos->rowCount() != 0)) {
           ($row_resu_dashboard_enderecos = $resu_dashboard_enderecos->fetch(PDO::FETCH_ASSOC));
 
           extract($row_resu_dashboard_enderecos);
