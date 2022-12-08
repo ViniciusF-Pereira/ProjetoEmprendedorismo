@@ -1,0 +1,11 @@
+.ProdutosArea img {
+    width: 40px;
+    height: 40px;
+    border: 1px solid white;
+}
+
+.ProdutosArea {
+    background-color: black;
+    color: aliceblue;
+    padding: 1%;
+}

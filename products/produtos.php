@@ -10,7 +10,7 @@ ob_start();
 
     include_once '../php/conexao.php';
 
-    $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 
 $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
